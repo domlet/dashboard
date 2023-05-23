@@ -1,0 +1,290 @@
+<!-- Ridoshi's responsive & interactive timeline
+https://codepen.io/Ridoshi/pen/araEGY
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MxB's Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" href="app.js"></script>
+  <script>
+    // Define School Years and Terms:
+    var allterms = [
+      {
+        schoolyear: "SY2223",
+        terms:
+          [
+            { termCode: "t1_SY2223", termName: "T1", beg: new Date(2022, 07, 07), /* Aug 07 */ end: new Date(2022, 09, 07) /* Oct 07 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "t2_SY2223", termName: "T2", beg: new Date(2022, 09, 10), /* Oct 09 */ end: new Date(2022, 11, 16) /* Dec 16 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "t3_SY2223", termName: "T3", beg: new Date(2023, 00, 04), /* Jan 04 */ end: new Date(2023, 02, 03) /* Mar 03 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "t4_SY2223", termName: "T4", beg: new Date(2023, 03, 06), /* Mar 06 */ end: new Date(2023, 04, 12) /* May 12 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "po_SY2223", termName: "Postsession", beg: new Date(2023, 04, 15), /* May 15 */ end: new Date(2023, 04, 26) /* May 26 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "su_SY2223", termName: "Summer School", beg: new Date(2023, 04, 30), /* May 30 */ end: new Date(2023, 05, 30) /* Jun 30 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+          ],
+        holidays:
+          [
+            { date: new Date(2022, 06, 04) /* Jul 04 */, isStudentHoliday: true, name: "Independence Day", description: "" },
+            { date: new Date(2022, 07, 03) /* Aug 03 */, isStudentHoliday: true, name: "PD Day", description: "" },
+            { date: new Date(2022, 07, 04) /* Aug 04 */, isStudentHoliday: true, name: "Collaboration / Work Day", description: "" },
+            { date: new Date(2022, 07, 05) /* Aug 05 */, isStudentHoliday: true, name: "Teacher Work Day", description: "" },
+            // { date: new Date(2022, 07, 08) /* Aug 08 */, isStudentHoliday: false, name: "First Day of School", description: "" },
+            { beg: new Date(2022, 08, 05) /* Sep 05 */, end: new Date(2022, 08, 05) /* Sep 05 */, isStudentHoliday: true, name: "Labor Day", description: "" },
+            { beg: new Date(2022, 08, 16) /* Sep 16 */, end: new Date(2022, 08, 16) /* Sep 16 */, isStudentHoliday: true, name: "PD Day", description: "" },
+            { beg: new Date(2022, 09, 10) /* Oct 10 */, end: new Date(2022, 09, 10) /* Oct 10 */, isStudentHoliday: true, name: "Indigenous Peoples' Day", description: "" },
+            { beg: new Date(2022, 10, 04) /* Nov 04 */, end: new Date(2022, 10, 04) /* Nov 04 */, isStudentHoliday: false, name: "End of Trimester 1 (E)", description: "" },
+            { beg: new Date(2022, 10, 11) /* Nov 11 */, end: new Date(2022, 10, 11) /* Nov 11 */, isStudentHoliday: true, name: "Veterans' Day", description: "" },
+            { beg: new Date(2022, 10, 21) /* Nov 21 */, end: new Date(2022, 10, 25) /* Nov 25 */, isStudentHoliday: true, name: "Thanksgiving Break", description: "" },
+            { beg: new Date(2022, 11, 19) /* Dec 19 */, end: new Date(2022, 11, 30) /* Dec 30 */, isStudentHoliday: true, name: "Winter Break", description: "" },
+            { beg: new Date(2023, 00, 02) /* Jan 02 */, end: new Date(2023, 00, 02) /* Jan 02 */, isStudentHoliday: true, name: "New Year's Day", description: "" },
+            { beg: new Date(2023, 00, 03) /* Jan 03 */, end: new Date(2023, 00, 03) /* Jan 03 */, isStudentHoliday: true, name: "PD Day", description: "" },
+            { beg: new Date(2023, 00, 04) /* Jan 04 */, end: new Date(2023, 00, 04) /* Jan 04 */, isStudentHoliday: false, name: "First Day of Spring Semester", description: "" },
+            { beg: new Date(2023, 00, 16) /* Jan 16 */, end: new Date(2023, 00, 16) /* Jan 16 */, isStudentHoliday: true, name: "Martin Luther King, Jr. Day", description: "" },
+            { beg: new Date(2023, 01, 20) /* Feb 20 */, end: new Date(2023, 01, 20) /* Feb 20 */, isStudentHoliday: true, name: "Presidents' Day", description: "" },
+            { beg: new Date(2023, 01, 24) /* Feb 24 */, end: new Date(2023, 01, 24) /* Feb 24 */, isStudentHoliday: false, name: "End of Trimester 2 (E)", description: "" },
+            { beg: new Date(2023, 02, 31) /* Mar 31 */, end: new Date(2023, 02, 31) /* Mar 31 */, isStudentHoliday: true, name: "Cesar Chavez Day", description: "" },
+            { beg: new Date(2023, 03, 03) /* Apr 03 */, end: new Date(2023, 03, 07) /* Apr 07 */, isStudentHoliday: true, name: "Spring Break", description: "" },
+            { beg: new Date(2023, 04, 25) /* May 25 */, end: new Date(2023, 04, 25) /* May 25 */, isStudentHoliday: false, name: "Last Day of Instruction", description: "" },
+            { beg: new Date(2023, 04, 26) /* May 26 */, end: new Date(2023, 04, 26) /* May 26 */, isStudentHoliday: true, name: "Teacher Work Day", description: "" },
+            { beg: new Date(2023, 04, 29) /* May 29 */, end: new Date(2023, 04, 29) /* May 29 */, isStudentHoliday: true, name: "Memorial Day", description: "" },
+            { beg: new Date(2023, 05, 19) /* Jun 19 */, end: new Date(2023, 05, 19) /* Jun 19 */, isStudentHoliday: true, name: "Juneteenth Holiday", description: "" },
+            { beg: new Date(2022, 06, 10) /* Jul 10 */, end: new Date(2022, 06, 10) /* Jul 10 */, isStudentHoliday: false, name: "Eid al-Adha", description: "Muslim holiday, begins the prior evening, some observe the holiday for up to four days" },
+            { beg: new Date(2022, 08, 26) /* Sep 26 */, end: new Date(2022, 08, 26) /* Sep 26 */, isStudentHoliday: false, name: "Rosh Hashanah", description: "Jewish holiday, begins the prior evening, some observe the holiday for a second day" },
+            { beg: new Date(2022, 09, 05) /* Oct 05 */, end: new Date(2022, 09, 05) /* Oct 05 */, isStudentHoliday: false, name: "Yom Kippur", description: "Jewish holiday, begins the prior evening" },
+            { beg: new Date(2022, 09, 24) /* Oct 24 */, end: new Date(2022, 09, 24) /* Oct 24 */, isStudentHoliday: false, name: "Diwali", description: "Hindi holiday, some observe the holiday for up to four days; other religions also celebrate Diwali, but not necessarily on the same day" },
+            { beg: new Date(2022, 11, 08) /* Dec 08 */, end: new Date(2022, 11, 08) /* Dec 08 */, isStudentHoliday: false, name: "Bodhi", description: "Buddhist holiday, some observe the holiday in January" },
+            { beg: new Date(2022, 11, 25) /* Dec 25 */, end: new Date(2022, 11, 25) /* Dec 25 */, isStudentHoliday: false, name: "Christmas", description: "Christian holiday" },
+            { beg: new Date(2023, 00, 15) /* Jan 15 */, end: new Date(2023, 00, 15) /* Jan 15 */, isStudentHoliday: false, name: "Makar Sankranti / Pongal / Tirmoori", description: "Hindi holiday, some observe the holiday for up to four days" },
+            { beg: new Date(2023, 03, 09) /* Apr 09 */, end: new Date(2023, 03, 09) /* Apr 09 */, isStudentHoliday: false, name: "Easter", description: "Christian holiday" },
+            { beg: new Date(2023, 03, 22) /* Apr 22 */, end: new Date(2023, 03, 22) /* Apr 22 */, isStudentHoliday: false, name: "Eid al-Fitr", description: "Muslim holiday, begins the prior evening, +/- day dependent on the sighting of the crescent moon" },
+            { beg: new Date(2023, 04, 05) /* May 05 */, end: new Date(2023, 04, 05) /* May 05 */, isStudentHoliday: false, name: "Vesak", description: "Buddhist holiday, some observe the holiday in April or on other days in May" },
+          ]
+      },
+      {
+        schoolyear: "SY2324",
+        terms:
+          [
+            { termCode: "t1_SY2223", termName: "T1", beg: new Date(2023, 07, 00) /* Aug 00 */, end: new Date(2023, 09, 00) /* Oct 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "t2_SY2223", termName: "T2", beg: new Date(2023, 09, 00) /* Oct 00 */, end: new Date(2023, 11, 00) /* Dec 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "t3_SY2223", termName: "T3", beg: new Date(2024, 00, 00) /* Jan 00 */, end: new Date(2024, 02, 00) /* Mar 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "t4_SY2223", termName: "T4", beg: new Date(2024, 03, 00) /* Mar 00 */, end: new Date(2024, 04, 00) /* May 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "po_SY2223", termName: "Postsession", beg: new Date(2024, 04, 00) /* May 00 */, end: new Date(2024, 04, 00) /* May 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "su_SY2223", termName: "Summer School", beg: new Date(2024, 04, 00) /* May 00 */, end: new Date(2024, 05, 00) /* Jun 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+          ],
+        holidays:
+          []
+      }
+    ]
+    // Define School Years (as friendly variables)
+    const SY2223 = allterms[0]
+    const SY2324 = allterms[1]
+    const currentSY = SY2223 // Set the current school year.
+    // Define the Current Date:
+    const dateToday = new Date();
+    const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const datePretty = dateToday.toLocaleString('en-US', dateOptions)
+    // Calculate the current year:
+    let yearStart = ""
+    let yearEnd = ""
+    let daysTotal = ""
+    let daysElapsed = ""
+    let daysElapsedPercent = ""
+    let daysRemainYear = ""
+    function calculateSY(year) {
+      yearStart = year.terms[0].beg // Get T1 beg date
+      yearEnd = year.terms[(year.terms.length - 2)].end // Get T4 end date
+      daysTotal = Math.floor((yearEnd - yearStart) / (1000 * 3600 * 24))
+      daysElapsed = Math.floor((dateToday - yearStart) / (1000 * 3600 * 24))
+      daysElapsedPercent = (Math.floor((daysElapsed / daysTotal) * 100))
+      daysRemainYear = Math.floor((daysTotal - daysElapsed))
+      return
+    }
+    calculateSY(currentSY)
+
+    // Define holidays:
+    /* 
+    sort each holiday into a term
+    determine the duration each
+    subtract that duration from the term total days count
+    
+     */
+
+    // Identify and remove weekends:
+    /* Count sat and sun occurrences in each term
+    remove that total from total days in the term */
+
+    function calculateHolidays(termsList) {
+      for (let i = 0; i < termsList.length; i++) {
+        console.log("hi")
+      }
+    }
+    calculateHolidays(currentSY.terms)
+
+    // Calculate the terms:
+    let currentTerm = "" // Global var
+    let termDaysTotal = ""
+    let termDaysElapsed = ""
+    let termDaysRemain = ""
+    let termPercentComplete = ""
+    function calculateTerms(termsList) {
+      for (let i = 0; i < termsList.length; i++) {
+        // Always calculate total days:
+        termDaysTotal = Math.floor((termsList[i].end - termsList[i].beg) / (1000 * 3600 * 24));
+        termsList[i].termDaysTotal = termDaysTotal
+        if (dateToday > termsList[i].end) {
+          // Terms that have ended:
+          termsList[i].termDaysElapsed = termDaysTotal
+          termsList[i].termDaysRemain = 0
+          termsList[i].termPercentComplete = 100
+        } else if (dateToday < termsList[i].beg) {
+          // Terms that haven't started:
+          termsList[i].termDaysElapsed = 0
+          termsList[i].termDaysRemain = termDaysTotal
+          termsList[i].termPercentComplete = 0
+        } else {
+          // Current term:
+          termsList[i].termDaysElapsed = Math.floor((dateToday - allterms[0].terms[4].beg) / (1000 * 3600 * 24))
+          termsList[i].termDaysRemain = (Math.floor(termDaysTotal - termsList[i].termDaysElapsed))
+          termsList[i].termPercentComplete = (Math.floor((termsList[i].termDaysElapsed / termDaysTotal) * 100))
+          currentTerm = termsList[i].termName // Returns like "t3_SY2223"
+        }
+        termsList[i].percentcomplete = termPercentComplete
+        console.log("" + termsList[i].termName + ": " + termsList[i].termDaysElapsed + "/" + termsList[i].termDaysTotal + " days (" + termsList[i].termPercentComplete + "%); " + termsList[i].termDaysRemain + " remain.")
+      }
+      return
+    }
+    calculateTerms(currentSY.terms)
+
+    let dotsEmptyHtml = []
+    let dotsFilledHtml = []
+    function drawDots(schoolyear) {
+      let dotsHtml = ""
+      for (let i = 0; i < schoolyear.terms.length; i++) { // 6
+        dotsHtml = ""
+        // console.log(schoolyear.terms[i].termDaysElapsed)
+        for (let x = 0; x < schoolyear.terms[i].termDaysElapsed; x++) {
+          dotsHtml += "<div class='circle filled-circle'></div>"
+        }
+        dotsEmptyHtml.push(dotsHtml)
+        dotsHtml = ""
+        for (let y = 0; y < schoolyear.terms[i].termDaysRemain; y++) {
+          dotsHtml += "<div class='circle empty-circle'></div>"
+        }
+        dotsFilledHtml.push(dotsHtml)
+      }
+      // console.log(dotsEmptyHtml.length)
+      // console.log(dotsFilledHtml.length)
+    }
+    drawDots(SY2223)
+
+  </script>
+</head>
+
+<body>
+
+  <div id="date" class="py-2 px-3"></div>
+  <div id="stats" class="d-inline-flex py-3 px-1">
+    <div class="d-flex">
+      <div class="col">We are currently in <span id="currentTerm" class="font-weight-bold"></span>,
+        with <span id="daysRemainTermContainer" class="font-weight-bold"></span> calendar days remaining in this term.</div>
+      <div class="col">We have completed <span id="daysElapsedPercent" class="font-weight-bold"></span>% of the school year.</div>
+      <div class="col">There are <span id="daysRemainYearContainer" class="font-weight-bold"></span> days until the end of the school year.</div>
+    </div>
+    <div id="gCalContainer" style="width:260px">
+      <button onclick="showGoogleCalendar()">Show&nbsp;Calendar</button>
+    </div>
+  </div>
+  <!-- Progress Bars -->
+  <div id="progressBar" class="container-fluid pt-3 px-4"></div>
+  <!-- Dots -->
+  <div id="dots">
+    <div class="row">
+      <div id="dots_t1" class="col p-1"></div>
+      <div id="dots_t2" class="col p-1"></div>
+      <div id="dots_t3" class="col p-1"></div>
+      <div id="dots_t4" class="col p-1"></div>
+      <div id="dots_po" class="col p-1"></div>
+      <div id="dots_su" class="col p-1"></div>
+    </div>
+  </div>
+
+  <script>
+    // Write content to elements
+    let progressBarHtml =
+      `<div class="row">
+      <div class="col-md-12">
+      <h3 class="progress-title">SCHOOL YEAR (2022-2023)</h3>
+        <div class="progress">
+          <div class="progress-bar" style="width:${daysElapsedPercent}%; background:#049DBF;">
+          <div class="progress-value">${daysElapsedPercent}%</div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col pr-4">
+        <h3 class="progress-title">T1</h3>
+          <div class="progress">
+          <div class="progress-bar" style="width:${SY2223.terms[0].termPercentComplete}%; background:#021F59;">
+          <div class="progress-value">${SY2223.terms[0].termPercentComplete}%</div>
+        </div>
+        </div>
+      </div>
+      <div class="col pr-4">
+        <h3 class="progress-title">T2</h3>
+          <div class="progress">
+          <div class="progress-bar" style="width:${SY2223.terms[1].termPercentComplete}%; background:#97c513;">
+          <div class="progress-value">${SY2223.terms[1].termPercentComplete}%</div>
+        </div>
+        </div>
+      </div>
+      <div class="col pr-4">
+        <h3 class="progress-title">T3</h3>
+          <div class="progress">
+          <div class="progress-bar" style="width:${SY2223.terms[2].termPercentComplete}%; background:#D93D04;">
+          <div class="progress-value">${SY2223.terms[2].termPercentComplete}%</div>
+        </div>
+        </div>
+      </div>
+      <div class="col pr-4">
+        <h3 class="progress-title">T4</h3>
+          <div class="progress">
+          <div class="progress-bar" style="width:${SY2223.terms[3].termPercentComplete}%; background:#D97904;">
+          <div class="progress-value">${SY2223.terms[3].termPercentComplete}%</div>
+        </div>
+        </div>
+      </div>
+    </div>`
+    function showStuff() {
+      document.getElementById("date").innerHTML = "Welcome! Today is <strong>" + datePretty + "</strong>."
+      document.getElementById("daysElapsedPercent").innerHTML = daysElapsedPercent
+      document.getElementById("daysRemainTermContainer").innerHTML = termDaysRemain
+      document.getElementById("daysRemainYearContainer").innerHTML = daysRemainYear
+      document.getElementById("currentTerm").innerHTML = currentTerm
+      document.getElementById("progressBar").innerHTML = progressBarHtml
+      document.getElementById("dots_t1").innerHTML = "<br style='clear:both'>" + dotsEmptyHtml[0] + dotsFilledHtml[0]
+      document.getElementById("dots_t2").innerHTML = "<br style='clear:both'>" + dotsEmptyHtml[1] + dotsFilledHtml[1]
+      document.getElementById("dots_t3").innerHTML = "<br style='clear:both'>" + dotsEmptyHtml[2] + dotsFilledHtml[2]
+      document.getElementById("dots_t4").innerHTML = "<br style='clear:both'>" + dotsEmptyHtml[3] + dotsFilledHtml[3]
+      document.getElementById("dots_po").innerHTML = "<br style='clear:both'>" + dotsEmptyHtml[4] + dotsFilledHtml[4]
+      document.getElementById("dots_su").innerHTML = "<br style='clear:both'>" + dotsEmptyHtml[5] + dotsFilledHtml[5]
+    }
+    function showGoogleCalendar() {
+      let iframeHtml = "<iframe src='https://calendar.google.com/calendar/embed?&wkst=2&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y2NwYWVkdS5jb21fZnR1MGxhNTRraW8wY3JoaDgzbTI2N2xyaThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23EF6C00&amp;mode=AGENDA' style='border:0' width='260' height='260' frameborder='0' scrolling='yes'></iframe>"
+      document.getElementById("gCalContainer").innerHTML = iframeHtml
+    }
+    // Call functions
+    showStuff()
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

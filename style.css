@@ -1,0 +1,99 @@
+/* navy = #021F59 ; teal = #049DBF ; gold = #D9B504 ; 
+green = #7A9A15 ; orange = #D97904 ; red = #D93D04 */
+
+body {
+  background-image: url('images/bg-theinfinite8enigma-East-Oakland-510-Graffiti-Art.jpeg');
+  background-size: cover;
+}
+#date {
+  display: block;
+  clear: both;
+  font-size: x-large;
+  background-color: rgba(2, 31, 89, .75);
+  color: #fff;
+}
+#stats {
+  background-color: rgba(122,154,21,.9);
+  color: #fff;
+}
+#timelineContainer div {
+  background-color: #D97904;
+}
+#learningObjContainer {
+  background-color: #fff;
+}
+iframe {
+  border: 0;
+}
+
+.d-flex div {
+  padding-right: 1em
+}
+
+/* Progress Bar */
+.progress-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 10px
+}
+
+.progress {
+  height: 16px;
+  background: #333;
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 30px;
+  overflow: visible;
+}
+
+.progress .progress-bar {
+  position: relative;
+  width: 100%;
+}
+
+.progress .progress-value {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  color: black;
+  position: absolute;
+  top: -30px;
+  right: -25px
+}
+
+.progress .progress-bar:after {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  background: #fff;
+  position: absolute;
+  top: -10px;
+  bottom: -10px;
+  right: -4px;
+  z-index: 1;
+  transform: rotate(30deg)
+}
+
+#progressBar {
+  background: linear-gradient(to right, #d9a7c7, #fffcdc);
+}
+#dots {
+  background-color:rgba(255, 255, 255, 0.85)
+}
+.circle {
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  display: block;
+  float: left;
+  margin: .05em;
+}
+.empty-circle {
+  border: 1px solid gray;
+  background-color: white
+}
+.filled-circle {
+  border: 1px solid white;
+  background-color: #021F59;
+}
