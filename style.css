@@ -93,7 +93,6 @@ iframe {
 }
 #dots {
   background-color:rgba(255, 255, 255, 0.85);
-  margin: 1em, 0;
 }
 #dots .col h3 {
   font-size: 1.3em;
@@ -107,7 +106,7 @@ iframe {
   height: 1em;
   display: block;
   float: left;
-  margin: .05em;
+  margin: .08em;
 }
 .empty-dot {
   border: 1px solid gray;

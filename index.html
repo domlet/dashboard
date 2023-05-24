@@ -211,7 +211,7 @@ https://codepen.io/Ridoshi/pen/araEGY
   </div>
 
 
-  <div id="stats" class="d-inline-flex py-3 px-2">
+  <div id="stats" class="container-fluid py-3 px-2">
     <div class="d-flex">
       <div class="col flex-fill">We are in <span id="currentTerm" class="font-weight-bold"></span>,
         with <span id="daysRemainTermContainer" class="font-weight-bold"></span> calendar days remaining.</div>
@@ -227,31 +227,31 @@ https://codepen.io/Ridoshi/pen/araEGY
   <!-- Progress Bars -->
   <div id="progressBar" class="container-fluid pt-3 px-4"></div>
   <!-- Dots -->
-  <div id="dots">
-    <div class="row pt-2">
-      <div class="col-md-2">
+  <div id="dots" class="container-fluid">
+    <div class="row pt-3 pb-4">
+      <div class="col col-2">
         <h3>T1</h3>
-        <div id="dots_t1" class="dots-min"></div>
+        <div id="dots_t1"></div>
       </div>
-      <div class="col-md-2">
+      <div class="col col-2">
         <h3>T2</h3>
-        <div id="dots_t2" class="dots-min"></div>
+        <div id="dots_t2"></div>
       </div>
-      <div class="col-md-2">
+      <div class="col col-2">
         <h3>T3</h3>
-        <div id="dots_t3" class="dots-min"></div>
+        <div id="dots_t3"></div>
       </div>
-      <div class="col-md-2">
+      <div class="col col-2">
         <h3>T4</h3>
-        <div id="dots_t4" class="dots-min"></div>
+        <div id="dots_t4"></div>
       </div>
-      <div class="col-md-2">
+      <div class="col col-2">
         <h3>PS</h3>
-        <div id="dots_ps" class="dots-min"></div>
+        <div id="dots_ps"></div>
       </div>
-      <div class="col-md-2">
+      <div class="col col-2">
         <h3>SS</h3>
-        <div id="dots_ss" class="dots-min"></div>
+        <div id="dots_ss"></div>
       </div>
     </div>
   </div>
@@ -260,7 +260,7 @@ https://codepen.io/Ridoshi/pen/araEGY
     // Write content to elements
     let progressBarHtml =
       `<div class="row">
-        <div class="col-md-3 pr-4">
+        <div class="col-3 pr-4">
           <h3 class="progress-title">T1</h3>
           <div class="progress">
           <div class="progress-bar" style="width:${SY2223.terms[0].termPercentComplete}%; background:#049DBF;">
@@ -268,7 +268,7 @@ https://codepen.io/Ridoshi/pen/araEGY
         </div>
       </div>
     </div>
-    <div class="col-md-3 pr-4">
+    <div class="col-3 pr-4">
       <h3 class="progress-title">T2</h3>
           <div class="progress">
           <div class="progress-bar" style="width:${SY2223.terms[1].termPercentComplete}%; background:#D9B504;">
@@ -276,7 +276,7 @@ https://codepen.io/Ridoshi/pen/araEGY
         </div>
       </div>
     </div>
-    <div class="col-md-6 pr-4">
+    <div class="col-6 pr-4">
       <h3 class="progress-title"> SY</h3>
         <div class="progress">
           <div class="progress-bar" style="width:${daysElapsedPercent}%; background:#021F59;">
@@ -287,7 +287,7 @@ https://codepen.io/Ridoshi/pen/araEGY
     </div>
     
     <div class="row">
-      <div class="col col-md-3 pr-4">
+      <div class="col col-3 pr-4">
         <h3 class="progress-title">T3</h3>
           <div class="progress">
           <div class="progress-bar" style="width:${SY2223.terms[2].termPercentComplete}%; background:#D97904;">
@@ -295,7 +295,7 @@ https://codepen.io/Ridoshi/pen/araEGY
         </div>
         </div>
       </div>
-      <div class="col col-md-3 pr-4">
+      <div class="col col-3 pr-4">
         <h3 class="progress-title">T4</h3>
           <div class="progress">
           <div class="progress-bar" style="width:${SY2223.terms[3].termPercentComplete}%; background:#97c513;">
@@ -303,7 +303,7 @@ https://codepen.io/Ridoshi/pen/araEGY
         </div>
         </div>
       </div>
-      <div class="col col-md-3 pr-4">
+      <div class="col col-3 pr-4">
         <h3 class="progress-title">PS</h3>
           <div class="progress">
           <div class="progress-bar" style="width:${SY2223.terms[4].termPercentComplete}%; background:#D93D04;">
@@ -311,7 +311,7 @@ https://codepen.io/Ridoshi/pen/araEGY
         </div>
         </div>
       </div>
-      <div class="col col-md-3 pr-4">
+      <div class="col col-3 pr-4">
         <h3 class="progress-title">SS</h3>
           <div class="progress">
           <div class="progress-bar" style="width:${SY2223.terms[5].termPercentComplete}%; background:#D97904;">
