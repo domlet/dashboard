@@ -22,9 +22,9 @@ https://codepen.io/Ridoshi/pen/araEGY
             { termCode: "t1_SY2223", termName: "T1", beg: new Date(2022, 07, 07), /* Aug 07 */ end: new Date(2022, 09, 07) /* Oct 07 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
             { termCode: "t2_SY2223", termName: "T2", beg: new Date(2022, 09, 10), /* Oct 09 */ end: new Date(2022, 11, 16) /* Dec 16 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
             { termCode: "t3_SY2223", termName: "T3", beg: new Date(2023, 00, 04), /* Jan 04 */ end: new Date(2023, 02, 03) /* Mar 03 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "t4_SY2223", termName: "T4", beg: new Date(2023, 03, 06), /* Mar 06 */ end: new Date(2023, 04, 12) /* May 12 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "po_SY2223", termName: "Postsession", beg: new Date(2023, 04, 15), /* May 15 */ end: new Date(2023, 04, 26) /* May 26 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "su_SY2223", termName: "Summer School", beg: new Date(2023, 04, 30), /* May 30 */ end: new Date(2023, 05, 30) /* Jun 30 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "t4_SY2223", termName: "T4", beg: new Date(2023, 02, 06), /* Mar 06 */ end: new Date(2023, 04, 12) /* May 12 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "ps_SY2223", termName: "Postsession", beg: new Date(2023, 04, 15), /* May 15 */ end: new Date(2023, 04, 26) /* May 26 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "ss_SY2223", termName: "Summer School", beg: new Date(2023, 04, 30), /* May 30 */ end: new Date(2023, 05, 30) /* Jun 30 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
           ],
         holidays:
           [
@@ -72,8 +72,8 @@ https://codepen.io/Ridoshi/pen/araEGY
             { termCode: "t2_SY2223", termName: "T2", beg: new Date(2023, 09, 00) /* Oct 00 */, end: new Date(2023, 11, 00) /* Dec 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
             { termCode: "t3_SY2223", termName: "T3", beg: new Date(2024, 00, 00) /* Jan 00 */, end: new Date(2024, 02, 00) /* Mar 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
             { termCode: "t4_SY2223", termName: "T4", beg: new Date(2024, 03, 00) /* Mar 00 */, end: new Date(2024, 04, 00) /* May 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "po_SY2223", termName: "Postsession", beg: new Date(2024, 04, 00) /* May 00 */, end: new Date(2024, 04, 00) /* May 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "su_SY2223", termName: "Summer School", beg: new Date(2024, 04, 00) /* May 00 */, end: new Date(2024, 05, 00) /* Jun 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "ps_SY2223", termName: "Postsession", beg: new Date(2024, 04, 00) /* May 00 */, end: new Date(2024, 04, 00) /* May 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "ss_SY2223", termName: "Summer School", beg: new Date(2024, 04, 00) /* May 00 */, end: new Date(2024, 05, 00) /* Jun 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
           ],
         holidays:
           []
@@ -211,10 +211,10 @@ https://codepen.io/Ridoshi/pen/araEGY
   </div>
 
 
-  <div id="stats" class="d-inline-flex py-3 px-1">
+  <div id="stats" class="d-inline-flex py-3 px-2">
     <div class="d-flex">
       <div class="col flex-fill">We are in <span id="currentTerm" class="font-weight-bold"></span>,
-        with <span id="daysRemainTermContainer" class="font-weight-bold"></span> calendar days remaining in this term.</div>
+        with <span id="daysRemainTermContainer" class="font-weight-bold"></span> calendar days remaining.</div>
       <div class="col flex-fill">We have completed <span id="daysElapsedPercent" class="font-weight-bold"></span>% of the school year.</div>
       <div class="col flex-fill">There are <span id="daysRemainYearContainer" class="font-weight-bold"></span> days until the end of the school year.</div>
     </div>
@@ -228,30 +228,30 @@ https://codepen.io/Ridoshi/pen/araEGY
   <div id="progressBar" class="container-fluid pt-3 px-4"></div>
   <!-- Dots -->
   <div id="dots">
-    <div class="row flex-wrap pt-2">
-      <div class="col">
+    <div class="row pt-2">
+      <div class="col-md-2">
         <h3>T1</h3>
         <div id="dots_t1" class="dots-min"></div>
       </div>
-      <div class="col">
+      <div class="col-md-2">
         <h3>T2</h3>
         <div id="dots_t2" class="dots-min"></div>
       </div>
-      <div class="col">
+      <div class="col-md-2">
         <h3>T3</h3>
         <div id="dots_t3" class="dots-min"></div>
       </div>
-      <div class="col">
+      <div class="col-md-2">
         <h3>T4</h3>
         <div id="dots_t4" class="dots-min"></div>
       </div>
-      <div class="col">
-        <h3>Po</h3>
-        <div id="dots_po" class="dots-min"></div>
+      <div class="col-md-2">
+        <h3>PS</h3>
+        <div id="dots_ps" class="dots-min"></div>
       </div>
-      <div class="col">
-        <h3>Su</h3>
-        <div id="dots_su" class="dots-min"></div>
+      <div class="col-md-2">
+        <h3>SS</h3>
+        <div id="dots_ss" class="dots-min"></div>
       </div>
     </div>
   </div>
@@ -263,7 +263,7 @@ https://codepen.io/Ridoshi/pen/araEGY
         <div class="col-md-3 pr-4">
           <h3 class="progress-title">T1</h3>
           <div class="progress">
-          <div class="progress-bar" style="width:${SY2223.terms[0].termPercentComplete}%; background:#021F59;">
+          <div class="progress-bar" style="width:${SY2223.terms[0].termPercentComplete}%; background:#049DBF;">
           <div class="progress-value">${SY2223.terms[0].termPercentComplete}%</div>
         </div>
       </div>
@@ -279,7 +279,7 @@ https://codepen.io/Ridoshi/pen/araEGY
     <div class="col-md-6 pr-4">
       <h3 class="progress-title"> SY</h3>
         <div class="progress">
-          <div class="progress-bar" style="width:${daysElapsedPercent}%; background:#049DBF;">
+          <div class="progress-bar" style="width:${daysElapsedPercent}%; background:#021F59;">
           <div class="progress-value">${daysElapsedPercent}%</div>
         </div>
       </div>
@@ -304,7 +304,7 @@ https://codepen.io/Ridoshi/pen/araEGY
         </div>
       </div>
       <div class="col col-md-3 pr-4">
-        <h3 class="progress-title">Po</h3>
+        <h3 class="progress-title">PS</h3>
           <div class="progress">
           <div class="progress-bar" style="width:${SY2223.terms[4].termPercentComplete}%; background:#D93D04;">
           <div class="progress-value">${SY2223.terms[4].termPercentComplete}%</div>
@@ -312,7 +312,7 @@ https://codepen.io/Ridoshi/pen/araEGY
         </div>
       </div>
       <div class="col col-md-3 pr-4">
-        <h3 class="progress-title">Su</h3>
+        <h3 class="progress-title">SS</h3>
           <div class="progress">
           <div class="progress-bar" style="width:${SY2223.terms[5].termPercentComplete}%; background:#D97904;">
           <div class="progress-value">${SY2223.terms[5].termPercentComplete}%</div>
@@ -321,7 +321,7 @@ https://codepen.io/Ridoshi/pen/araEGY
       </div>
     </div>`
     function showStuff() {
-      document.getElementById("dateSpan").innerHTML = "Welcome! Today is <strong>" + datePretty + "</strong>."
+      document.getElementById("dateSpan").innerHTML = "<strong>" + datePretty + "</strong>"
       document.getElementById("daysElapsedPercent").innerHTML = daysElapsedPercent
       document.getElementById("daysRemainTermContainer").innerHTML = termDaysRemain
       document.getElementById("daysRemainYearContainer").innerHTML = daysRemainYear
@@ -331,12 +331,21 @@ https://codepen.io/Ridoshi/pen/araEGY
       document.getElementById("dots_t2").innerHTML = dotsEmptyHtml[1] + dotsFilledHtml[1]
       document.getElementById("dots_t3").innerHTML = dotsEmptyHtml[2] + dotsFilledHtml[2]
       document.getElementById("dots_t4").innerHTML = dotsEmptyHtml[3] + dotsFilledHtml[3]
-      document.getElementById("dots_po").innerHTML = dotsEmptyHtml[4] + dotsFilledHtml[4]
-      document.getElementById("dots_su").innerHTML = dotsEmptyHtml[5] + dotsFilledHtml[5]
+      document.getElementById("dots_ps").innerHTML = dotsEmptyHtml[4] + dotsFilledHtml[4]
+      document.getElementById("dots_ss").innerHTML = dotsEmptyHtml[5] + dotsFilledHtml[5]
     }
     function showGoogleCalendar() {
-      let iframeHtml = "<div id='showHideCal'><iframe src='https://calendar.google.com/calendar/embed?&wkst=2&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y2NwYWVkdS5jb21fZnR1MGxhNTRraW8wY3JoaDgzbTI2N2xyaThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23EF6C00&amp;mode=AGENDA' style='border:0' width='260' height='260' frameborder='0' scrolling='yes'></iframe></div>"
-      document.createElement("gCalContainer").innerHTML = iframeHtml
+      let isVisible = null
+      if (isVisible == true) {
+
+        isVisible = false
+      } else {
+        let iframeHtml = "<div id='showHideCal'><iframe src='https://calendar.google.com/calendar/embed?&wkst=2&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y2NwYWVkdS5jb21fZnR1MGxhNTRraW8wY3JoaDgzbTI2N2xyaThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23EF6C00&amp;mode=AGENDA' style='border:0' width='260' height='260' frameborder='0' scrolling='yes'></iframe></div>"
+        let gCalContainer = document.createElement('div') // 
+        gCalContainer.innerHTML = iframeHtml
+        document.body.appendChild(gCalContainer);
+        isVisible = true
+      }
     }
     // Call functions
     showStuff()

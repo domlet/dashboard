@@ -20,6 +20,11 @@ div {
   width: auto;
   margin-top: .5em;
 } 
+#showHideCal {
+  position: absolute;
+  top: 3em;
+  right: 1em;
+}
 #stats {
   background-color: rgba(122,154,21,.9);
   color: #fff;
