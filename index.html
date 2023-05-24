@@ -260,8 +260,24 @@ https://codepen.io/Ridoshi/pen/araEGY
     // Write content to elements
     let progressBarHtml =
       `<div class="row">
-      <div class="col-md-12">
-      <h3 class="progress-title">SCHOOL YEAR (2022-2023)</h3>
+        <div class="col-md-3 pr-4">
+          <h3 class="progress-title">T1</h3>
+          <div class="progress">
+          <div class="progress-bar" style="width:${SY2223.terms[0].termPercentComplete}%; background:#021F59;">
+          <div class="progress-value">${SY2223.terms[0].termPercentComplete}%</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 pr-4">
+      <h3 class="progress-title">T2</h3>
+          <div class="progress">
+          <div class="progress-bar" style="width:${SY2223.terms[1].termPercentComplete}%; background:#D9B504;">
+          <div class="progress-value">${SY2223.terms[1].termPercentComplete}%</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 pr-4">
+      <h3 class="progress-title"> SY</h3>
         <div class="progress">
           <div class="progress-bar" style="width:${daysElapsedPercent}%; background:#049DBF;">
           <div class="progress-value">${daysElapsedPercent}%</div>
@@ -269,36 +285,37 @@ https://codepen.io/Ridoshi/pen/araEGY
       </div>
     </div>
     </div>
+    
     <div class="row">
-      <div class="col pr-4">
-        <h3 class="progress-title">T1</h3>
-          <div class="progress">
-          <div class="progress-bar" style="width:${SY2223.terms[0].termPercentComplete}%; background:#021F59;">
-          <div class="progress-value">${SY2223.terms[0].termPercentComplete}%</div>
-        </div>
-        </div>
-      </div>
-      <div class="col pr-4">
-        <h3 class="progress-title">T2</h3>
-          <div class="progress">
-          <div class="progress-bar" style="width:${SY2223.terms[1].termPercentComplete}%; background:#97c513;">
-          <div class="progress-value">${SY2223.terms[1].termPercentComplete}%</div>
-        </div>
-        </div>
-      </div>
-      <div class="col pr-4">
+      <div class="col col-md-3 pr-4">
         <h3 class="progress-title">T3</h3>
           <div class="progress">
-          <div class="progress-bar" style="width:${SY2223.terms[2].termPercentComplete}%; background:#D93D04;">
+          <div class="progress-bar" style="width:${SY2223.terms[2].termPercentComplete}%; background:#D97904;">
           <div class="progress-value">${SY2223.terms[2].termPercentComplete}%</div>
         </div>
         </div>
       </div>
-      <div class="col pr-4">
+      <div class="col col-md-3 pr-4">
         <h3 class="progress-title">T4</h3>
           <div class="progress">
-          <div class="progress-bar" style="width:${SY2223.terms[3].termPercentComplete}%; background:#D97904;">
+          <div class="progress-bar" style="width:${SY2223.terms[3].termPercentComplete}%; background:#97c513;">
           <div class="progress-value">${SY2223.terms[3].termPercentComplete}%</div>
+        </div>
+        </div>
+      </div>
+      <div class="col col-md-3 pr-4">
+        <h3 class="progress-title">Po</h3>
+          <div class="progress">
+          <div class="progress-bar" style="width:${SY2223.terms[4].termPercentComplete}%; background:#D93D04;">
+          <div class="progress-value">${SY2223.terms[4].termPercentComplete}%</div>
+        </div>
+        </div>
+      </div>
+      <div class="col col-md-3 pr-4">
+        <h3 class="progress-title">Su</h3>
+          <div class="progress">
+          <div class="progress-bar" style="width:${SY2223.terms[5].termPercentComplete}%; background:#D97904;">
+          <div class="progress-value">${SY2223.terms[5].termPercentComplete}%</div>
         </div>
         </div>
       </div>
@@ -310,12 +327,12 @@ https://codepen.io/Ridoshi/pen/araEGY
       document.getElementById("daysRemainYearContainer").innerHTML = daysRemainYear
       document.getElementById("currentTerm").innerHTML = currentTerm
       document.getElementById("progressBar").innerHTML = progressBarHtml
-      document.getElementById("dots_t1").innerHTML = "<br style='clear:both'>" + dotsEmptyHtml[0] + dotsFilledHtml[0]
-      document.getElementById("dots_t2").innerHTML = "<br style='clear:both'>" + dotsEmptyHtml[1] + dotsFilledHtml[1]
-      document.getElementById("dots_t3").innerHTML = "<br style='clear:both'>" + dotsEmptyHtml[2] + dotsFilledHtml[2]
-      document.getElementById("dots_t4").innerHTML = "<br style='clear:both'>" + dotsEmptyHtml[3] + dotsFilledHtml[3]
-      document.getElementById("dots_po").innerHTML = "<br style='clear:both'>" + dotsEmptyHtml[4] + dotsFilledHtml[4]
-      document.getElementById("dots_su").innerHTML = "<br style='clear:both'>" + dotsEmptyHtml[5] + dotsFilledHtml[5]
+      document.getElementById("dots_t1").innerHTML = dotsEmptyHtml[0] + dotsFilledHtml[0]
+      document.getElementById("dots_t2").innerHTML = dotsEmptyHtml[1] + dotsFilledHtml[1]
+      document.getElementById("dots_t3").innerHTML = dotsEmptyHtml[2] + dotsFilledHtml[2]
+      document.getElementById("dots_t4").innerHTML = dotsEmptyHtml[3] + dotsFilledHtml[3]
+      document.getElementById("dots_po").innerHTML = dotsEmptyHtml[4] + dotsFilledHtml[4]
+      document.getElementById("dots_su").innerHTML = dotsEmptyHtml[5] + dotsFilledHtml[5]
     }
     function showGoogleCalendar() {
       let iframeHtml = "<div id='showHideCal'><iframe src='https://calendar.google.com/calendar/embed?&wkst=2&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y2NwYWVkdS5jb21fZnR1MGxhNTRraW8wY3JoaDgzbTI2N2xyaThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23EF6C00&amp;mode=AGENDA' style='border:0' width='260' height='260' frameborder='0' scrolling='yes'></iframe></div>"
