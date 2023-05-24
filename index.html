@@ -12,9 +12,6 @@ https://codepen.io/Ridoshi/pen/araEGY
   <title>MxB's Dashboard</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@700&display=swap" rel="stylesheet">
   <script>
     // Define School Years and Terms:
     var allterms = [
@@ -198,6 +195,7 @@ https://codepen.io/Ridoshi/pen/araEGY
     }
     drawDots(SY2223)
 
+
   </script>
 </head>
 
@@ -215,34 +213,39 @@ https://codepen.io/Ridoshi/pen/araEGY
       <button onclick="showGoogleCalendar()">Show&nbsp;Calendar</button>
     </div>
   </div>
+  <div>
+    <audio id="prettygirls" src="sounds/pretty-girls-walk_shorter.mp3"></audio>
+    <audio id="airhorn" src="sounds/airhorn.mp3"></audio>
+    <audio id="choir" src="sounds/ahhhh.mp3"></audio>
+  </div>
   <!-- Progress Bars -->
   <div id="progressBar" class="container-fluid pt-3 px-4"></div>
   <!-- Dots -->
   <div id="dots">
-    <div class="row">
-      <div class="term-dots col">
+    <div class="row flex-wrap">
+      <div class="col">
         <h3>T1</h3>
-        <div id="dots_t1"></div>
+        <div id="dots_t1" class="dots-min"></div>
       </div>
       <div class="col">
         <h3>T2</h3>
-        <div id="dots_t2"></div>
+        <div id="dots_t2" class="dots-min"></div>
       </div>
       <div class="col">
         <h3>T3</h3>
-        <div id="dots_t3"></div>
+        <div id="dots_t3" class="dots-min"></div>
       </div>
       <div class="col">
         <h3>T4</h3>
-        <div id="dots_t4"></div>
+        <div id="dots_t4" class="dots-min"></div>
       </div>
       <div class="col">
         <h3>Po</h3>
-        <div id="dots_po"></div>
+        <div id="dots_po" class="dots-min"></div>
       </div>
       <div class="col">
         <h3>Su</h3>
-        <div id="dots_su"></div>
+        <div id="dots_su" class="dots-min"></div>
       </div>
     </div>
   </div>
@@ -314,6 +317,21 @@ https://codepen.io/Ridoshi/pen/araEGY
     }
     // Call functions
     showStuff()
+
+    function playAudio() {
+      document.addEventListener('keydown', function (event) {
+        let prettyGirls = document.getElementById("prettyGirls");
+        if (event.keyCode == 80) {
+          prettyGirls.play();
+        } else if (event.keyCode == 65) {
+          airhorn.play();
+        } else if (event.keyCode == 67) {
+          choir.play();
+        }
+      });
+    }
+    playAudio()
+
   </script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
