@@ -12,7 +12,9 @@ https://codepen.io/Ridoshi/pen/araEGY
   <title>MxB's Dashboard</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
-  <script type="text/javascript" href="app.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@700&display=swap" rel="stylesheet">
   <script>
     // Define School Years and Terms:
     var allterms = [
@@ -29,40 +31,40 @@ https://codepen.io/Ridoshi/pen/araEGY
           ],
         holidays:
           [
-            { date: new Date(2022, 06, 04) /* Jul 04 */, isStudentHoliday: true, name: "Independence Day", description: "" },
-            { date: new Date(2022, 07, 03) /* Aug 03 */, isStudentHoliday: true, name: "PD Day", description: "" },
-            { date: new Date(2022, 07, 04) /* Aug 04 */, isStudentHoliday: true, name: "Collaboration / Work Day", description: "" },
-            { date: new Date(2022, 07, 05) /* Aug 05 */, isStudentHoliday: true, name: "Teacher Work Day", description: "" },
-            // { date: new Date(2022, 07, 08) /* Aug 08 */, isStudentHoliday: false, name: "First Day of School", description: "" },
-            { beg: new Date(2022, 08, 05) /* Sep 05 */, end: new Date(2022, 08, 05) /* Sep 05 */, isStudentHoliday: true, name: "Labor Day", description: "" },
-            { beg: new Date(2022, 08, 16) /* Sep 16 */, end: new Date(2022, 08, 16) /* Sep 16 */, isStudentHoliday: true, name: "PD Day", description: "" },
-            { beg: new Date(2022, 09, 10) /* Oct 10 */, end: new Date(2022, 09, 10) /* Oct 10 */, isStudentHoliday: true, name: "Indigenous Peoples' Day", description: "" },
-            { beg: new Date(2022, 10, 04) /* Nov 04 */, end: new Date(2022, 10, 04) /* Nov 04 */, isStudentHoliday: false, name: "End of Trimester 1 (E)", description: "" },
-            { beg: new Date(2022, 10, 11) /* Nov 11 */, end: new Date(2022, 10, 11) /* Nov 11 */, isStudentHoliday: true, name: "Veterans' Day", description: "" },
-            { beg: new Date(2022, 10, 21) /* Nov 21 */, end: new Date(2022, 10, 25) /* Nov 25 */, isStudentHoliday: true, name: "Thanksgiving Break", description: "" },
-            { beg: new Date(2022, 11, 19) /* Dec 19 */, end: new Date(2022, 11, 30) /* Dec 30 */, isStudentHoliday: true, name: "Winter Break", description: "" },
-            { beg: new Date(2023, 00, 02) /* Jan 02 */, end: new Date(2023, 00, 02) /* Jan 02 */, isStudentHoliday: true, name: "New Year's Day", description: "" },
-            { beg: new Date(2023, 00, 03) /* Jan 03 */, end: new Date(2023, 00, 03) /* Jan 03 */, isStudentHoliday: true, name: "PD Day", description: "" },
-            { beg: new Date(2023, 00, 04) /* Jan 04 */, end: new Date(2023, 00, 04) /* Jan 04 */, isStudentHoliday: false, name: "First Day of Spring Semester", description: "" },
-            { beg: new Date(2023, 00, 16) /* Jan 16 */, end: new Date(2023, 00, 16) /* Jan 16 */, isStudentHoliday: true, name: "Martin Luther King, Jr. Day", description: "" },
-            { beg: new Date(2023, 01, 20) /* Feb 20 */, end: new Date(2023, 01, 20) /* Feb 20 */, isStudentHoliday: true, name: "Presidents' Day", description: "" },
-            { beg: new Date(2023, 01, 24) /* Feb 24 */, end: new Date(2023, 01, 24) /* Feb 24 */, isStudentHoliday: false, name: "End of Trimester 2 (E)", description: "" },
-            { beg: new Date(2023, 02, 31) /* Mar 31 */, end: new Date(2023, 02, 31) /* Mar 31 */, isStudentHoliday: true, name: "Cesar Chavez Day", description: "" },
-            { beg: new Date(2023, 03, 03) /* Apr 03 */, end: new Date(2023, 03, 07) /* Apr 07 */, isStudentHoliday: true, name: "Spring Break", description: "" },
-            { beg: new Date(2023, 04, 25) /* May 25 */, end: new Date(2023, 04, 25) /* May 25 */, isStudentHoliday: false, name: "Last Day of Instruction", description: "" },
-            { beg: new Date(2023, 04, 26) /* May 26 */, end: new Date(2023, 04, 26) /* May 26 */, isStudentHoliday: true, name: "Teacher Work Day", description: "" },
-            { beg: new Date(2023, 04, 29) /* May 29 */, end: new Date(2023, 04, 29) /* May 29 */, isStudentHoliday: true, name: "Memorial Day", description: "" },
-            { beg: new Date(2023, 05, 19) /* Jun 19 */, end: new Date(2023, 05, 19) /* Jun 19 */, isStudentHoliday: true, name: "Juneteenth Holiday", description: "" },
-            { beg: new Date(2022, 06, 10) /* Jul 10 */, end: new Date(2022, 06, 10) /* Jul 10 */, isStudentHoliday: false, name: "Eid al-Adha", description: "Muslim holiday, begins the prior evening, some observe the holiday for up to four days" },
-            { beg: new Date(2022, 08, 26) /* Sep 26 */, end: new Date(2022, 08, 26) /* Sep 26 */, isStudentHoliday: false, name: "Rosh Hashanah", description: "Jewish holiday, begins the prior evening, some observe the holiday for a second day" },
-            { beg: new Date(2022, 09, 05) /* Oct 05 */, end: new Date(2022, 09, 05) /* Oct 05 */, isStudentHoliday: false, name: "Yom Kippur", description: "Jewish holiday, begins the prior evening" },
-            { beg: new Date(2022, 09, 24) /* Oct 24 */, end: new Date(2022, 09, 24) /* Oct 24 */, isStudentHoliday: false, name: "Diwali", description: "Hindi holiday, some observe the holiday for up to four days; other religions also celebrate Diwali, but not necessarily on the same day" },
-            { beg: new Date(2022, 11, 08) /* Dec 08 */, end: new Date(2022, 11, 08) /* Dec 08 */, isStudentHoliday: false, name: "Bodhi", description: "Buddhist holiday, some observe the holiday in January" },
-            { beg: new Date(2022, 11, 25) /* Dec 25 */, end: new Date(2022, 11, 25) /* Dec 25 */, isStudentHoliday: false, name: "Christmas", description: "Christian holiday" },
-            { beg: new Date(2023, 00, 15) /* Jan 15 */, end: new Date(2023, 00, 15) /* Jan 15 */, isStudentHoliday: false, name: "Makar Sankranti / Pongal / Tirmoori", description: "Hindi holiday, some observe the holiday for up to four days" },
-            { beg: new Date(2023, 03, 09) /* Apr 09 */, end: new Date(2023, 03, 09) /* Apr 09 */, isStudentHoliday: false, name: "Easter", description: "Christian holiday" },
-            { beg: new Date(2023, 03, 22) /* Apr 22 */, end: new Date(2023, 03, 22) /* Apr 22 */, isStudentHoliday: false, name: "Eid al-Fitr", description: "Muslim holiday, begins the prior evening, +/- day dependent on the sighting of the crescent moon" },
-            { beg: new Date(2023, 04, 05) /* May 05 */, end: new Date(2023, 04, 05) /* May 05 */, isStudentHoliday: false, name: "Vesak", description: "Buddhist holiday, some observe the holiday in April or on other days in May" },
+            { beg: new Date(2022, 06, 04) /* Jul 04 */, end: new Date(2022, 06, 04) /* Jul 04 */, duration: null, isStudentHoliday: true, name: "Independence Day", description: "" },
+            { beg: new Date(2022, 07, 03) /* Aug 03 */, end: new Date(2022, 07, 03) /* Aug 03 */, duration: null, isStudentHoliday: true, name: "PD Day", description: "" },
+            { beg: new Date(2022, 07, 04) /* Aug 04 */, end: new Date(2022, 07, 04) /* Aug 04 */, duration: null, isStudentHoliday: true, name: "Collaboration / Work Day", description: "" },
+            { beg: new Date(2022, 07, 05) /* Aug 05 */, end: new Date(2022, 07, 05) /* Aug 05 */, duration: null, isStudentHoliday: true, name: "Teacher Work Day", description: "" },
+            { beg: new Date(2022, 07, 07) /* Aug 07 */, end: new Date(2022, 07, 07) /* Aug 07 */, duration: null, isStudentHoliday: false, name: "First Day of School", description: "" },
+            { beg: new Date(2022, 08, 05) /* Sep 05 */, end: new Date(2022, 08, 05) /* Sep 05 */, duration: null, isStudentHoliday: true, name: "Labor Day", description: "" },
+            { beg: new Date(2022, 08, 16) /* Sep 16 */, end: new Date(2022, 08, 16) /* Sep 16 */, duration: null, isStudentHoliday: true, name: "PD Day", description: "" },
+            { beg: new Date(2022, 09, 10) /* Oct 10 */, end: new Date(2022, 09, 10) /* Oct 10 */, duration: null, isStudentHoliday: true, name: "Indigenous Peoples' Day", description: "" },
+            { beg: new Date(2022, 10, 04) /* Nov 04 */, end: new Date(2022, 10, 04) /* Nov 04 */, duration: null, isStudentHoliday: false, name: "End of Trimester 1 (E)", description: "" },
+            { beg: new Date(2022, 10, 11) /* Nov 11 */, end: new Date(2022, 10, 11) /* Nov 11 */, duration: null, isStudentHoliday: true, name: "Veterans' Day", description: "" },
+            { beg: new Date(2022, 10, 21) /* Nov 21 */, end: new Date(2022, 10, 25) /* Nov 25 */, duration: null, isStudentHoliday: true, name: "Thanksgiving Break", description: "" },
+            { beg: new Date(2022, 11, 19) /* Dec 19 */, end: new Date(2022, 11, 30) /* Dec 30 */, duration: null, isStudentHoliday: true, name: "Winter Break", description: "" },
+            { beg: new Date(2023, 00, 02) /* Jan 02 */, end: new Date(2023, 00, 02) /* Jan 02 */, duration: null, isStudentHoliday: true, name: "New Year's Day", description: "" },
+            { beg: new Date(2023, 00, 03) /* Jan 03 */, end: new Date(2023, 00, 03) /* Jan 03 */, duration: null, isStudentHoliday: true, name: "PD Day", description: "" },
+            { beg: new Date(2023, 00, 04) /* Jan 04 */, end: new Date(2023, 00, 04) /* Jan 04 */, duration: null, isStudentHoliday: false, name: "First Day of Spring Semester", description: "" },
+            { beg: new Date(2023, 00, 16) /* Jan 16 */, end: new Date(2023, 00, 16) /* Jan 16 */, duration: null, isStudentHoliday: true, name: "Martin Luther King, Jr. Day", description: "" },
+            { beg: new Date(2023, 01, 20) /* Feb 20 */, end: new Date(2023, 01, 20) /* Feb 20 */, duration: null, isStudentHoliday: true, name: "Presidents' Day", description: "" },
+            { beg: new Date(2023, 01, 24) /* Feb 24 */, end: new Date(2023, 01, 24) /* Feb 24 */, duration: null, isStudentHoliday: false, name: "End of Trimester 2 (E)", description: "" },
+            { beg: new Date(2023, 02, 31) /* Mar 31 */, end: new Date(2023, 02, 31) /* Mar 31 */, duration: null, isStudentHoliday: true, name: "Cesar Chavez Day", description: "" },
+            { beg: new Date(2023, 03, 03) /* Apr 03 */, end: new Date(2023, 03, 07) /* Apr 07 */, duration: null, isStudentHoliday: true, name: "Spring Break", description: "" },
+            { beg: new Date(2023, 04, 25) /* May 25 */, end: new Date(2023, 04, 25) /* May 25 */, duration: null, isStudentHoliday: false, name: "Last Day of Instruction", description: "" },
+            { beg: new Date(2023, 04, 26) /* May 26 */, end: new Date(2023, 04, 26) /* May 26 */, duration: null, isStudentHoliday: true, name: "Teacher Work Day", description: "" },
+            { beg: new Date(2023, 04, 29) /* May 29 */, end: new Date(2023, 04, 29) /* May 29 */, duration: null, isStudentHoliday: true, name: "Memorial Day", description: "" },
+            { beg: new Date(2023, 05, 19) /* Jun 19 */, end: new Date(2023, 05, 19) /* Jun 19 */, duration: null, isStudentHoliday: true, name: "Juneteenth Holiday", description: "" },
+            { beg: new Date(2022, 06, 10) /* Jul 10 */, end: new Date(2022, 06, 10) /* Jul 10 */, duration: null, isStudentHoliday: false, name: "Eid al-Adha", description: "Muslim holiday, begins the prior evening, some observe the holiday for up to four days" },
+            { beg: new Date(2022, 08, 26) /* Sep 26 */, end: new Date(2022, 08, 26) /* Sep 26 */, duration: null, isStudentHoliday: false, name: "Rosh Hashanah", description: "Jewish holiday, begins the prior evening, some observe the holiday for a second day" },
+            { beg: new Date(2022, 09, 05) /* Oct 05 */, end: new Date(2022, 09, 05) /* Oct 05 */, duration: null, isStudentHoliday: false, name: "Yom Kippur", description: "Jewish holiday, begins the prior evening" },
+            { beg: new Date(2022, 09, 24) /* Oct 24 */, end: new Date(2022, 09, 24) /* Oct 24 */, duration: null, isStudentHoliday: false, name: "Diwali", description: "Hindi holiday, some observe the holiday for up to four days; other religions also celebrate Diwali, but not necessarily on the same day" },
+            { beg: new Date(2022, 11, 08) /* Dec 08 */, end: new Date(2022, 11, 08) /* Dec 08 */, duration: null, isStudentHoliday: false, name: "Bodhi", description: "Buddhist holiday, some observe the holiday in January" },
+            { beg: new Date(2022, 11, 25) /* Dec 25 */, end: new Date(2022, 11, 25) /* Dec 25 */, duration: null, isStudentHoliday: false, name: "Christmas", description: "Christian holiday" },
+            { beg: new Date(2023, 00, 15) /* Jan 15 */, end: new Date(2023, 00, 15) /* Jan 15 */, duration: null, isStudentHoliday: false, name: "Makar Sankranti / Pongal / Tirmoori", description: "Hindi holiday, some observe the holiday for up to four days" },
+            { beg: new Date(2023, 03, 09) /* Apr 09 */, end: new Date(2023, 03, 09) /* Apr 09 */, duration: null, isStudentHoliday: false, name: "Easter", description: "Christian holiday" },
+            { beg: new Date(2023, 03, 22) /* Apr 22 */, end: new Date(2023, 03, 22) /* Apr 22 */, duration: null, isStudentHoliday: false, name: "Eid al-Fitr", description: "Muslim holiday, begins the prior evening, +/- day dependent on the sighting of the crescent moon" },
+            { beg: new Date(2023, 04, 05) /* May 05 */, end: new Date(2023, 04, 05) /* May 05 */, duration: null, isStudentHoliday: false, name: "Vesak", description: "Buddhist holiday, some observe the holiday in April or on other days in May" },
           ]
       },
       {
@@ -88,16 +90,9 @@ https://codepen.io/Ridoshi/pen/araEGY
     const dateToday = new Date();
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const datePretty = dateToday.toLocaleString('en-US', dateOptions)
-    // Calculate the current year:
-    let yearStart = ""
-    let yearEnd = ""
-    let daysTotal = ""
-    let daysElapsed = ""
-    let daysElapsedPercent = ""
-    let daysRemainYear = ""
-    function calculateSY(year) {
-      yearStart = year.terms[0].beg // Get T1 beg date
-      yearEnd = year.terms[(year.terms.length - 2)].end // Get T4 end date
+    function calculateSY(schoolYear) {
+      yearStart = schoolYear.terms[0].beg // Get T1 beg date
+      yearEnd = schoolYear.terms[(schoolYear.terms.length - 2)].end // Get T4 end date
       daysTotal = Math.floor((yearEnd - yearStart) / (1000 * 3600 * 24))
       daysElapsed = Math.floor((dateToday - yearStart) / (1000 * 3600 * 24))
       daysElapsedPercent = (Math.floor((daysElapsed / daysTotal) * 100))
@@ -106,24 +101,45 @@ https://codepen.io/Ridoshi/pen/araEGY
     }
     calculateSY(currentSY)
 
-    // Define holidays:
-    /* 
-    sort each holiday into a term
-    determine the duration each
-    subtract that duration from the term total days count
-    
-     */
-
-    // Identify and remove weekends:
-    /* Count sat and sun occurrences in each term
-    remove that total from total days in the term */
-
-    function calculateHolidays(termsList) {
-      for (let i = 0; i < termsList.length; i++) {
-        console.log("hi")
+    function calculateHolidayDurations(schoolYear) {
+      for (let i = 0; i < schoolYear.holidays.length; i++) {
+        if (schoolYear.holidays[i].beg - schoolYear.holidays[i].end == 0) {
+          schoolYear.holidays[i].duration = 1;
+        } else {
+          let holidayDuration = (schoolYear.holidays[i].end - schoolYear.holidays[i].beg) / (1000 * 3600 * 24)
+          schoolYear.holidays[i].duration = holidayDuration;
+        }
       }
     }
-    calculateHolidays(currentSY.terms)
+    calculateHolidayDurations(currentSY)
+
+    function subtractHolidaysFromTerm(schoolYear) {
+      let termHolidaysList = [0, 0, 0, 0, 0, 0, []]
+      for (let i = 0; i < schoolYear.holidays.length; i++) {
+        if (schoolYear.holidays[i].isStudentHoliday == true) {
+          // T1 Holidays in termHolidaysList[0]
+          if (schoolYear.holidays[i].beg > schoolYear.terms[0].beg && schoolYear.holidays[i].end < schoolYear.terms[0].end) {
+            termHolidaysList[0] -= schoolYear.holidays[i].duration
+          } else if (schoolYear.holidays[i].beg > schoolYear.terms[1].beg && schoolYear.holidays[i].end < schoolYear.terms[1].end) {
+            termHolidaysList[1] -= schoolYear.holidays[i].duration
+          } else if (schoolYear.holidays[i].beg > schoolYear.terms[2].beg && schoolYear.holidays[i].end < schoolYear.terms[2].end) {
+            termHolidaysList[2] -= schoolYear.holidays[i].duration
+          } else if (schoolYear.holidays[i].beg > schoolYear.terms[3].beg && schoolYear.holidays[i].end < schoolYear.terms[3].end) {
+            termHolidaysList[3] -= schoolYear.holidays[i].duration
+          } else if (schoolYear.holidays[i].beg > schoolYear.terms[4].beg && schoolYear.holidays[i].end < schoolYear.terms[4].end) {
+            termHolidaysList[4] -= schoolYear.holidays[i].duration
+          } else if (schoolYear.holidays[i].beg > schoolYear.terms[5].beg && schoolYear.holidays[i].end < schoolYear.terms[5].end) {
+            termHolidaysList[5] -= schoolYear.holidays[i].duration
+          } else {
+            termHolidaysList[6].push("Not a term holiday: " + schoolYear.holidays[i].name + " on " + + schoolYear.holidays[i].beg)
+          }
+        }
+      }
+      console.log(termHolidaysList)
+      // Subtract holidays from Term Totals:
+
+    }
+    subtractHolidaysFromTerm(currentSY)
 
     // Calculate the terms:
     let currentTerm = "" // Global var
@@ -162,18 +178,18 @@ https://codepen.io/Ridoshi/pen/araEGY
 
     let dotsEmptyHtml = []
     let dotsFilledHtml = []
-    function drawDots(schoolyear) {
+    function drawDots(schoolYear) {
       let dotsHtml = ""
-      for (let i = 0; i < schoolyear.terms.length; i++) { // 6
+      for (let i = 0; i < schoolYear.terms.length; i++) { // 6
         dotsHtml = ""
-        // console.log(schoolyear.terms[i].termDaysElapsed)
-        for (let x = 0; x < schoolyear.terms[i].termDaysElapsed; x++) {
-          dotsHtml += "<div class='circle filled-circle'></div>"
+        // console.log(schoolYear.terms[i].termDaysElapsed)
+        for (let x = 0; x < schoolYear.terms[i].termDaysElapsed; x++) {
+          dotsHtml += "<div class='dot filled-dot'></div>"
         }
         dotsEmptyHtml.push(dotsHtml)
         dotsHtml = ""
-        for (let y = 0; y < schoolyear.terms[i].termDaysRemain; y++) {
-          dotsHtml += "<div class='circle empty-circle'></div>"
+        for (let y = 0; y < schoolYear.terms[i].termDaysRemain; y++) {
+          dotsHtml += "<div class='dot empty-dot'></div>"
         }
         dotsFilledHtml.push(dotsHtml)
       }
@@ -204,12 +220,30 @@ https://codepen.io/Ridoshi/pen/araEGY
   <!-- Dots -->
   <div id="dots">
     <div class="row">
-      <div id="dots_t1" class="col p-1"></div>
-      <div id="dots_t2" class="col p-1"></div>
-      <div id="dots_t3" class="col p-1"></div>
-      <div id="dots_t4" class="col p-1"></div>
-      <div id="dots_po" class="col p-1"></div>
-      <div id="dots_su" class="col p-1"></div>
+      <div class="term-dots col">
+        <h3>T1</h3>
+        <div id="dots_t1"></div>
+      </div>
+      <div class="col">
+        <h3>T2</h3>
+        <div id="dots_t2"></div>
+      </div>
+      <div class="col">
+        <h3>T3</h3>
+        <div id="dots_t3"></div>
+      </div>
+      <div class="col">
+        <h3>T4</h3>
+        <div id="dots_t4"></div>
+      </div>
+      <div class="col">
+        <h3>Po</h3>
+        <div id="dots_po"></div>
+      </div>
+      <div class="col">
+        <h3>Su</h3>
+        <div id="dots_su"></div>
+      </div>
     </div>
   </div>
 

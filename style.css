@@ -79,21 +79,29 @@ iframe {
   background: linear-gradient(to right, #d9a7c7, #fffcdc);
 }
 #dots {
-  background-color:rgba(255, 255, 255, 0.85)
+  background-color:rgba(255, 255, 255, 0.85);
+  margin: 1em, 0;
 }
-.circle {
+#dots .col h3 {
+  font-size: 2em;
+  font-family: 'Alegreya Sans SC', sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.dot {
   border-radius: 50%;
   width: 1em;
   height: 1em;
   display: block;
   float: left;
-  margin: .05em;
+  margin: .08em;
 }
-.empty-circle {
+.empty-dot {
   border: 1px solid gray;
   background-color: white
 }
-.filled-circle {
+.filled-dot {
   border: 1px solid white;
   background-color: #021F59;
 }
