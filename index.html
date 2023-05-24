@@ -87,6 +87,7 @@ https://codepen.io/Ridoshi/pen/araEGY
     const dateToday = new Date();
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const datePretty = dateToday.toLocaleString('en-US', dateOptions)
+
     function calculateSY(schoolYear) {
       yearStart = schoolYear.terms[0].beg // Get T1 beg date
       yearEnd = schoolYear.terms[(schoolYear.terms.length - 2)].end // Get T4 end date
@@ -111,24 +112,26 @@ https://codepen.io/Ridoshi/pen/araEGY
     calculateHolidayDurations(currentSY)
 
     function subtractHolidaysFromTerm(schoolYear) {
+      let holidays = schoolYear.holidays
+      let terms = schoolYear.terms
       let termHolidaysList = [0, 0, 0, 0, 0, 0, []]
       for (let i = 0; i < schoolYear.holidays.length; i++) {
         if (schoolYear.holidays[i].isStudentHoliday == true) {
-          // T1 Holidays in termHolidaysList[0]
-          if (schoolYear.holidays[i].beg > schoolYear.terms[0].beg && schoolYear.holidays[i].end < schoolYear.terms[0].end) {
-            termHolidaysList[0] -= schoolYear.holidays[i].duration
-          } else if (schoolYear.holidays[i].beg > schoolYear.terms[1].beg && schoolYear.holidays[i].end < schoolYear.terms[1].end) {
-            termHolidaysList[1] -= schoolYear.holidays[i].duration
-          } else if (schoolYear.holidays[i].beg > schoolYear.terms[2].beg && schoolYear.holidays[i].end < schoolYear.terms[2].end) {
-            termHolidaysList[2] -= schoolYear.holidays[i].duration
-          } else if (schoolYear.holidays[i].beg > schoolYear.terms[3].beg && schoolYear.holidays[i].end < schoolYear.terms[3].end) {
-            termHolidaysList[3] -= schoolYear.holidays[i].duration
-          } else if (schoolYear.holidays[i].beg > schoolYear.terms[4].beg && schoolYear.holidays[i].end < schoolYear.terms[4].end) {
-            termHolidaysList[4] -= schoolYear.holidays[i].duration
-          } else if (schoolYear.holidays[i].beg > schoolYear.terms[5].beg && schoolYear.holidays[i].end < schoolYear.terms[5].end) {
-            termHolidaysList[5] -= schoolYear.holidays[i].duration
+          // T1 Holidays duration total in termHolidaysList[0], and so on:
+          if (holidays[i].beg > terms[0].beg && holidays[i].end < terms[0].end) {
+            termHolidaysList[0] -= holidays[i].duration
+          } else if (holidays[i].beg > terms[1].beg && holidays[i].end < terms[1].end) {
+            termHolidaysList[1] -= holidays[i].duration
+          } else if (holidays[i].beg > terms[2].beg && holidays[i].end < terms[2].end) {
+            termHolidaysList[2] -= holidays[i].duration
+          } else if (holidays[i].beg > terms[3].beg && holidays[i].end < terms[3].end) {
+            termHolidaysList[3] -= holidays[i].duration
+          } else if (holidays[i].beg > terms[4].beg && holidays[i].end < terms[4].end) {
+            termHolidaysList[4] -= holidays[i].duration
+          } else if (holidays[i].beg > terms[5].beg && holidays[i].end < terms[5].end) {
+            termHolidaysList[5] -= holidays[i].duration
           } else {
-            termHolidaysList[6].push("Not a term holiday: " + schoolYear.holidays[i].name + " on " + + schoolYear.holidays[i].beg)
+            termHolidaysList[6].push("Not a term holiday: " + holidays[i].name + " on " + holidays[i].beg)
           }
         }
       }
@@ -200,17 +203,20 @@ https://codepen.io/Ridoshi/pen/araEGY
 </head>
 
 <body>
+  <div id="date" class="d-flex">
+    <div class="py-2 px-3 flex-fill"><span id="dateSpan"></span></div>
+    <div class="col">
+      <img id="calButton" onclick="showGoogleCalendar()" src="icons/calendar.png">
+    </div>
+  </div>
 
-  <div id="date" class="py-2 px-3"></div>
+
   <div id="stats" class="d-inline-flex py-3 px-1">
     <div class="d-flex">
-      <div class="col">We are currently in <span id="currentTerm" class="font-weight-bold"></span>,
+      <div class="col flex-fill">We are in <span id="currentTerm" class="font-weight-bold"></span>,
         with <span id="daysRemainTermContainer" class="font-weight-bold"></span> calendar days remaining in this term.</div>
-      <div class="col">We have completed <span id="daysElapsedPercent" class="font-weight-bold"></span>% of the school year.</div>
-      <div class="col">There are <span id="daysRemainYearContainer" class="font-weight-bold"></span> days until the end of the school year.</div>
-    </div>
-    <div id="gCalContainer" style="width:260px">
-      <button onclick="showGoogleCalendar()">Show&nbsp;Calendar</button>
+      <div class="col flex-fill">We have completed <span id="daysElapsedPercent" class="font-weight-bold"></span>% of the school year.</div>
+      <div class="col flex-fill">There are <span id="daysRemainYearContainer" class="font-weight-bold"></span> days until the end of the school year.</div>
     </div>
   </div>
   <div>
@@ -222,7 +228,7 @@ https://codepen.io/Ridoshi/pen/araEGY
   <div id="progressBar" class="container-fluid pt-3 px-4"></div>
   <!-- Dots -->
   <div id="dots">
-    <div class="row flex-wrap">
+    <div class="row flex-wrap pt-2">
       <div class="col">
         <h3>T1</h3>
         <div id="dots_t1" class="dots-min"></div>
@@ -298,7 +304,7 @@ https://codepen.io/Ridoshi/pen/araEGY
       </div>
     </div>`
     function showStuff() {
-      document.getElementById("date").innerHTML = "Welcome! Today is <strong>" + datePretty + "</strong>."
+      document.getElementById("dateSpan").innerHTML = "Welcome! Today is <strong>" + datePretty + "</strong>."
       document.getElementById("daysElapsedPercent").innerHTML = daysElapsedPercent
       document.getElementById("daysRemainTermContainer").innerHTML = termDaysRemain
       document.getElementById("daysRemainYearContainer").innerHTML = daysRemainYear
@@ -312,8 +318,8 @@ https://codepen.io/Ridoshi/pen/araEGY
       document.getElementById("dots_su").innerHTML = "<br style='clear:both'>" + dotsEmptyHtml[5] + dotsFilledHtml[5]
     }
     function showGoogleCalendar() {
-      let iframeHtml = "<iframe src='https://calendar.google.com/calendar/embed?&wkst=2&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y2NwYWVkdS5jb21fZnR1MGxhNTRraW8wY3JoaDgzbTI2N2xyaThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23EF6C00&amp;mode=AGENDA' style='border:0' width='260' height='260' frameborder='0' scrolling='yes'></iframe>"
-      document.getElementById("gCalContainer").innerHTML = iframeHtml
+      let iframeHtml = "<div id='showHideCal'><iframe src='https://calendar.google.com/calendar/embed?&wkst=2&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y2NwYWVkdS5jb21fZnR1MGxhNTRraW8wY3JoaDgzbTI2N2xyaThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23EF6C00&amp;mode=AGENDA' style='border:0' width='260' height='260' frameborder='0' scrolling='yes'></iframe></div>"
+      document.createElement("gCalContainer").innerHTML = iframeHtml
     }
     // Call functions
     showStuff()
