@@ -22,8 +22,13 @@ div {
 } 
 #showHideCal {
   position: absolute;
-  top: 3em;
-  right: 1em;
+  top: 2em;
+  right: 2em;
+  z-index: 5;
+  border: 3px solid #021F59;
+  border-radius: 1em;
+  padding: .5em;
+  background-color: #fff;
 }
 #stats {
   background-color: rgba(122,154,21,.9);

@@ -228,28 +228,28 @@ https://codepen.io/Ridoshi/pen/araEGY
   <div id="progressBar" class="container-fluid pt-3 px-4"></div>
   <!-- Dots -->
   <div id="dots" class="container-fluid">
-    <div class="row pt-3 pb-4">
-      <div class="col col-2">
+    <div class="row pt-3 pb-2">
+      <div class="col col-md-2 col-4 pb-2">
         <h3>T1</h3>
         <div id="dots_t1"></div>
       </div>
-      <div class="col col-2">
+      <div class="col col-md-2 col-4 pb-2">
         <h3>T2</h3>
         <div id="dots_t2"></div>
       </div>
-      <div class="col col-2">
+      <div class="col col-md-2 col-4 pb-2">
         <h3>T3</h3>
         <div id="dots_t3"></div>
       </div>
-      <div class="col col-2">
+      <div class="col col-md-2 col-4 pb-2">
         <h3>T4</h3>
         <div id="dots_t4"></div>
       </div>
-      <div class="col col-2">
+      <div class="col col-md-2 col-4 pb-2">
         <h3>PS</h3>
         <div id="dots_ps"></div>
       </div>
-      <div class="col col-2">
+      <div class="col col-md-2 col-4 pb-2">
         <h3>SS</h3>
         <div id="dots_ss"></div>
       </div>
@@ -334,17 +334,21 @@ https://codepen.io/Ridoshi/pen/araEGY
       document.getElementById("dots_ps").innerHTML = dotsEmptyHtml[4] + dotsFilledHtml[4]
       document.getElementById("dots_ss").innerHTML = dotsEmptyHtml[5] + dotsFilledHtml[5]
     }
+    // Calendar show/hide onclick:
+    let calendarIsVisible = null
+    let iframeHtml = "<div id='showHideCal'><iframe src='https://calendar.google.com/calendar/embed?&wkst=2&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y2NwYWVkdS5jb21fZnR1MGxhNTRraW8wY3JoaDgzbTI2N2xyaThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23EF6C00&amp;mode=AGENDA' style='border:0' width='300' height='400' frameborder='0' scrolling='yes'></iframe></div>"
+    let gCalContainer = document.createElement("div")
+    gCalContainer.style.display = "none"
+    gCalContainer.setAttribute("id", "gCalContainer")
+    document.body.appendChild(gCalContainer);
+    gCalContainer.innerHTML = iframeHtml
     function showGoogleCalendar() {
-      let isVisible = null
-      if (isVisible == true) {
-
-        isVisible = false
+      if (calendarIsVisible == true) {
+        gCalContainer.style.display = "none"
+        calendarIsVisible = false
       } else {
-        let iframeHtml = "<div id='showHideCal'><iframe src='https://calendar.google.com/calendar/embed?&wkst=2&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y2NwYWVkdS5jb21fZnR1MGxhNTRraW8wY3JoaDgzbTI2N2xyaThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23EF6C00&amp;mode=AGENDA' style='border:0' width='260' height='260' frameborder='0' scrolling='yes'></iframe></div>"
-        let gCalContainer = document.createElement('div') // 
-        gCalContainer.innerHTML = iframeHtml
-        document.body.appendChild(gCalContainer);
-        isVisible = true
+        gCalContainer.style.display = "block"
+        calendarIsVisible = true
       }
     }
     // Call functions
