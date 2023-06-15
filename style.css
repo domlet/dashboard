@@ -121,3 +121,27 @@ iframe {
   border: 1px solid white;
   background-color: #021F59;
 }
+#events {
+  background-color:rgba(217,121,4, 0.85);
+}
+.tt {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+  cursor: pointer;
+  visibility: visible;
+}
+.tt .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+}
+.tt.active .tooltiptext {
+  visibility: visible;
+}

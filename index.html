@@ -6,12 +6,12 @@ https://codepen.io/Ridoshi/pen/araEGY
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MxB's Dashboard</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>School Dashboard</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style.css" />
   <script>
     // Define School Years and Terms:
     var allterms = [
@@ -76,7 +76,47 @@ https://codepen.io/Ridoshi/pen/araEGY
             { termCode: "ss_SY2223", termName: "Summer School", beg: new Date(2024, 04, 00) /* May 00 */, end: new Date(2024, 05, 00) /* Jun 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
           ],
         holidays:
-          []
+          [
+            { beg: new Date(2023, 07, 02) /* Aug 02 */, end: new Date(2023, 09, 02) /* Aug 02 */, duration: null, isStudentHoliday: true, name: "Professional Development (PD) Day", description: "" },
+            { beg: new Date(2023, 07, 03) /* Aug 03 */, end: new Date(2023, 09, 03) /* Aug 03 */, duration: null, isStudentHoliday: true, name: "Collaboration/Work Day", description: "" },
+            { beg: new Date(2023, 07, 04) /* Aug 04 */, end: new Date(2023, 09, 04) /* Aug 04 */, duration: null, isStudentHoliday: true, name: "Teacher Work Day", description: "" },
+            { beg: new Date(2023, 07, 07) /* Aug 07 */, end: new Date(2023, 09, 07) /* Aug 07 */, duration: null, isStudentHoliday: false, name: "First Day of School", description: "" },
+            { beg: new Date(2023, 08, 04) /* Sep 04 */, end: new Date(2023, 09, 04) /* Sep 04 */, duration: null, isStudentHoliday: true, name: "Labor Day", description: "" },
+            { beg: new Date(2023, 08, 14) /* Sep 14 */, end: new Date(2023, 09, 14) /* Sep 14 */, duration: null, isStudentHoliday: false, name: "End of Marking Period (Middle/High School*)", description: "" },
+            { beg: new Date(2023, 08, 15) /* Sep 15 */, end: new Date(2023, 09, 15) /* Sep 15 */, duration: null, isStudentHoliday: true, name: "Professional Development (PD) Day", description: "" },
+            { beg: new Date(2023, 09, 09) /* Oct 09 */, end: new Date(2023, 09, 09) /* Oct 09 */, duration: null, isStudentHoliday: true, name: "Indigenous Peoples' Day (in lieu of Lincoln's Birthday)", description: "" },
+            { beg: new Date(2023, 10, 03) /* Nov 03 */, end: new Date(2023, 09, 03) /* Nov 03 */, duration: null, isStudentHoliday: false, name: "End of Marking Period (Middle/High School*)", description: "" },
+            { beg: new Date(2023, 10, 10) /* Nov 10 */, end: new Date(2023, 10, 10) /* Nov 10 */, duration: null, isStudentHoliday: true, name: "Veterans' Day (Observed)", description: "" },
+            { beg: new Date(2023, 10, 20) /* Nov 20 */, end: new Date(2023, 10, 20) /* Nov 24 */, duration: null, isStudentHoliday: true, name: "Thanksgiving Break (some CDCs open)", description: "" },
+            { beg: new Date(2023, 11, 22) /* Dec 22 */, end: new Date(2023, 11, 22) /* Dec 22 */, duration: null, isStudentHoliday: false, name: "End of Marking Period / Semester (Middle/High School*)", description: "" },
+            { beg: new Date(2023, 11, 25) /* Dec 25 */, end: new Date(2023, 00, 05) /* Jan 05 */, duration: null, isStudentHoliday: true, name: "Winter Break (some CDCs open)", description: "" },
+            { beg: new Date(2024, 00, 01) /* Jan 01 */, end: new Date(2024, 00, 01) /* Jan 01 */, duration: null, isStudentHoliday: true, name: "New Year's Day", description: "" },
+            { beg: new Date(2024, 00, 08) /* Jan 08 */, end: new Date(2024, 00, 08) /* Jan 08 */, duration: null, isStudentHoliday: true, name: "Professional Development (PD) Day", description: "" },
+            { beg: new Date(2024, 00, 15) /* Jan 15 */, end: new Date(2024, 00, 15) /* Jan 15 */, duration: null, isStudentHoliday: true, name: "Martin Luther King, Jr. Day", description: "" },
+            { beg: new Date(2024, 01, 15) /* Feb 15 */, end: new Date(2024, 01, 15) /* Feb 15 */, duration: null, isStudentHoliday: false, name: "End of Marking Period", description: "" },
+            { beg: new Date(2024, 01, 16) /* Feb 16 */, end: new Date(2024, 01, 16) /* Feb 16 */, duration: null, isStudentHoliday: true, name: "Schools Closed", description: "" },
+            { beg: new Date(2024, 01, 19) /* Feb 19 */, end: new Date(2024, 01, 19) /* Feb 19 */, duration: null, isStudentHoliday: true, name: "Presidents' Day", description: "" },
+            { beg: new Date(2024, 02, 29) /* Mar 29 */, end: new Date(2024, 02, 29) /* Mar 29 */, duration: null, isStudentHoliday: true, name: "Cesar Chavez Day (Observed)", description: "" },
+            { beg: new Date(2024, 03, 01) /* Apr 01 */, end: new Date(2024, 03, 05) /* Apr 05 */, duration: null, isStudentHoliday: false, name: "Spring Break (Some CDCs open)", description: "" },
+            { beg: new Date(2024, 03, 12) /* Apr 12 */, end: new Date(2024, 03, 12) /* Apr 12 */, duration: null, isStudentHoliday: false, name: "End of Marking Period (Middle/High School*)", description: "" },
+            { beg: new Date(2024, 04, 23) /* May 23 */, end: new Date(2024, 04, 23) /* May 23 */, duration: null, isStudentHoliday: false, name: "Last Day of Instruction / End of Semester / End of Trimester 3 / End of Marking Period", description: "" },
+            { beg: new Date(2024, 04, 24) /* May 24 */, end: new Date(2024, 04, 24) /* May 24 */, duration: null, isStudentHoliday: true, name: "Teacher Work Day", description: "" },
+            { beg: new Date(2024, 04, 27) /* May 27 */, end: new Date(2024, 04, 27) /* May 27 */, duration: null, isStudentHoliday: true, name: "Memorial Day", description: "" },
+            { beg: new Date(2024, 05, 19) /* Jun 19 */, end: new Date(2024, 05, 19) /* Jun 19 */, duration: null, isStudentHoliday: true, name: "Juneteenth Holiday", description: "" },
+            { beg: new Date(2023, 05, 29) /* Jun 29 */, end: new Date(2023, 05, 29) /* Jun 29 */, duration: null, isStudentHoliday: false, name: "Eid al-Adha", description: "Muslim holiday, begins the prior evening, some observe the holiday for up to four days)" },
+            { beg: new Date(2023, 08, 16) /* Sep 16 */, end: new Date(2023, 08, 16) /* Sep 16 */, duration: null, isStudentHoliday: false, name: "Rosh Hashanah", description: "Jewish holiday, begins the prior evening, some observe the holiday for a second day)" },
+            { beg: new Date(2023, 09, 23) /* Oct 23 */, end: new Date(2023, 09, 23) /* Oct 23 */, duration: null, isStudentHoliday: false, name: " Yom Kippur", description: "Jewish holiday, begins the prior evening)" },
+            { beg: new Date(2023, 09, 24) /* Oct 24 */, end: new Date(2023, 09, 24) /* Oct 24 */, duration: null, isStudentHoliday: false, name: "Diwali", description: "Hindi holiday, some observe the holiday for up to four days; other religions also celebrate Diwali, but not necessarily on the same day)" },
+            { beg: new Date(2023, 10, 12) /* Nov 12 */, end: new Date(2023, 10, 12) /* Nov 12 */, duration: null, isStudentHoliday: false, name: "Bodhi", description: "Buddhist holiday, some observe the holiday in January)" },
+            { beg: new Date(2023, 11, 07) /* Dec 07 */, end: new Date(2023, 11, 07) /* Dec 07 */, duration: null, isStudentHoliday: false, name: "Hanukkah", description: "Jewish holiday)" },
+            { beg: new Date(2023, 11, 25) /* Dec 25 */, end: new Date(2023, 11, 25) /* Dec 25 */, duration: null, isStudentHoliday: false, name: "Christmas", description: "Christian holiday)" },
+            { beg: new Date(2024, 01, 15) /* Jan 15 */, end: new Date(2024, 01, 15) /* Jan 15 */, duration: null, isStudentHoliday: false, name: "Makar Sankranti/Pongal/ Tirmoori", description: "Hindi holiday, some observe the holiday for up to four days)" },
+            { beg: new Date(2024, 02, 31) /* Mar 31 */, end: new Date(2024, 02, 31) /* Mar 31 */, duration: null, isStudentHoliday: false, name: "Easter", description: "Christian holiday)" },
+            { beg: new Date(2024, 03, 10) /* Apr 10 */, end: new Date(2024, 03, 10) /* Apr 10 */, duration: null, isStudentHoliday: false, name: "Eid al-Fitr", description: "Muslim holiday, begins the prior evening, +/- day dependent on the sighting of the crescent moon)" },
+            { beg: new Date(2024, 03, 22) /* Apr 22 */, end: new Date(2024, 03, 22) /* Apr 22 */, duration: null, isStudentHoliday: false, name: "Passover", description: "Jewish holiday)" },
+            { beg: new Date(2024, 04, 23) /* May 23 */, end: new Date(2024, 04, 23) /* May 23 */, duration: null, isStudentHoliday: false, name: "Vesak", description: "Buddhist holiday, some observe the holiday in April or on other days in May)" },
+            { beg: new Date(2024, 05, 17) /* Jun 17 */, end: new Date(2024, 05, 17) /* Jun 17 */, duration: null, isStudentHoliday: false, name: "Eid al-Adha", description: "Muslim holiday, begins the prior evening, some observe the holiday for up to four days)" }
+          ]
       }
     ]
     // Define School Years (as friendly variables)
@@ -175,14 +215,12 @@ https://codepen.io/Ridoshi/pen/araEGY
       return
     }
     calculateTerms(currentSY.terms)
-
     let dotsEmptyHtml = []
     let dotsFilledHtml = []
     function drawDots(schoolYear) {
       let dotsHtml = ""
       for (let i = 0; i < schoolYear.terms.length; i++) { // 6
         dotsHtml = ""
-        // console.log(schoolYear.terms[i].termDaysElapsed)
         for (let x = 0; x < schoolYear.terms[i].termDaysElapsed; x++) {
           dotsHtml += "<div class='dot filled-dot'></div>"
         }
@@ -193,12 +231,8 @@ https://codepen.io/Ridoshi/pen/araEGY
         }
         dotsFilledHtml.push(dotsHtml)
       }
-      // console.log(dotsEmptyHtml.length)
-      // console.log(dotsFilledHtml.length)
     }
     drawDots(SY2223)
-
-
   </script>
 </head>
 
@@ -206,17 +240,28 @@ https://codepen.io/Ridoshi/pen/araEGY
   <div id="date" class="d-flex">
     <div class="py-2 px-3 flex-fill"><span id="dateSpan"></span></div>
     <div class="col">
-      <img id="calButton" onclick="showGoogleCalendar()" src="icons/calendar.png">
+      <img id="calButton" onclick="showGoogleCalendar()" src="icons/calendar.png" />
     </div>
   </div>
 
-
   <div id="stats" class="container-fluid py-3 px-2">
     <div class="d-flex">
-      <div class="col flex-fill">We are in <span id="currentTerm" class="font-weight-bold"></span>,
-        with <span id="daysRemainTermContainer" class="font-weight-bold"></span> calendar days remaining.</div>
-      <div class="col flex-fill">We have completed <span id="daysElapsedPercent" class="font-weight-bold"></span>% of the school year.</div>
-      <div class="col flex-fill">There are <span id="daysRemainYearContainer" class="font-weight-bold"></span> days until the end of the school year.</div>
+      <div class="col flex-fill">
+        We are in <span id="currentTerm" class="font-weight-bold"></span>,
+        with
+        <span id="daysRemainTermContainer" class="font-weight-bold"></span>
+        calendar days left.
+      </div>
+      <div class="col flex-fill">
+        We have completed
+        <span id="daysElapsedPercent" class="font-weight-bold"></span>% of the
+        school year.
+      </div>
+      <div class="col flex-fill">
+        There are
+        <span id="daysRemainYearContainer" class="font-weight-bold"></span>
+        days until the end of the school year.
+      </div>
     </div>
   </div>
   <div>
@@ -255,11 +300,21 @@ https://codepen.io/Ridoshi/pen/araEGY
       </div>
     </div>
   </div>
+  <!-- Tooltip test -->
+  <!-- <div class="boo">Hover over me</div> -->
+  <div class="tt">
+    Hover over me
+    <div class="tooltiptext"><span>Tooltip text</span></div>
+  </div>
+  <!-- Events -->
+  <div id="events" class="container-fluid">
+    <div class="col">hi</div>
+    <div class="col">bye</div>
+  </div>
 
   <script>
     // Write content to elements
-    let progressBarHtml =
-      `<div class="row">
+    let progressBarHtml = `<div class="row">
         <div class="col-3 pr-4">
           <h3 class="progress-title">T1</h3>
           <div class="progress">
@@ -319,43 +374,67 @@ https://codepen.io/Ridoshi/pen/araEGY
         </div>
         </div>
       </div>
-    </div>`
+    </div>`;
     function showStuff() {
-      document.getElementById("dateSpan").innerHTML = "<strong>" + datePretty + "</strong>"
-      document.getElementById("daysElapsedPercent").innerHTML = daysElapsedPercent
-      document.getElementById("daysRemainTermContainer").innerHTML = termDaysRemain
-      document.getElementById("daysRemainYearContainer").innerHTML = daysRemainYear
-      document.getElementById("currentTerm").innerHTML = currentTerm
-      document.getElementById("progressBar").innerHTML = progressBarHtml
-      document.getElementById("dots_t1").innerHTML = dotsEmptyHtml[0] + dotsFilledHtml[0]
-      document.getElementById("dots_t2").innerHTML = dotsEmptyHtml[1] + dotsFilledHtml[1]
-      document.getElementById("dots_t3").innerHTML = dotsEmptyHtml[2] + dotsFilledHtml[2]
-      document.getElementById("dots_t4").innerHTML = dotsEmptyHtml[3] + dotsFilledHtml[3]
-      document.getElementById("dots_ps").innerHTML = dotsEmptyHtml[4] + dotsFilledHtml[4]
-      document.getElementById("dots_ss").innerHTML = dotsEmptyHtml[5] + dotsFilledHtml[5]
+      document.getElementById("dateSpan").innerHTML =
+        "<strong>" + datePretty + "</strong>";
+      document.getElementById("daysElapsedPercent").innerHTML =
+        daysElapsedPercent;
+      document.getElementById("daysRemainTermContainer").innerHTML =
+        termDaysRemain;
+      document.getElementById("daysRemainYearContainer").innerHTML =
+        daysRemainYear;
+      document.getElementById("currentTerm").innerHTML = currentTerm;
+      document.getElementById("progressBar").innerHTML = progressBarHtml;
+      document.getElementById("dots_t1").innerHTML =
+        dotsEmptyHtml[0] + dotsFilledHtml[0];
+      document.getElementById("dots_t2").innerHTML =
+        dotsEmptyHtml[1] + dotsFilledHtml[1];
+      document.getElementById("dots_t3").innerHTML =
+        dotsEmptyHtml[2] + dotsFilledHtml[2];
+      document.getElementById("dots_t4").innerHTML =
+        dotsEmptyHtml[3] + dotsFilledHtml[3];
+      document.getElementById("dots_ps").innerHTML =
+        dotsEmptyHtml[4] + dotsFilledHtml[4];
+      document.getElementById("dots_ss").innerHTML =
+        dotsEmptyHtml[5] + dotsFilledHtml[5];
     }
     // Calendar show/hide onclick:
-    let calendarIsVisible = null
-    let iframeHtml = "<div id='showHideCal'><iframe src='https://calendar.google.com/calendar/embed?&wkst=2&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y2NwYWVkdS5jb21fZnR1MGxhNTRraW8wY3JoaDgzbTI2N2xyaThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23EF6C00&amp;mode=AGENDA' style='border:0' width='300' height='400' frameborder='0' scrolling='yes'></iframe></div>"
-    let gCalContainer = document.createElement("div")
-    gCalContainer.style.display = "none"
-    gCalContainer.setAttribute("id", "gCalContainer")
+    let calendarIsVisible = null;
+    let iframeHtml =
+      "<div id='showHideCal'><iframe src='https://calendar.google.com/calendar/embed?&wkst=2&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y2NwYWVkdS5jb21fZnR1MGxhNTRraW8wY3JoaDgzbTI2N2xyaThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23EF6C00&amp;mode=AGENDA' style='border:0' width='300' height='400' frameborder='0' scrolling='yes'></iframe></div>";
+    let gCalContainer = document.createElement("div");
+    gCalContainer.style.display = "none";
+    gCalContainer.setAttribute("id", "gCalContainer");
     document.body.appendChild(gCalContainer);
-    gCalContainer.innerHTML = iframeHtml
+    gCalContainer.innerHTML = iframeHtml;
     function showGoogleCalendar() {
       if (calendarIsVisible == true) {
-        gCalContainer.style.display = "none"
-        calendarIsVisible = false
+        gCalContainer.style.display = "none";
+        calendarIsVisible = false;
       } else {
-        gCalContainer.style.display = "block"
-        calendarIsVisible = true
+        gCalContainer.style.display = "block";
+        calendarIsVisible = true;
       }
     }
     // Call functions
-    showStuff()
+    showStuff();
+
+    var tooltip = document.querySelector(".tt");
+    tooltip.addEventListener("click", function () {
+      if (this.classList.contains("active")) {
+        this.classList.remove("active");
+        console.log("hi");
+        console.log(this);
+      } else {
+        this.classList.add("active");
+        console.log("bye");
+        console.log(this);
+      }
+    });
 
     function playAudio() {
-      document.addEventListener('keydown', function (event) {
+      document.addEventListener("keydown", function (event) {
         let prettyGirls = document.getElementById("prettyGirls");
         if (event.keyCode == 80) {
           prettygirls.play();
@@ -366,8 +445,7 @@ https://codepen.io/Ridoshi/pen/araEGY
         }
       });
     }
-    playAudio()
-
+    playAudio();
   </script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
