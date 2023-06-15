@@ -125,7 +125,14 @@
     const dateToday = new Date();
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const datePretty = dateToday.toLocaleString('en-US', dateOptions)
-    console.log(SY2324.dates[0].beg)
+
+    function dateDiffInDays(a, b) {
+      const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+      // Discard the time and time-zone information.
+      const utc1 = Date.UTC(a.getFullYear(), a.getMonth(), a.getDate());
+      const utc2 = Date.UTC(b.getFullYear(), b.getMonth(), b.getDate());
+      return Math.floor((utc2 - utc1) / _MS_PER_DAY);
+    }
 
     function calculateSY(schoolYear) {
       yearStart = schoolYear.terms[0].beg // Get T1 beg date
@@ -134,18 +141,10 @@
       daysElapsed = Math.floor((dateToday - yearStart) / (1000 * 3600 * 24))
       daysElapsedPercent = (Math.floor((daysElapsed / daysTotal) * 100))
       daysRemainYear = Math.floor((daysTotal - daysElapsed))
+      daysUntilNextSY = dateDiffInDays(dateToday, nextSY.terms[0].beg)
       return
     }
     calculateSY(currentSY)
-
-    function calculateNextSY(nextSY) {
-      daysUntilNextSY = (nextSY.beg - dateToday) / (1000 * 3600 * 24)
-      console.log(dateToday)
-      console.log(nextSY.terms[0].beg)
-      console.log(daysUntilNextSY)
-    }
-
-    calculateNextSY(nextSY)
 
     // function calculateHolidayDurations(schoolYear) {
     //   for (let i = 0; i < schoolYear.dates.length; i++) {
@@ -259,15 +258,10 @@
   <div id="stats" class="container-fluid py-3 px-2">
     <div class="d-flex">
       <div class="col flex-fill">
-        We are in <span id="currentTerm" class="font-weight-bold"></span>,
-        with
-        <span id="daysRemainTermContainer" class="font-weight-bold"></span>
-        calendar days left.
+        <span id="currentTerm"></span>
       </div>
       <div class="col flex-fill">
-        We have completed
-        <span id="daysElapsedPercent" class="font-weight-bold"></span>% of the
-        school year.
+        <span id="daysElapsedPercent"></span>
       </div>
       <div class="col flex-fill">
         <span id="daysRemainYearContainer"></span>
@@ -388,15 +382,21 @@
     function showStuff() {
       // Generate written summaries in sentences:
       document.getElementById("dateSpan").innerHTML = "<strong>" + datePretty + "</strong>";
-      document.getElementById("daysElapsedPercent").innerHTML = daysElapsedPercent;
-      document.getElementById("daysRemainTermContainer").innerHTML = termDaysRemain; // Error
-      if (daysRemainYear < 0) {
+      if (daysElapsedPercent <= 100) {
+        document.getElementById("daysElapsedPercent").innerHTML = "We have completed " + daysElapsedPercent + "% of the <strong>" + currentSY.schoolyear + "</strong> school year.";
+      } else {
         console.log("oh no")
-        document.getElementById("daysRemainYearContainer").innerHTML = "There are <strong>" + daysRemainYear + "</strong> days until the beginning of next school year.";
+        document.getElementById("daysElapsedPercent").innerHTML = "The <strong>" + currentSY.schoolyear + "</strong> school year is almost finished.";
+      }
+      console.log(termDaysRemain)
+      document.getElementById("currentTerm").innerHTML = "We are in <strong>" + currentTerm + "</strong> with " + termDaysRemain + "calendar days left." // Error
+      if (daysRemainYear < 0) {
+        document.getElementById("daysRemainYearContainer").innerHTML = "We have <strong>" + daysUntilNextSY + "</strong> summer days until <strong>" + nextSY.schoolyear + "</strong> begins.";
+        // document.getElementById("daysRemainYearContainer").innerHTML = "Enjoy <strong>" + daysUntilNextSY + "</strong> summer days until <strong>" + nextSY.schoolyear + "</strong> begins on " + nextSY.terms[0].beg.toLocaleString('en-US', { month: 'long', day: 'numeric' }) + ".";
       } else {
         document.getElementById("daysRemainYearContainer").innerHTML = "There are <strong>" + daysRemainYear + "</strong> days until the end of the school year.";
       }
-      document.getElementById("currentTerm").innerHTML = currentTerm;
+
       document.getElementById("progressBar").innerHTML = progressBarHtml;
       document.getElementById("dots_t1").innerHTML = dotsEmptyHtml[0] + dotsFilledHtml[0];
       document.getElementById("dots_t2").innerHTML = dotsEmptyHtml[1] + dotsFilledHtml[1];
