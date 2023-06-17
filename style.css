@@ -5,8 +5,15 @@ body {
   background-image: url('images/bg-theinfinite8enigma-East-Oakland-510-Graffiti-Art.jpeg');
   background-size: cover;
 }
-div {
-  /* border: 1px dotted red; */
+h2 {
+  font-size: 1.3em;
+  font-weight: bolder;
+  color: #fff;
+  padding: .3em 0 .2em 0 ;
+}
+ul {
+  margin: 0;
+  padding: 1em;
 }
 #date {
   font-size: x-large;
@@ -43,7 +50,6 @@ div {
 iframe {
   border: 0;
 }
-
 .d-flex div {
   padding-right: 1em
 }
@@ -122,7 +128,32 @@ iframe {
   background-color: #021F59;
 }
 #events {
-  background-color:rgba(217,121,4, 0.85);
+  background-color:rgba(217,121,4, 0.9);
+}
+#events ul {
+  padding: 0
+}
+.event-item {
+  display: none;
+  /* list-style-image: url('images/black-star-icon.svg'); */
+  padding: 0 0 0 1.5em;
+	list-style: none;
+	background-image: url("images/black-star-icon.svg");
+	background-repeat: no-repeat;
+	background-position: left .25em;
+	background-size: .9em;
+}
+.event-item li::marker {
+  color: red;
+  font-size: 3em;
+}
+.event-item:nth-child(-n+5) {
+  display: list-item;
+}
+.event-item-desc {
+  font-size: .85em;
+  line-height: 1.4em;
+  margin: 0 0 .3em 0;
 }
 .tt {
   position: relative;

@@ -15,24 +15,24 @@
         schoolyear: "SY2223",
         terms:
           [
-            { termCode: "t1_SY2223", termName: "T1", beg: new Date(2022, 07, 08), /* Aug 08 */ end: new Date(2022, 09, 07) /* Oct 07 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "t2_SY2223", termName: "T2", beg: new Date(2022, 09, 10), /* Oct 09 */ end: new Date(2022, 11, 16) /* Dec 16 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "t3_SY2223", termName: "T3", beg: new Date(2023, 00, 04), /* Jan 04 */ end: new Date(2023, 02, 03) /* Mar 03 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "t4_SY2223", termName: "T4", beg: new Date(2023, 02, 06), /* Mar 06 */ end: new Date(2023, 04, 12) /* May 12 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "ps_SY2223", termName: "Postsession", beg: new Date(2023, 04, 15), /* May 15 */ end: new Date(2023, 04, 26) /* May 26 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "ss_SY2223", termName: "Summer School", beg: new Date(2023, 04, 30), /* May 30 */ end: new Date(2023, 05, 30) /* Jun 30 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "t1_SY2223", termName: "T1", beg: new Date('Aug 08, 2022'), end: new Date('Oct 07, 2022') },
+            { termCode: "t2_SY2223", termName: "T2", beg: new Date('Oct 09, 2022'), end: new Date('Dec 16, 2022') },
+            { termCode: "t3_SY2223", termName: "T3", beg: new Date('Jan 04, 2023'), end: new Date('Mar 03, 2023') },
+            { termCode: "t4_SY2223", termName: "T4", beg: new Date('Mar 06, 2023'), end: new Date('May 12, 2023') },
+            { termCode: "ps_SY2223", termName: "Postsession", beg: new Date('May 15, 2023'), end: new Date('May 26, 2023') },
+            { termCode: "ss_SY2223", termName: "Summer School", beg: new Date('May 30, 2023'), end: new Date('Jun 30, 2023') },
           ],
         dates:
           [
+            { beg: new Date('Sep 05, 2022'), end: new Date('Sep 05, 2022'), isStudentHoliday: true, name: "Labor Day", description: "" },
             { beg: new Date('Jul 04, 2022'), end: new Date('Jul 04, 2022'), isStudentHoliday: true, name: "Independence Day", description: "" },
             { beg: new Date('Aug 03, 2022'), end: new Date('Aug 03, 2022'), isStudentHoliday: true, name: "PD Day", description: "" },
             { beg: new Date('Aug 04, 2022'), end: new Date('Aug 04, 2022'), isStudentHoliday: true, name: "Collaboration / Work Day", description: "" },
             { beg: new Date('Aug 05, 2022'), end: new Date('Aug 05, 2022'), isStudentHoliday: true, name: "Teacher Work Day", description: "" },
             { beg: new Date('Aug 07, 2022'), end: new Date('Aug 07, 2022'), isStudentHoliday: false, name: "First Day of School", description: "" },
-            { beg: new Date('Sep 05, 2022'), end: new Date('Sep 05, 2022'), isStudentHoliday: true, name: "Labor Day", description: "" },
             { beg: new Date('Sep 16, 2022'), end: new Date('Sep 16, 2022'), isStudentHoliday: true, name: "PD Day", description: "" },
             { beg: new Date('Oct 10, 2022'), end: new Date('Oct 10, 2022'), isStudentHoliday: true, name: "Indigenous Peoples' Day", description: "" },
-            { beg: new Date('Nov 04, 2022'), end: new Date('Nov 04, 2022'), isStudentHoliday: false, name: "End of Trimester 1 (E)", description: "" },
+            // { beg: new Date('Nov 04, 2022'), end: new Date('Nov 04, 2022'), isStudentHoliday: false, name: "End of Trimester 1 (E)", description: "" },
             { beg: new Date('Nov 11, 2022'), end: new Date('Nov 11, 2022'), isStudentHoliday: true, name: "Veterans' Day", description: "" },
             { beg: new Date('Nov 21, 2022'), end: new Date('Nov 25, 2022'), isStudentHoliday: true, name: "Thanksgiving Break", description: "" },
             { beg: new Date('Dec 19, 2022'), end: new Date('Dec 30, 2022'), isStudentHoliday: true, name: "Winter Break", description: "" },
@@ -41,7 +41,7 @@
             { beg: new Date('Jan 04, 2023'), end: new Date('Jan 04, 2023'), isStudentHoliday: false, name: "First Day of Spring Semester", description: "" },
             { beg: new Date('Jan 16, 2023'), end: new Date('Jan 16, 2023'), isStudentHoliday: true, name: "Martin Luther King, Jr. Day", description: "" },
             { beg: new Date('Feb 20, 2023'), end: new Date('Feb 20, 2023'), isStudentHoliday: true, name: "Presidents' Day", description: "" },
-            { beg: new Date('Feb 24, 2023'), end: new Date('Feb 24, 2023'), isStudentHoliday: false, name: "End of Trimester 2 (E)", description: "" },
+            // { beg: new Date('Feb 24, 2023'), end: new Date('Feb 24, 2023'), isStudentHoliday: false, name: "End of Trimester 2 (E)", description: "" },
             { beg: new Date('Mar 31, 2023'), end: new Date('Mar 31, 2023'), isStudentHoliday: true, name: "Cesar Chavez Day", description: "" },
             { beg: new Date('Apr 03, 2023'), end: new Date('Apr 07, 2023'), isStudentHoliday: true, name: "Spring Break", description: "" },
             { beg: new Date('May 25, 2023'), end: new Date('May 25, 2023'), isStudentHoliday: false, name: "Last Day of Instruction", description: "" },
@@ -73,46 +73,46 @@
           ],
         dates:
           [
-            { beg: new Date('Aug 03, 2023') /* Aug 03 */, end: new Date(2023, 7, 3) /* Aug 03 */, duration: null, isStudentHoliday: true, name: "Professional Development (PD) Day", description: "" },
-            { beg: new Date('Aug 03, 2023'), end: new Date('Aug 03, 2023'), isStudentHoliday: true, name: "Professional Development (PD) Day", description: "" },
+            { beg: new Date('Aug 03, 2023') /* Aug 03 */, end: new Date(2023, 7, 3) /* Aug 03 */, duration: null, isStudentHoliday: true, name: "Prof Dev (PD) Day", description: "" },
+            { beg: new Date('Aug 03, 2023'), end: new Date('Aug 03, 2023'), isStudentHoliday: true, name: "Prof Dev (PD) Day", description: "" },
             { beg: new Date('Aug 04, 2023'), end: new Date('Aug 04, 2023'), isStudentHoliday: true, name: "Collaboration/Work Day", description: "" },
             { beg: new Date('Aug 05, 2023'), end: new Date('Aug 05, 2023'), isStudentHoliday: true, name: "Teacher Work Day", description: "" },
             { beg: new Date('Aug 08, 2023'), end: new Date('Aug 08, 2023'), isStudentHoliday: false, name: "First Day of School", description: "" },
             { beg: new Date('Sep 04, 2023'), end: new Date('Sep 04, 2023'), isStudentHoliday: true, name: "Labor Day", description: "" },
-            { beg: new Date('Sep 14, 2023'), end: new Date('Sep 14, 2023'), isStudentHoliday: false, name: "End of Marking Period (Middle/High School*)", description: "" },
-            { beg: new Date('Sep 15, 2023'), end: new Date('Sep 15, 2023'), isStudentHoliday: true, name: "Professional Development (PD) Day", description: "" },
+            { beg: new Date('Sep 14, 2023'), end: new Date('Sep 14, 2023'), isStudentHoliday: false, name: "End of Term (M.S./H.S.)", description: "" },
+            { beg: new Date('Sep 15, 2023'), end: new Date('Sep 15, 2023'), isStudentHoliday: true, name: "Prof Dev (PD) Day", description: "" },
             { beg: new Date('Oct 09, 2023'), end: new Date('Oct 09, 2023'), isStudentHoliday: true, name: "Indigenous Peoples' Day (in lieu of Lincoln's Birthday)", description: "" },
-            { beg: new Date('Nov 03, 2023'), end: new Date('Nov 03, 2023'), isStudentHoliday: false, name: "End of Marking Period (Middle/High School*)", description: "" },
+            { beg: new Date('Nov 03, 2023'), end: new Date('Nov 03, 2023'), isStudentHoliday: false, name: "End of Term (M.S./H.S.)", description: "" },
             { beg: new Date('Nov 10, 2023'), end: new Date('Nov 10, 2023'), isStudentHoliday: true, name: "Veterans' Day (Observed)", description: "" },
             { beg: new Date('Nov 20, 2023'), end: new Date('Nov 24, 2023'), isStudentHoliday: true, name: "Thanksgiving Break (some CDCs open)", description: "" },
-            { beg: new Date('Dec 22, 2023'), end: new Date('Dec 22, 2023'), isStudentHoliday: false, name: "End of Marking Period / Semester (Middle/High School*)", description: "" },
+            { beg: new Date('Dec 22, 2023'), end: new Date('Dec 22, 2023'), isStudentHoliday: false, name: "End of Term / Semester (M.S./H.S.)", description: "" },
             { beg: new Date('Dec 25, 2023'), end: new Date('Jan 05, 2023'), isStudentHoliday: true, name: "Winter Break (some CDCs open)", description: "" },
             { beg: new Date('Jan 01, 2024'), end: new Date('Jan 01, 2024'), isStudentHoliday: true, name: "New Year's Day", description: "" },
-            { beg: new Date('Jan 08, 2024'), end: new Date('Jan 08, 2024'), isStudentHoliday: true, name: "Professional Development (PD) Day", description: "" },
+            { beg: new Date('Jan 08, 2024'), end: new Date('Jan 08, 2024'), isStudentHoliday: true, name: "Prof Dev (PD) Day", description: "" },
             { beg: new Date('Jan 15, 2024'), end: new Date('Jan 15, 2024'), isStudentHoliday: true, name: "Martin Luther King, Jr. Day", description: "" },
-            { beg: new Date('Feb 15, 2024'), end: new Date('Feb 15, 2024'), isStudentHoliday: false, name: "End of Marking Period", description: "" },
+            { beg: new Date('Feb 15, 2024'), end: new Date('Feb 15, 2024'), isStudentHoliday: false, name: "End of Term", description: "" },
             { beg: new Date('Feb 16, 2024'), end: new Date('Feb 16, 2024'), isStudentHoliday: true, name: "Schools Closed", description: "" },
             { beg: new Date('Feb 19, 2024'), end: new Date('Feb 19, 2024'), isStudentHoliday: true, name: "Presidents' Day", description: "" },
             { beg: new Date('Mar 29, 2024'), end: new Date('Mar 29, 2024'), isStudentHoliday: true, name: "Cesar Chavez Day (Observed)", description: "" },
             { beg: new Date('Apr 01, 2024'), end: new Date('Apr 05, 2024'), isStudentHoliday: false, name: "Spring Break (Some CDCs open)", description: "" },
-            { beg: new Date('Apr 12, 2024'), end: new Date('Apr 12, 2024'), isStudentHoliday: false, name: "End of Marking Period (Middle/High School*)", description: "" },
-            { beg: new Date('May 23, 2024'), end: new Date('May 23, 2024'), isStudentHoliday: false, name: "Last Day of Instruction / End of Semester / End of Trimester 3 / End of Marking Period", description: "" },
+            { beg: new Date('Apr 12, 2024'), end: new Date('Apr 12, 2024'), isStudentHoliday: false, name: "End of Term (M.S./H.S.)", description: "" },
+            { beg: new Date('May 23, 2024'), end: new Date('May 23, 2024'), isStudentHoliday: false, name: "Last Day of Instruction / End of Semester / End of Trimester 3 / End of Term", description: "" },
             { beg: new Date('May 24, 2024'), end: new Date('May 24, 2024'), isStudentHoliday: true, name: "Teacher Work Day", description: "" },
             { beg: new Date('May 27, 2024'), end: new Date('May 27, 2024'), isStudentHoliday: true, name: "Memorial Day", description: "" },
             { beg: new Date('Jun 19, 2024'), end: new Date('Jun 19, 2024'), isStudentHoliday: true, name: "Juneteenth Holiday", description: "" },
-            { beg: new Date('Jun 29, 2023'), end: new Date('Jun 29, 2023'), isStudentHoliday: false, name: "Eid al-Adha", description: "Muslim holiday, begins the prior evening, some observe the holiday for up to four days)" },
-            { beg: new Date('Sep 16, 2023'), end: new Date('Sep 16, 2023'), isStudentHoliday: false, name: "Rosh Hashanah", description: "Jewish holiday, begins the prior evening, some observe the holiday for a second day)" },
-            { beg: new Date('Oct 23, 2023'), end: new Date('Oct 23, 2023'), isStudentHoliday: false, name: " Yom Kippur", description: "Jewish holiday, begins the prior evening)" },
-            { beg: new Date('Oct 24, 2023'), end: new Date('Oct 24, 2023'), isStudentHoliday: false, name: "Diwali", description: "Hindi holiday, some observe the holiday for up to four days; other religions also celebrate Diwali, but not necessarily on the same day)" },
-            { beg: new Date('Nov 12, 2023'), end: new Date('Nov 12, 2023'), isStudentHoliday: false, name: "Bodhi", description: "Buddhist holiday, some observe the holiday in January)" },
-            { beg: new Date('Dec 07, 2023'), end: new Date('Dec 07, 2023'), isStudentHoliday: false, name: "Hanukkah", description: "Jewish holiday)" },
-            { beg: new Date('Dec 25, 2023'), end: new Date('Dec 25, 2023'), isStudentHoliday: false, name: "Christmas", description: "Christian holiday)" },
-            { beg: new Date('Jan 15, 2024'), end: new Date('Jan 15, 2024'), isStudentHoliday: false, name: "Makar Sankranti/Pongal/ Tirmoori", description: "Hindi holiday, some observe the holiday for up to four days)" },
-            { beg: new Date('Mar 31, 2024'), end: new Date('Mar 31, 2024'), isStudentHoliday: false, name: "Easter", description: "Christian holiday)" },
-            { beg: new Date('Apr 10, 2024'), end: new Date('Apr 10, 2024'), isStudentHoliday: false, name: "Eid al-Fitr", description: "Muslim holiday, begins the prior evening, +/- day dependent on the sighting of the crescent moon)" },
-            { beg: new Date('Apr 22, 2024'), end: new Date('Apr 22, 2024'), isStudentHoliday: false, name: "Passover", description: "Jewish holiday)" },
-            { beg: new Date('May 23, 2024'), end: new Date('May 23, 2024'), isStudentHoliday: false, name: "Vesak", description: "Buddhist holiday, some observe the holiday in April or on other days in May)" },
-            { beg: new Date('Jun 17, 2024'), end: new Date('Jun 17, 2024'), isStudentHoliday: false, name: "Eid al-Adha", description: "Muslim holiday, begins the prior evening, some observe the holiday for up to four days)" }
+            { beg: new Date('Jun 29, 2023'), end: new Date('Jun 29, 2023'), isStudentHoliday: false, name: "Eid al-Adha", description: "Muslim holiday, begins the prior evening, some observe the holiday for up to four days." },
+            { beg: new Date('Sep 16, 2023'), end: new Date('Sep 16, 2023'), isStudentHoliday: false, name: "Rosh Hashanah", description: "Jewish holiday, begins the prior evening, some observe the holiday for a second day." },
+            { beg: new Date('Oct 23, 2023'), end: new Date('Oct 23, 2023'), isStudentHoliday: false, name: " Yom Kippur", description: "Jewish holiday, begins the prior evening." },
+            { beg: new Date('Oct 24, 2023'), end: new Date('Oct 24, 2023'), isStudentHoliday: false, name: "Diwali", description: "Hindi holiday, some observe the holiday for up to four days; other religions also celebrate Diwali, but not necessarily on the same day." },
+            { beg: new Date('Nov 12, 2023'), end: new Date('Nov 12, 2023'), isStudentHoliday: false, name: "Bodhi", description: "Buddhist holiday, some observe the holiday in January." },
+            { beg: new Date('Dec 07, 2023'), end: new Date('Dec 07, 2023'), isStudentHoliday: false, name: "Hanukkah", description: "Jewish holiday." },
+            { beg: new Date('Dec 25, 2023'), end: new Date('Dec 25, 2023'), isStudentHoliday: false, name: "Christmas", description: "Christian holiday." },
+            { beg: new Date('Jan 15, 2024'), end: new Date('Jan 15, 2024'), isStudentHoliday: false, name: "Makar Sankranti/Pongal/ Tirmoori", description: "Hindi holiday, some observe the holiday for up to four days." },
+            { beg: new Date('Mar 31, 2024'), end: new Date('Mar 31, 2024'), isStudentHoliday: false, name: "Easter", description: "Christian holiday." },
+            { beg: new Date('Apr 10, 2024'), end: new Date('Apr 10, 2024'), isStudentHoliday: false, name: "Eid al-Fitr", description: "Muslim holiday, begins the prior evening, +/- day dependent on the sighting of the crescent moon." },
+            { beg: new Date('Apr 22, 2024'), end: new Date('Apr 22, 2024'), isStudentHoliday: false, name: "Passover", description: "Jewish holiday." },
+            { beg: new Date('May 23, 2024'), end: new Date('May 23, 2024'), isStudentHoliday: false, name: "Vesak", description: "Buddhist holiday, some observe the holiday in April or on other days in May." },
+            { beg: new Date('Jun 17, 2024'), end: new Date('Jun 17, 2024'), isStudentHoliday: false, name: "Eid al-Adha", description: "Muslim holiday, begins the prior evening, some observe the holiday for up to four days." }
           ]
       }
     ]
@@ -125,7 +125,19 @@
     const dateToday = new Date();
     const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     const datePretty = dateToday.toLocaleString('en-US', dateOptions)
-
+    // Array of currentSY dates sorted chronologically:
+    const datesOrdered = (function () {
+      let dates = []
+      for (i in currentSY.dates) {
+        dates.push(currentSY.dates[i])
+      }
+      for (i in nextSY.dates) {
+        dates.push(nextSY.dates[i])
+      }
+      dates.sort((a, b) => a.beg - b.beg);
+      return dates
+    })();
+    console.log(datesOrdered.length)
     function dateDiffInDays(a, b) {
       const _MS_PER_DAY = 1000 * 60 * 60 * 24;
       // Discard the time and time-zone information.
@@ -244,6 +256,8 @@
       }
     }
     drawDots(SY2223)
+
+
   </script>
 </head>
 
@@ -310,11 +324,22 @@
     Hover over me
     <div class="tooltiptext"><span>Tooltip text</span></div>
   </div> -->
-  <!-- Events -->
-  <!-- <div id="events" class="container-fluid">
-    <div class="col">hi</div>
-    <div class="col">bye</div>
-  </div> -->
+
+  <!-- Upcoming Student Holidays -->
+  <div class="container py-2 d-flex" id="events">
+    <div class="row">
+      <div class="col">
+        <div class="container-fluid">
+          <h2>Student Holidays:</h2>
+          <ul id="events-student-holiday"></ul>
+        </div>
+      </div>
+      <div class="col">
+        <h2>Dates to Note:</h2>
+        <ul id="events-student-non-holiday"></ul>
+      </div>
+    </div>
+  </div>
 
   <script>
     // Write content to elements
@@ -385,7 +410,6 @@
       if (daysElapsedPercent <= 100) {
         document.getElementById("daysElapsedPercent").innerHTML = "We have completed " + daysElapsedPercent + "% of the <strong>" + currentSY.schoolyear + "</strong> school year.";
       } else {
-        console.log("oh no")
         document.getElementById("daysElapsedPercent").innerHTML = "The <strong>" + currentSY.schoolyear + "</strong> school year is almost finished.";
       }
       console.log(termDaysRemain)
@@ -404,6 +428,34 @@
       document.getElementById("dots_t4").innerHTML = dotsEmptyHtml[3] + dotsFilledHtml[3];
       document.getElementById("dots_ps").innerHTML = dotsEmptyHtml[4] + dotsFilledHtml[4];
       document.getElementById("dots_ss").innerHTML = dotsEmptyHtml[5] + dotsFilledHtml[5];
+      // Show upcoming events:
+      let eHol = []
+      let eNon = []
+      let textHol = ""
+      let textNon = ""
+      // Collect only future events:
+      for (i in datesOrdered) {
+        if (datesOrdered[i].beg > dateToday) {
+          // Collect future holidays:
+          if (datesOrdered[i].isStudentHoliday == true) {
+            eHol.push(datesOrdered[i])
+          } else {
+            // Collect future non-holidays:
+            eNon.push(datesOrdered[i])
+          }
+        }
+      }
+      // Display upcoming events (of both types):
+      for (x in eHol) {
+        textHol += "<li class='event-item'><strong>" + eHol[x].name + "</strong>"
+        textHol += " (" + eHol[x].beg.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) + ")</li>"
+      }
+      for (y in eNon) {
+        textNon += "<li class='event-item'><strong>" + eNon[y].name + "</strong>"
+        textNon += " (" + eNon[y].beg.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) + ")<br><p class='event-item-desc py-0'>" + eNon[y].description + "</p></li>"
+      }
+      document.getElementById("events-student-holiday").innerHTML = textHol
+      document.getElementById("events-student-non-holiday").innerHTML = textNon
     }
     // Calendar show/hide onclick:
     let calendarIsVisible = null;
