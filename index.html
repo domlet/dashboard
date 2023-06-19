@@ -487,19 +487,6 @@
     // Call functions
     showStuff();
 
-    var tooltip = document.querySelector(".tt");
-    tooltip.addEventListener("click", function () {
-      if (this.classList.contains("active")) {
-        this.classList.remove("active");
-        console.log("hi");
-        console.log(this);
-      } else {
-        this.classList.add("active");
-        console.log("bye");
-        console.log(this);
-      }
-    });
-
     function playAudio() {
       document.addEventListener("keydown", function (event) {
         let prettyGirls = document.getElementById("prettyGirls");
