@@ -263,18 +263,17 @@
 
 <body>
 
-
   <script type="text/javascript">
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
     }
   </script>
 
-  <div id="date" class="d-flex">
-    <div class="py-2 px-3 flex-fill"><span id="dateSpan"></span></div>
-    <div class="col">
-      <img id="calButton" onclick="showGoogleCalendar()" src="icons/calendar.png" />
-      <div id="google_translate_element"></div>
+  <div class="container-fluid" id="date">
+    <div class="row">
+      <div class="col-8 "><span id="dateSpan"></span></div>
+      <div class="col-12 sm-order-1" id="google_translate_element"></div>
+      <div class="col-2 "><img id="calButton" onclick="showGoogleCalendar()" src="icons/calendar.png" /></div>
     </div>
   </div>
 
@@ -335,15 +334,15 @@
   </div> -->
 
   <!-- Upcoming Student Holidays -->
-  <div class="container py-2 d-flex" id="events">
+  <div class="container-fluid py-2 d-flex" id="events">
     <div class="row">
-      <div class="col">
+      <div class="col-6">
         <div class="container-fluid">
           <h2>Student Holidays:</h2>
           <ul id="events-student-holiday"></ul>
         </div>
       </div>
-      <div class="col">
+      <div class="col-6">
         <h2>Dates to Note:</h2>
         <ul id="events-student-non-holiday"></ul>
       </div>
