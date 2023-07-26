@@ -230,8 +230,8 @@
   </script>
 
   <div class="navbar navbar-expand-sm navbar-dark " id="date">
-    <div class="container-fluid ">
-      <div class="col-6 navbar-brand ">
+    <div class="container-fluid p-0">
+      <div class="col-6 navbar-brand p-0 ">
         <img src="images/ccpa-logo-lion-color.png" width="30" height="30" class="d-inline-block align-top mr-1" alt="">
         <span id="dateSpan"></span>
       </div>
@@ -239,8 +239,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="col-4 ml-auto" id="google_translate_element"></div>
-        <div class="col-2 ml-auto"><img id="calButton" onclick="showGoogleCalendar()" src="icons/calendar.png" /></div>
+        <div class="col-4 ml-auto p-0" id="google_translate_element"></div>
+        <div class="col-2 ml-auto p-0"><img id="calButton" onclick="showGoogleCalendar()" src="icons/calendar.png" /></div>
       </div>
     </div>
   </div>
@@ -299,12 +299,10 @@
 
   <!-- Upcoming Student Holidays -->
   <div class="py-2 d-flex" id="events">
-    <div class="row container-fluid">
-      <div class="col-6">
-        <div class="container-fluid">
-          <h2>Student Holidays:</h2>
-          <ul id="events-student-holiday"></ul>
-        </div>
+    <div class="row pl-3">
+      <div class="col-6 pl-12">
+        <h2>Student Holidays:</h2>
+        <ul id="events-student-holiday"></ul>
       </div>
       <div class="col-6">
         <h2>Dates to Note:</h2>

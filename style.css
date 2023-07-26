@@ -2,9 +2,9 @@
 green = #7A9A15 ; orange = #D97904 ; red = #D93D04 */
 
 
-/* div {
+div {
   border: 1px solid yellow;
-} */
+}
 body {
   background-image: url('images/bg-theinfinite8enigma-East-Oakland-510-Graffiti-Art.jpeg');
   background-size: cover;
@@ -31,10 +31,8 @@ ul {
 }
 #calButton {
   float: right;
-  display: inline;
-  height: 1em;
-  width: auto;
-  margin-top: .5em;
+  height: 1.2em;
+  width: auto; 
 } 
 #showHideCal {
   position: absolute;
