@@ -229,11 +229,19 @@
     }
   </script>
 
-  <div class="container-fluid" id="date">
-    <div class="row">
-      <div class="col-8 "><span id="dateSpan"></span></div>
-      <div class="col-12 sm-order-1" id="google_translate_element"></div>
-      <div class="col-2 "><img id="calButton" onclick="showGoogleCalendar()" src="icons/calendar.png" /></div>
+  <div class="navbar navbar-expand-sm navbar-dark " id="date">
+    <div class="container-fluid ">
+      <div class="col-6 navbar-brand ">
+        <img src="images/ccpa-logo-lion-color.png" width="30" height="30" class="d-inline-block align-top mr-1" alt="">
+        <span id="dateSpan"></span>
+      </div>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="col-4 ml-auto" id="google_translate_element"></div>
+        <div class="col-2 ml-auto"><img id="calButton" onclick="showGoogleCalendar()" src="icons/calendar.png" /></div>
+      </div>
     </div>
   </div>
 
@@ -251,9 +259,9 @@
     </div>
   </div>
   <div>
-    <audio id="prettygirls" src="sounds/pretty-girls-walk_shorter.mp3"></audio>
+    <!-- <audio id="prettygirls" src="sounds/pretty-girls-walk_shorter.mp3"></audio>
     <audio id="airhorn" src="sounds/airhorn.mp3"></audio>
-    <audio id="choir" src="sounds/ahhhh.mp3"></audio>
+    <audio id="choir" src="sounds/ahhhh.mp3"></audio> -->
   </div>
   <!-- Dots -->
   <div id="dots" class="container-fluid">
@@ -290,8 +298,8 @@
   </div>
 
   <!-- Upcoming Student Holidays -->
-  <div class="container-fluid py-2 d-flex" id="events">
-    <div class="row">
+  <div class="py-2 d-flex" id="events">
+    <div class="row container-fluid">
       <div class="col-6">
         <div class="container-fluid">
           <h2>Student Holidays:</h2>
@@ -315,7 +323,6 @@
       } else {
         document.getElementById("daysElapsedPercent").innerHTML = "The <strong>" + currentSY.schoolyear + "</strong> school year is almost finished.";
       }
-      console.log(termDaysRemain)
       // TODO: fix 'currentSY.terms[5].termDaysRemain' hack
       document.getElementById("currentTerm").innerHTML = "We are in <strong>" + currentTerm + "</strong> with " + currentSY.terms[5].termDaysRemain + " calendar days left." // Error
       if (daysRemainYear < 0) {
