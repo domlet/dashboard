@@ -86,9 +86,9 @@ iframe {
   font-size: 16px;
   font-weight: 500;
   color: black;
-  position: absolute;
-  top: -30px;
-  right: -25px
+  position: relative;
+  top: -28px;
+  right: -25px;
 }
 
 .progress .progress-bar:after {
@@ -163,24 +163,15 @@ iframe {
   line-height: 1.4em;
   margin: 0 0 .3em 0;
 }
-.tt {
+
+div[title]:hover::after {
+  content: attr(title);
   position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
-  cursor: pointer;
-  visibility: visible;
-}
-.tt .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  z-index: 1;
-}
-.tt.active .tooltiptext {
-  visibility: visible;
+  top: -1em;
+  left: 0;
+  background-color: lightgoldenrodyellow;
+  border-radius: 0.5em;
+  border: 1px dotted gray;
+  padding: 0.1em 0.2em;
+  font-size: medium;
 }

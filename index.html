@@ -64,27 +64,31 @@
         schoolyear: "SY2324",
         terms:
           [
-            { termCode: "t1_SY2324", termName: "T1", beg: new Date(2023, 07, 08) /* Aug 08 */, end: new Date(2023, 09, 00) /* Oct 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "t2_SY2324", termName: "T2", beg: new Date(2023, 09, 00) /* Oct 00 */, end: new Date(2023, 11, 00) /* Dec 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "t3_SY2324", termName: "T3", beg: new Date(2024, 00, 00) /* Jan 00 */, end: new Date(2024, 02, 00) /* Mar 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "t4_SY2324", termName: "T4", beg: new Date(2024, 03, 00) /* Mar 00 */, end: new Date(2024, 04, 00) /* May 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "ps_SY2324", termName: "Postsession", beg: new Date(2024, 04, 00) /* May 00 */, end: new Date(2024, 04, 00) /* May 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "ss_SY2324", termName: "Summer School", beg: new Date(2024, 04, 00) /* May 00 */, end: new Date(2024, 05, 00) /* Jun 00 */, termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "sv_SY2324", termName: "Summer Vacation", beg: new Date('July 01, 2023'), end: new Date('Aug 06, 2023'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "t1_SY2324", termName: "T1", beg: new Date('Aug 07, 2023'), end: new Date('Oct 13, 2023'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "t2_SY2324", termName: "T2", beg: new Date('Oct 16, 2023'), end: new Date('Dec 22, 2023'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "t3_SY2324", termName: "T3", beg: new Date('Jan 09, 2024'), end: new Date('Mar 15, 2024'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "t4_SY2324", termName: "T4", beg: new Date('Mar 18, 2024'), end: new Date('May 10, 2024'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "ps_SY2324", termName: "Postsession", beg: new Date('May 13, 2024'), end: new Date('May 23, 2024'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "ss_SY2324", termName: "Summer School", beg: new Date('Jun 03, 2024'), end: new Date('Jun 28, 2024'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
           ],
         dates:
           [
-            { beg: new Date('Aug 03, 2023') /* Aug 03 */, end: new Date(2023, 7, 3) /* Aug 03 */, duration: null, isStudentHoliday: true, name: "Prof Dev (PD) Day", description: "" },
             { beg: new Date('Aug 03, 2023'), end: new Date('Aug 03, 2023'), isStudentHoliday: true, name: "Prof Dev (PD) Day", description: "" },
             { beg: new Date('Aug 04, 2023'), end: new Date('Aug 04, 2023'), isStudentHoliday: true, name: "Collaboration/Work Day", description: "" },
             { beg: new Date('Aug 05, 2023'), end: new Date('Aug 05, 2023'), isStudentHoliday: true, name: "Teacher Work Day", description: "" },
-            { beg: new Date('Aug 08, 2023'), end: new Date('Aug 08, 2023'), isStudentHoliday: false, name: "First Day of School", description: "" },
+            { beg: new Date('Aug 07, 2023'), end: new Date('Aug 07, 2023'), isStudentHoliday: false, name: "First Day of School", description: "" },
+            { beg: new Date('Aug 29, 2023'), end: new Date('Aug 29, 2023'), isStudentHoliday: false, name: "Back to School Night", description: "" },
             { beg: new Date('Sep 04, 2023'), end: new Date('Sep 04, 2023'), isStudentHoliday: true, name: "Labor Day", description: "" },
             { beg: new Date('Sep 14, 2023'), end: new Date('Sep 14, 2023'), isStudentHoliday: false, name: "End of Term (M.S./H.S.)", description: "" },
             { beg: new Date('Sep 15, 2023'), end: new Date('Sep 15, 2023'), isStudentHoliday: true, name: "Prof Dev (PD) Day", description: "" },
             { beg: new Date('Oct 09, 2023'), end: new Date('Oct 09, 2023'), isStudentHoliday: true, name: "Indigenous Peoples' Day (in lieu of Lincoln's Birthday)", description: "" },
+            { beg: new Date('Oct 11, 2023'), end: new Date('Oct 11, 2023'), isStudentHoliday: false, name: "School Picture Day", description: "" },
+            { beg: new Date('Oct 16, 2023'), end: new Date('Oct 20, 2023'), isStudentHoliday: false, name: "Home Visits Week", description: "" },
             { beg: new Date('Nov 03, 2023'), end: new Date('Nov 03, 2023'), isStudentHoliday: false, name: "End of Term (M.S./H.S.)", description: "" },
             { beg: new Date('Nov 10, 2023'), end: new Date('Nov 10, 2023'), isStudentHoliday: true, name: "Veterans' Day (Observed)", description: "" },
             { beg: new Date('Nov 20, 2023'), end: new Date('Nov 24, 2023'), isStudentHoliday: true, name: "Thanksgiving Break (some CDCs open)", description: "" },
+            { beg: new Date('Dec 06, 2023'), end: new Date('Dec 06, 2023'), isStudentHoliday: false, name: "School Picture Makeups", description: "" },
             { beg: new Date('Dec 22, 2023'), end: new Date('Dec 22, 2023'), isStudentHoliday: false, name: "End of Term / Semester (M.S./H.S.)", description: "" },
             { beg: new Date('Dec 25, 2023'), end: new Date('Jan 05, 2023'), isStudentHoliday: true, name: "Winter Break (some CDCs open)", description: "" },
             { beg: new Date('Jan 01, 2024'), end: new Date('Jan 01, 2024'), isStudentHoliday: true, name: "New Year's Day", description: "" },
@@ -119,7 +123,8 @@
     // Define School Years (as friendly variables)
     const SY2223 = allterms[0]
     const SY2324 = allterms[1]
-    const currentSY = SY2223 // Set the current school year.
+    const pastSY = SY2223 // Set the current school year.
+    const currentSY = SY2324 // Set the current school year.
     const nextSY = SY2324 // Set the current school year.
     // Define the Current Date:
     const dateToday = new Date();
@@ -130,9 +135,6 @@
       let dates = []
       for (i in currentSY.dates) {
         dates.push(currentSY.dates[i])
-      }
-      for (i in nextSY.dates) {
-        dates.push(nextSY.dates[i])
       }
       dates.sort((a, b) => a.beg - b.beg);
       return dates
@@ -147,7 +149,7 @@
     }
 
     function calculateSY(schoolYear) {
-      yearStart = schoolYear.terms[0].beg // Get T1 beg date
+      yearStart = schoolYear.terms[1].beg // Get T1 beg date
       yearEnd = schoolYear.terms[(schoolYear.terms.length - 2)].end // Get T4 end date
       daysTotal = Math.floor((yearEnd - yearStart) / (1000 * 3600 * 24))
       daysElapsed = Math.floor((dateToday - yearStart) / (1000 * 3600 * 24))
@@ -157,48 +159,6 @@
       return
     }
     calculateSY(currentSY)
-
-    // function calculateHolidayDurations(schoolYear) {
-    //   for (let i = 0; i < schoolYear.dates.length; i++) {
-    //     if (schoolYear.dates[i].beg - schoolYear.dates[i].end == 0) {
-    //       schoolYear.dates[i].duration = 1;
-    //     } else {
-    //       let holidayDuration = (schoolYear.dates[i].end - schoolYear.dates[i].beg) / (1000 * 3600 * 24)
-    //       schoolYear.dates[i].duration = holidayDuration;
-    //     }
-    //   }
-    // }
-    // calculateHolidayDurations(currentSY)
-
-    // function subtractdatesFromTerm(schoolYear) {
-    //   let dates = schoolYear.dates
-    //   let terms = schoolYear.terms
-    //   let termdatesList = [0, 0, 0, 0, 0, 0, []]
-    //   for (let i = 0; i < schoolYear.dates.length; i++) {
-    //     if (schoolYear.dates[i].isStudentHoliday == true) {
-    //       // T1 dates duration total in termdatesList[0], and so on:
-    //       if (dates[i].beg > terms[0].beg && dates[i].end < terms[0].end) {
-    //         termdatesList[0] -= dates[i].duration
-    //       } else if (dates[i].beg > terms[1].beg && dates[i].end < terms[1].end) {
-    //         termdatesList[1] -= dates[i].duration
-    //       } else if (dates[i].beg > terms[2].beg && dates[i].end < terms[2].end) {
-    //         termdatesList[2] -= dates[i].duration
-    //       } else if (dates[i].beg > terms[3].beg && dates[i].end < terms[3].end) {
-    //         termdatesList[3] -= dates[i].duration
-    //       } else if (dates[i].beg > terms[4].beg && dates[i].end < terms[4].end) {
-    //         termdatesList[4] -= dates[i].duration
-    //       } else if (dates[i].beg > terms[5].beg && dates[i].end < terms[5].end) {
-    //         termdatesList[5] -= dates[i].duration
-    //       } else {
-    //         termdatesList[6].push("Not a term holiday: " + dates[i].name + " on " + dates[i].beg)
-    //       }
-    //     }
-    //   }
-    //   console.log(termdatesList)
-    //   // Subtract dates from Term Totals:
-
-    // }
-    // subtractdatesFromTerm(currentSY)
 
     // Calculate the terms:
 
@@ -245,17 +205,17 @@
       for (let i = 0; i < schoolYear.terms.length; i++) { // 6
         dotsHtml = ""
         for (let x = 0; x < schoolYear.terms[i].termDaysElapsed; x++) {
-          dotsHtml += "<div class='dot filled-dot'></div>"
+          dotsHtml += `<div class='dot filled-dot' title='${x}' ></div>`
         }
         dotsEmptyHtml.push(dotsHtml)
         dotsHtml = ""
         for (let y = 0; y < schoolYear.terms[i].termDaysRemain; y++) {
-          dotsHtml += "<div class='dot empty-dot'></div>"
+          dotsHtml += `<div class='dot empty-dot' title='${y}' ></div>`
         }
         dotsFilledHtml.push(dotsHtml)
       }
     }
-    drawDots(SY2223)
+    drawDots(currentSY)
 
 
   </script>
@@ -300,6 +260,10 @@
   <!-- Dots -->
   <div id="dots" class="container-fluid">
     <div class="row pt-3 pb-2">
+      <!-- <div class="col col-md-2 col-4 pb-2">
+        <h3>SV</h3>
+        <div id="dots_t0"></div>
+      </div> -->
       <div class="col col-md-2 col-4 pb-2">
         <h3>T1</h3>
         <div id="dots_t1"></div>
@@ -355,16 +319,16 @@
         <div class="col-3 pr-4">
           <h3 class="progress-title">T1</h3>
           <div class="progress">
-          <div class="progress-bar" style="width:${SY2223.terms[0].termPercentComplete}%; background:#049DBF;">
-          <div class="progress-value">${SY2223.terms[0].termPercentComplete}%</div>
+          <div class="progress-bar" style="width:${SY2324.terms[1].termPercentComplete}%; background:#049DBF;">
+          <div class="progress-value">${currentSY.terms[1].termPercentComplete}%</div>
         </div>
       </div>
     </div>
     <div class="col-3 pr-4">
       <h3 class="progress-title">T2</h3>
           <div class="progress">
-          <div class="progress-bar" style="width:${SY2223.terms[1].termPercentComplete}%; background:#D9B504;">
-          <div class="progress-value">${SY2223.terms[1].termPercentComplete}%</div>
+          <div class="progress-bar" style="width:${currentSY.terms[2].termPercentComplete}%; background:#D9B504;">
+          <div class="progress-value">${currentSY.terms[2].termPercentComplete}%</div>
         </div>
       </div>
     </div>
@@ -382,32 +346,32 @@
       <div class="col col-3 pr-4">
         <h3 class="progress-title">T3</h3>
           <div class="progress">
-          <div class="progress-bar" style="width:${SY2223.terms[2].termPercentComplete}%; background:#D97904;">
-          <div class="progress-value">${SY2223.terms[2].termPercentComplete}%</div>
+          <div class="progress-bar" style="width:${currentSY.terms[3].termPercentComplete}%; background:#D97904;">
+          <div class="progress-value">${currentSY.terms[3].termPercentComplete}%</div>
         </div>
         </div>
       </div>
       <div class="col col-3 pr-4">
         <h3 class="progress-title">T4</h3>
           <div class="progress">
-          <div class="progress-bar" style="width:${SY2223.terms[3].termPercentComplete}%; background:#97c513;">
-          <div class="progress-value">${SY2223.terms[3].termPercentComplete}%</div>
+          <div class="progress-bar" style="width:${currentSY.terms[4].termPercentComplete}%; background:#97c513;">
+          <div class="progress-value">${currentSY.terms[4].termPercentComplete}%</div>
         </div>
         </div>
       </div>
       <div class="col col-3 pr-4">
         <h3 class="progress-title">PS</h3>
           <div class="progress">
-          <div class="progress-bar" style="width:${SY2223.terms[4].termPercentComplete}%; background:#D93D04;">
-          <div class="progress-value">${SY2223.terms[4].termPercentComplete}%</div>
+          <div class="progress-bar" style="width:${currentSY.terms[5].termPercentComplete}%; background:#D93D04;">
+          <div class="progress-value">${currentSY.terms[5].termPercentComplete}%</div>
         </div>
         </div>
       </div>
       <div class="col col-3 pr-4">
         <h3 class="progress-title">SS</h3>
           <div class="progress">
-          <div class="progress-bar" style="width:${SY2223.terms[5].termPercentComplete}%; background:#D97904;">
-          <div class="progress-value">${SY2223.terms[5].termPercentComplete}%</div>
+          <div class="progress-bar" style="width:${currentSY.terms[6].termPercentComplete}%; background:#D97904;">
+          <div class="progress-value">${currentSY.terms[6].termPercentComplete}%</div>
         </div>
         </div>
       </div>
@@ -430,12 +394,13 @@
         document.getElementById("daysRemainYearContainer").innerHTML = "There are <strong>" + daysRemainYear + "</strong> days until the end of the school year.";
       }
       document.getElementById("progressBar").innerHTML = progressBarHtml;
-      document.getElementById("dots_t1").innerHTML = dotsEmptyHtml[0] + dotsFilledHtml[0];
-      document.getElementById("dots_t2").innerHTML = dotsEmptyHtml[1] + dotsFilledHtml[1];
-      document.getElementById("dots_t3").innerHTML = dotsEmptyHtml[2] + dotsFilledHtml[2];
-      document.getElementById("dots_t4").innerHTML = dotsEmptyHtml[3] + dotsFilledHtml[3];
-      document.getElementById("dots_ps").innerHTML = dotsEmptyHtml[4] + dotsFilledHtml[4];
-      document.getElementById("dots_ss").innerHTML = dotsEmptyHtml[5] + dotsFilledHtml[5];
+      // document.getElementById("dots_t0").innerHTML = dotsEmptyHtml[0] + dotsFilledHtml[0];
+      document.getElementById("dots_t1").innerHTML = dotsEmptyHtml[1] + dotsFilledHtml[1];
+      document.getElementById("dots_t2").innerHTML = dotsEmptyHtml[2] + dotsFilledHtml[2];
+      document.getElementById("dots_t3").innerHTML = dotsEmptyHtml[3] + dotsFilledHtml[3];
+      document.getElementById("dots_t4").innerHTML = dotsEmptyHtml[4] + dotsFilledHtml[4];
+      document.getElementById("dots_ps").innerHTML = dotsEmptyHtml[5] + dotsFilledHtml[5];
+      document.getElementById("dots_ss").innerHTML = dotsEmptyHtml[6] + dotsFilledHtml[6];
       // Show upcoming events:
       let eHol = []
       let eNon = []
@@ -453,6 +418,8 @@
           }
         }
       }
+      console.log(eHol)
+      console.log(eNon)
       // Display upcoming events (of both types):
       for (x in eHol) {
         textHol += "<li class='event-item'><strong>" + eHol[x].name + "</strong>"
@@ -499,6 +466,20 @@
       });
     }
     playAudio();
+
+    // Keep screen awake:
+    // https://stackoverflow.com/questions/11529247/in-html5-how-can-i-keep-an-android-device-s-screen-on/66652141#66652141
+    // Create a reference for the Wake Lock:
+    let wakeLock = null;
+    // create an async function to request a wake lock
+    try {
+      wakeLock = navigator.wakeLock.request('screen');
+      // wakeLock = await navigator.wakeLock.request('screen');
+      statusElem.textContent = 'Wake Lock is active!';
+    } catch (err) {
+      // try other solutions here ...
+    }
+
   </script>
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
