@@ -255,8 +255,6 @@
     <audio id="airhorn" src="sounds/airhorn.mp3"></audio>
     <audio id="choir" src="sounds/ahhhh.mp3"></audio>
   </div>
-  <!-- Progress Bars -->
-  <div id="progressBar" class="container-fluid pt-3 px-4"></div>
   <!-- Dots -->
   <div id="dots" class="container-fluid">
     <div class="row pt-3 pb-2">
@@ -290,12 +288,6 @@
       </div>
     </div>
   </div>
-  <!-- Tooltip test -->
-  <!-- <div class="boo">Hover over me</div> -->
-  <!-- <div class="tt">
-    Hover over me
-    <div class="tooltiptext"><span>Tooltip text</span></div>
-  </div> -->
 
   <!-- Upcoming Student Holidays -->
   <div class="container-fluid py-2 d-flex" id="events">
@@ -314,68 +306,7 @@
   </div>
 
   <script>
-    // Write content to elements
-    let progressBarHtml = `<div class="row">
-        <div class="col-3 pr-4">
-          <h3 class="progress-title">T1</h3>
-          <div class="progress">
-          <div class="progress-bar" style="width:${SY2324.terms[1].termPercentComplete}%; background:#049DBF;">
-          <div class="progress-value">${currentSY.terms[1].termPercentComplete}%</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-3 pr-4">
-      <h3 class="progress-title">T2</h3>
-          <div class="progress">
-          <div class="progress-bar" style="width:${currentSY.terms[2].termPercentComplete}%; background:#D9B504;">
-          <div class="progress-value">${currentSY.terms[2].termPercentComplete}%</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-6 pr-4">
-      <h3 class="progress-title"> SY</h3>
-        <div class="progress">
-          <div class="progress-bar" style="width:${daysElapsedPercent}%; background:#021F59;">
-          <div class="progress-value">${daysElapsedPercent}%</div>
-        </div>
-      </div>
-    </div>
-    </div>
-    
-    <div class="row">
-      <div class="col col-3 pr-4">
-        <h3 class="progress-title">T3</h3>
-          <div class="progress">
-          <div class="progress-bar" style="width:${currentSY.terms[3].termPercentComplete}%; background:#D97904;">
-          <div class="progress-value">${currentSY.terms[3].termPercentComplete}%</div>
-        </div>
-        </div>
-      </div>
-      <div class="col col-3 pr-4">
-        <h3 class="progress-title">T4</h3>
-          <div class="progress">
-          <div class="progress-bar" style="width:${currentSY.terms[4].termPercentComplete}%; background:#97c513;">
-          <div class="progress-value">${currentSY.terms[4].termPercentComplete}%</div>
-        </div>
-        </div>
-      </div>
-      <div class="col col-3 pr-4">
-        <h3 class="progress-title">PS</h3>
-          <div class="progress">
-          <div class="progress-bar" style="width:${currentSY.terms[5].termPercentComplete}%; background:#D93D04;">
-          <div class="progress-value">${currentSY.terms[5].termPercentComplete}%</div>
-        </div>
-        </div>
-      </div>
-      <div class="col col-3 pr-4">
-        <h3 class="progress-title">SS</h3>
-          <div class="progress">
-          <div class="progress-bar" style="width:${currentSY.terms[6].termPercentComplete}%; background:#D97904;">
-          <div class="progress-value">${currentSY.terms[6].termPercentComplete}%</div>
-        </div>
-        </div>
-      </div>
-    </div>`;
+
     function showStuff() {
       // Generate written summaries and HTML to display them:
       document.getElementById("dateSpan").innerHTML = "<strong>" + datePretty + "</strong>";
@@ -393,7 +324,6 @@
       } else {
         document.getElementById("daysRemainYearContainer").innerHTML = "There are <strong>" + daysRemainYear + "</strong> days until the end of the school year.";
       }
-      document.getElementById("progressBar").innerHTML = progressBarHtml;
       // document.getElementById("dots_t0").innerHTML = dotsEmptyHtml[0] + dotsFilledHtml[0];
       document.getElementById("dots_t1").innerHTML = dotsEmptyHtml[1] + dotsFilledHtml[1];
       document.getElementById("dots_t2").innerHTML = dotsEmptyHtml[2] + dotsFilledHtml[2];
@@ -418,8 +348,6 @@
           }
         }
       }
-      console.log(eHol)
-      console.log(eNon)
       // Display upcoming events (of both types):
       for (x in eHol) {
         textHol += "<li class='event-item'><strong>" + eHol[x].name + "</strong>"

@@ -58,55 +58,6 @@ iframe {
 .d-flex div {
   padding-right: 1em
 }
-
-/* Progress Bar */
-.progress-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: #333;
-  margin: 0 0 10px
-}
-
-.progress {
-  height: 16px;
-  background: silver;
-  border-radius: 0;
-  box-shadow: none;
-  margin-bottom: 30px;
-  overflow: visible;
-}
-
-.progress .progress-bar {
-  position: relative;
-  width: 100%;
-}
-
-.progress .progress-value {
-  display: block;
-  font-size: 16px;
-  font-weight: 500;
-  color: black;
-  position: relative;
-  top: -28px;
-  right: -25px;
-}
-
-.progress .progress-bar:after {
-  content: "";
-  display: inline-block;
-  width: 8px;
-  background: #fff;
-  position: absolute;
-  top: -10px;
-  bottom: -10px;
-  right: -4px;
-  z-index: 1;
-  transform: rotate(30deg)
-}
-
-#progressBar {
-  background: linear-gradient(to right, #d9a7c7, #fffcdc);
-}
 #dots {
   background-color:rgba(255, 255, 255, 0.85);
 }
