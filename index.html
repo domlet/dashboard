@@ -290,24 +290,18 @@
       </div>
     </div>
   </div>
-  <!-- Tooltip test -->
-  <!-- <div class="boo">Hover over me</div> -->
-  <!-- <div class="tt">
-    Hover over me
-    <div class="tooltiptext"><span>Tooltip text</span></div>
-  </div> -->
 
   <!-- Upcoming Student Holidays -->
-  <div class="container-fluid py-2 d-flex" id="events">
+  <div class="container-fluid pt-2 d-flex" id="events">
     <div class="row">
       <div class="col-6">
         <div class="container-fluid">
-          <h2>Student Holidays:</h2>
+          <h2><a class="reverse" href="https://calendar.google.com/calendar/embed?src=ccpaedu.com_ftu0la54kio0crhh83m267lri8%40group.calendar.google.com&ctz=America%2FLos_Angeles" target="_blank">Student Holidays:</a></h2>
           <ul id="events-student-holiday"></ul>
         </div>
       </div>
       <div class="col-6">
-        <h2>Dates to Note:</h2>
+        <h2><a class="reverse" href="https://www.ousd.org/districtcalendar" target="_blank">Dates to Note:</a></h2>
         <ul id="events-student-non-holiday"></ul>
       </div>
     </div>
@@ -418,8 +412,6 @@
           }
         }
       }
-      console.log(eHol)
-      console.log(eNon)
       // Display upcoming events (of both types):
       for (x in eHol) {
         textHol += "<li class='event-item'><strong>" + eHol[x].name + "</strong>"

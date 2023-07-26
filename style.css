@@ -59,6 +59,11 @@ iframe {
   padding-right: 1em
 }
 
+a.reverse {
+  color: #fff;  
+  text-decoration: none;
+}
+
 /* Progress Bar */
 .progress-title {
   font-size: 16px;
