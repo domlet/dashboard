@@ -122,4 +122,6 @@ div[title]:hover::after {
   border: 1px dotted gray;
   padding: 0.1em 0.2em;
   font-size: medium;
+  white-space:nowrap;
+  z-index: 10;
 }

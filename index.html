@@ -204,12 +204,15 @@
       for (let i = 0; i < schoolYear.terms.length; i++) { // 6
         dotsHtml = ""
         for (let x = 0; x < schoolYear.terms[i].termDaysElapsed; x++) {
-          dotsHtml += `<div class='dot filled-dot' title='${x}' ></div>`
+          dotsHtml += `<div class='dot filled-dot' title='${schoolYear.terms[i].beg + x}' ></div>`
         }
         dotsEmptyHtml.push(dotsHtml)
         dotsHtml = ""
         for (let y = 0; y < schoolYear.terms[i].termDaysRemain; y++) {
-          dotsHtml += `<div class='dot empty-dot' title='${y}' ></div>`
+          let date = schoolYear.terms[i].beg
+          date.setDate(date.getDate() + 1)
+          let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })
+          dotsHtml += `<div class='dot empty-dot' title='${dateCute}' ></div>`
         }
         dotsFilledHtml.push(dotsHtml)
       }
