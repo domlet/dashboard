@@ -14,11 +14,14 @@ body {
   background-image: url('images/bg-theinfinite8enigma-East-Oakland-510-Graffiti-Art.jpeg');
   background-size: cover;
 }
+.main-wrapper {
+    height: 100vh;  
+  }
 h2 {
   font-size: 1.3em;
   font-weight: bolder;
-  color: #fff;
-  padding: .3em 0 .2em 0 ;
+  /* color: #fff; */
+  padding: .3em 0 0 0 ;
 }
 ul {
   margin: 0;
@@ -31,6 +34,16 @@ ul {
   font-size: x-large;
   background-color: rgba(2, 31, 89, .75);
   color: #fff;
+}
+#footer {
+  font-size: small;
+  color: #fff;
+  background-color: rgba(2, 31, 89, .75);
+  height: 100%;
+}
+#footer a {
+  color: #fff;
+  text-decoration: underline;
 }
 .goog-te-combo {
   padding: 0.3em;
@@ -90,8 +103,18 @@ iframe {
   border: 1px solid white;
   background-color: #021F59;
 }
+/* .striped-dot {
+  border: 1px solid black;
+	background-image: url("images/tinystripes.png");
+	background-repeat: repeat;
+  background-size: 75%;
+} */
+.lowkey, .lowkey:hover {
+  text-decoration: none;
+}
 #events {
   background-color:rgba(217,121,4, 0.9);
+  color: #000;
 }
 #events ul {
   padding: 0
@@ -102,6 +125,7 @@ iframe {
   padding: 0.1em 0.3em;
   white-space: nowrap;
   border-radius: 0.3em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
   .event-item {
   display: none;
