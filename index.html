@@ -360,12 +360,20 @@
       }
       // Display upcoming events (of both types):
       for (x in eHol) {
-        textHol += "<li class='event-item'><strong>" + eHol[x].name.substring(0, 21) + "</strong>"
-        textHol += " (" + eHol[x].beg.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) + ")</li>"
+        if (eHol[x].name.length > 18) {
+          textHol += "<li class='event-item'><strong>" + eHol[x].name.substring(0, 18) + ".. </strong>"
+        } else {
+          textHol += "<li class='event-item'><strong>" + eHol[x].name + " </strong>"
+        }
+        textHol += "<span class='event-date'>" + eHol[x].beg.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) + "</span></li>"
       }
       for (y in eNon) {
-        textNon += "<li class='event-item'><strong>" + eNon[y].name.substring(0, 21) + "</strong>"
-        textNon += " (" + eNon[y].beg.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) + ")<br><p class='event-item-desc py-0'>" + eNon[y].description + "</p></li>"
+        if (eNon[y].name.length > 18) {
+          textNon += "<li class='event-item'><strong>" + eNon[y].name.substring(0, 18) + ".. </strong>"
+        } else {
+          textNon += "<li class='event-item'><strong>" + eNon[y].name + " </strong>"
+        }
+        textNon += "<span class='event-date'>" + eNon[y].beg.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) + "</span><br><p class='event-item-desc py-0'>" + eNon[y].description + "</p></li>"
       }
       document.getElementById("events-student-holiday").innerHTML = textHol
       document.getElementById("events-student-non-holiday").innerHTML = textNon
