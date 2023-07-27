@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>School Dashboard</title>
+  <title>CCPA School Dashboard</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
   <link rel="stylesheet" href="style.css" />
   <script>
@@ -139,7 +139,6 @@
       dates.sort((a, b) => a.beg - b.beg);
       return dates
     })();
-    console.log(datesOrdered.length)
     function dateDiffInDays(a, b) {
       const _MS_PER_DAY = 1000 * 60 * 60 * 24;
       // Discard the time and time-zone information.
@@ -162,7 +161,7 @@
 
     // Calculate the terms:
 
-    let currentTerm = "" // Global var
+    let currentTerm = {}
     let termDaysTotal = ""
     let termDaysElapsed = ""
     let termDaysRemain = ""
@@ -188,7 +187,7 @@
           termsList[i].termDaysElapsed = Math.floor((dateToday - termsList[i].beg) / (1000 * 3600 * 24))
           termsList[i].termDaysRemain = (Math.floor(termDaysTotal - termsList[i].termDaysElapsed))
           termsList[i].termPercentComplete = (Math.floor((termsList[i].termDaysElapsed / termDaysTotal) * 100))
-          currentTerm = termsList[i].termName // Returns like "t3_SY2223"
+          currentTerm = termsList[i]
         }
         // Update the object:
         termsList[i].percentcomplete = termPercentComplete
@@ -239,21 +238,21 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <div id="google_translate_element"></div>
-        <div><img id="calButton" onclick="showGoogleCalendar()" src="icons/calendar.png" /></div>
+        <div class="col" id="google_translate_element"></div>
+        <div class="col"><img id="calButton" onclick="showGoogleCalendar()" src="icons/calendar.png" /></div>
       </div>
     </div>
   </div>
 
-  <div id="stats" class="container-fluid py-3 px-2">
+  <div id="stats" class="container-fluid py-3 px-0">
     <div class="d-flex">
-      <div class="col flex-fill">
+      <div class="col flex-fill pr-0">
         <span id="currentTerm"></span>
       </div>
-      <div class="col flex-fill">
+      <div class="col flex-fill pr-0">
         <span id="daysElapsedPercent"></span>
       </div>
-      <div class="col flex-fill">
+      <div class="col flex-fill pr-0">
         <span id="daysRemainYearContainer"></span>
       </div>
     </div>
@@ -300,11 +299,11 @@
   <!-- Upcoming Student Holidays -->
   <div class="py-2 d-flex" id="events">
     <div class="row pl-3">
-      <div class="col-sm-6 pl-12">
+      <div class="col-sm-6 pb-3 pl-12">
         <h2>Student Holidays:</h2>
         <ul id="events-student-holiday"></ul>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 pb-3">
         <h2>Dates to Note:</h2>
         <ul id="events-student-non-holiday"></ul>
       </div>
@@ -321,8 +320,7 @@
       } else {
         document.getElementById("daysElapsedPercent").innerHTML = "The <strong>" + currentSY.schoolyear + "</strong> school year is almost finished.";
       }
-      // TODO: fix 'currentSY.terms[5].termDaysRemain' hack
-      document.getElementById("currentTerm").innerHTML = "We are in <strong>" + currentTerm + "</strong> with " + currentSY.terms[5].termDaysRemain + " calendar days left." // Error
+      document.getElementById("currentTerm").innerHTML = "We are in <strong>" + currentTerm.termName + "</strong> with " + currentTerm.termDaysRemain + " calendar days left." // Error
       if (daysRemainYear < 0) {
         document.getElementById("daysRemainYearContainer").innerHTML = "We have <strong>" + daysUntilNextSY + "</strong> summer days until <strong>" + nextSY.schoolyear + "</strong> begins.";
         // document.getElementById("daysRemainYearContainer").innerHTML = "Enjoy <strong>" + daysUntilNextSY + "</strong> summer days until <strong>" + nextSY.schoolyear + "</strong> begins on " + nextSY.terms[0].beg.toLocaleString('en-US', { month: 'long', day: 'numeric' }) + ".";
@@ -401,17 +399,18 @@
     playAudio();
 
     // Keep screen awake:
-    // https://stackoverflow.com/questions/11529247/in-html5-how-can-i-keep-an-android-device-s-screen-on/66652141#66652141
-    // Create a reference for the Wake Lock:
-    let wakeLock = null;
-    // create an async function to request a wake lock
-    try {
-      wakeLock = navigator.wakeLock.request('screen');
-      // wakeLock = await navigator.wakeLock.request('screen');
-      statusElem.textContent = 'Wake Lock is active!';
-    } catch (err) {
-      // try other solutions here ...
-    }
+    // https://developer.mozilla.org/en-US/docs/Web/API/WakeLock/request
+    const requestWakeLock = async () => {
+      try {
+        const wakeLock = await navigator.wakeLock.request("screen");
+      } catch (err) {
+        // The wake lock request fails - usually system-related, such as low battery.
+
+        console.log(`${err.name}, ${err.message}`);
+      }
+    };
+
+    requestWakeLock();
 
   </script>
 

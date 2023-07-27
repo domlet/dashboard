@@ -19,16 +19,22 @@ ul {
   margin: 0;
   padding: 1em;
 }
+.navbar-toggler {
+  border: 2px solid
+}
 #date {
   font-size: x-large;
   background-color: rgba(2, 31, 89, .75);
   color: #fff;
 }
-#google_translate_element {
-  float: right;
-  display: inline;
-  vertical-align: middle;
+.goog-te-combo {
+  padding: 0.3em;
+  border-radius: 0.4em;
 }
+.goog-te-gadget, .VIpgJd-ZVi9od-l4eHX-hSRGPd {
+        color: #fff !important;
+    }    
+
 #calButton {
   /* float: right; */
   height: 1.2em;
@@ -87,17 +93,12 @@ iframe {
 }
 .event-item {
   display: none;
-  /* list-style-image: url('images/black-star-icon.svg'); */
   padding: 0 0 0 1.5em;
 	list-style: none;
 	background-image: url("images/black-star-icon.svg");
 	background-repeat: no-repeat;
 	background-position: left .25em;
 	background-size: .9em;
-}
-.event-item li::marker {
-  color: red;
-  font-size: 3em;
 }
 #events-student-holiday .event-item:nth-child(-n+6) {
   display: list-item;
@@ -110,7 +111,7 @@ iframe {
   line-height: 1.4em;
   margin: 0 0 .3em 0;
 }
-
+/* tooltips */
 div[title]:hover::after {
   content: attr(title);
   position: relative;
