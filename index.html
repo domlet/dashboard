@@ -210,7 +210,7 @@
         dotsHtml = ""
         for (let x = 0; x < schoolYear.terms[i].termDaysElapsed; x++) {
           let date = schoolYear.terms[i].beg
-          let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })
+          let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' })
           dotsHtml += `<div class='dot filled-dot' title='${dateCute}' ></div>`
           date.setDate(date.getDate() + 1)
         }
@@ -218,20 +218,14 @@
         dotsHtml = ""
         for (let y = 0; y < schoolYear.terms[i].termDaysRemain; y++) {
           let date = schoolYear.terms[i].beg
-          let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })
+          let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' })
           dotsHtml += `<div class='dot empty-dot' title='${dateCute}' ></div>`
           date.setDate(date.getDate() + 1)
         }
         dotsFilledHtml.push(dotsHtml)
-        // // change weekends to striped
-        // let emptyDots = document.querySelectorAll(".empty-dot")
-        // console.log(emptyDots)
-        // // emptyDots.forEach.add('.striped dot')
       }
     }
     drawDots(currentSY)
-
-
   </script>
 </head>
 
@@ -247,7 +241,7 @@
     <div class="navbar navbar-dark " id="date">
       <div class="container-fluid p-0">
         <div class="col-6 navbar-brand p-0 ">
-          <img src="images/ccpa-logo-lion-color.png" width="30" height="30" class="d-inline-block align-top mr-1" alt="">
+          <a href='https://www.ousd.org/Page/9375' target="_blank"><img src="images/ccpa-logo-lion-color.png" width="30" height="30" class="d-inline-block align-top mr-1" alt="Lion logo for Coliseum College Prep Academy"></a>
           <span id="dateSpan"></span>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -334,7 +328,7 @@
         <div class="col py-2 pl-12">
           Coliseum College Prep Academy (<a href="https://www.ousd.org/CCPA" target="_blank">ousd.org/CCPA</a>) is a public school in East Oakland, California.<br>
           This dashboard visualizes our progress through the academic terms in the school year.<br>
-          See this project on GitHub: <a href="'https://github.com/domlet/dashboard" target="_blank">github.com/domlet/dashboard</a>
+          See this project on GitHub: <a href="https://github.com/domlet/dashboard" target="_blank">github.com/domlet/dashboard</a>
         </div>
       </div>
     </div>
