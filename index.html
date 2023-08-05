@@ -77,7 +77,7 @@
             { beg: new Date('Aug 05, 2023'), end: new Date('Aug 05, 2023'), eventType: 'studentHoliday', name: "Teacher Work Day", description: "" },
             // T1
             { beg: new Date('Aug 07, 2023'), end: new Date('Aug 07, 2023'), eventType: 'event', name: "First Day of School", description: "" },
-            { beg: new Date('Aug 29, 2023'), end: new Date('Aug 29, 2023'), eventType: 'event', name: "Back to School Night", description: "" },
+            { beg: new Date('Aug 29, 2023'), end: new Date('Aug 29, 2023'), eventType: 'event', name: "Back to School Night", description: "5-7pm at CCPA" },
             { beg: new Date('Sep 04, 2023'), end: new Date('Sep 04, 2023'), eventType: 'studentHoliday', name: "Labor Day", description: "" },
             { beg: new Date('Sep 15, 2023'), end: new Date('Sep 15, 2023'), eventType: 'studentHoliday', name: "Prof Dev (PD) Day", description: "" },
             { beg: new Date('Oct 09, 2023'), end: new Date('Oct 09, 2023'), eventType: 'studentHoliday', name: "Indigenous Peoples' Day (in lieu of Lincoln's Birthday)", description: "" },
@@ -119,11 +119,12 @@
             { beg: new Date('Apr 22, 2024'), end: new Date('Apr 22, 2024'), eventType: 'event', name: "Passover", description: "Jewish holiday." },
             { beg: new Date('May 23, 2024'), end: new Date('May 23, 2024'), eventType: 'event', name: "Vesak", description: "Buddhist holiday, some observe the holiday in April or on other days in May." },
             { beg: new Date('Jun 17, 2024'), end: new Date('Jun 17, 2024'), eventType: 'event', name: "Eid al-Adha", description: "Muslim holiday, begins the prior evening, some observe the holiday for up to four days." },
-            // Sports
-            { beg: new Date('AUG 30, 2023'), end: new Date('AUG 30, 2023'), eventType: 'sports', name: "HS Girls Volleyball vs. OMI", description: "5-7pm at CCPA, 1390 66th Ave, Oakland, CA" },
-            { beg: new Date('SEP 06, 2023'), end: new Date('SEP 06, 2023'), eventType: 'sports', name: "HS Girls Volleyball vs. KIPP King", description: "5-8pm at KIPP King Collegiate, 2005B Via Barrett, San Lorenzo, CA" },
-            { beg: new Date('SEP 18, 2023'), end: new Date('SEP 18, 2023'), eventType: 'sports', name: "HS Girls Volleyball vs. KIPP King", description: "5-8pm at CCPA, 1390 66th Ave, Oakland, CA" },
-            { beg: new Date('NOV 15, 2023'), end: new Date('NOV 15, 2023'), eventType: 'sports', name: "HS Boys Basketball vs. Patten", description: "5-6pm at Patten University, 2433 Coolidge Ave, Oakland, CA" }
+            // Student Activities
+            { beg: new Date('AUG 30, 2023'), end: new Date('AUG 30, 2023'), eventType: 'studentActivity', name: "HS Girls Volleyball vs. OMI", description: "5-7pm at CCPA, 1390 66th Ave, Oakland, CA" },
+            { beg: new Date('SEP 06, 2023'), end: new Date('SEP 06, 2023'), eventType: 'studentActivity', name: "HS Girls Volleyball vs. KIPP King", description: "5-8pm at KIPP King Collegiate, 2005B Via Barrett, San Lorenzo, CA" },
+            { beg: new Date('SEP 18, 2023'), end: new Date('SEP 18, 2023'), eventType: 'studentActivity', name: "HS Girls Volleyball vs. KIPP King", description: "5-8pm at CCPA, 1390 66th Ave, Oakland, CA" },
+            { beg: new Date('NOV 15, 2023'), end: new Date('NOV 15, 2023'), eventType: 'studentActivity', name: "HS Boys Basketball vs. Patten", description: "5-6pm at Patten University, 2433 Coolidge Ave, Oakland, CA" },
+            { beg: new Date('AUG 31, 2023'), end: new Date('AUG 31, 2023'), eventType: 'studentActivity', name: "Join HS Cross-Country", description: " Interest Form Open: bit.ly/CCPA-HSXC-23" }
 
           ]
       }
@@ -322,12 +323,12 @@
           <ul id="events-student-holiday"></ul>
         </div>
         <div class="flex-fill col-sm-4 pt-2">
-          <h2>Dates to Note:</h2>
-          <ul id="events-student-non-holiday"></ul>
+          <h2>Student Activities:</h2>
+          <ul id="events-student-activities"></ul>
         </div>
         <div class="flex-fill col-sm-4 pt-2">
-          <h2>Student Athletes:</h2>
-          <ul id="events-sports"></ul>
+          <h2>Dates to Note:</h2>
+          <ul id="events-student-non-holiday"></ul>
         </div>
       </div>
     </a>
@@ -369,10 +370,10 @@
         // Show upcoming events:
         let eHoliday = []
         let eEvent = []
-        let eSports = []
+        let eStudAct = []
         let textHolidays = ""
         let textEvents = ""
-        let textSports = ""
+        let textStudActs = ""
         // Collect only future events:
         for (i in datesOrdered) {
           if (datesOrdered[i].beg > dateToday) {
@@ -383,10 +384,11 @@
               // Collect future non-holidays:
               eEvent.push(datesOrdered[i])
             } else {
-              eSports.push(datesOrdered[i])
+              eStudAct.push(datesOrdered[i])
             }
           }
         }
+        console.log(textStudActs)
         // Display upcoming events (of both types):
         for (x in eHoliday) {
           if (eHoliday[x].name.length > 18) {
@@ -404,18 +406,18 @@
           }
           textEvents += "<span class='event-date'>" + eEvent[y].beg.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) + "</span><br><p class='event-item-desc py-0'>" + eEvent[y].description + "</p></li>"
         }
-        for (z in eSports) {
-          if (eSports[z].name.length > 18) {
-            textSports += "<li class='event-item'><strong>" + eSports[z].name.substring(0, 18) + ".. </strong>"
+        for (z in eStudAct) {
+          if (eStudAct[z].name.length > 18) {
+            textStudActs += "<li class='event-item'><strong>" + eStudAct[z].name.substring(0, 18) + ".. </strong>"
           } else {
-            textSports += "<li class='event-item'><strong>" + eSports[z].name + " </strong>"
+            textStudActs += "<li class='event-item'><strong>" + eStudAct[z].name + " </strong>"
           }
-          textSports += "<span class='event-date'>" + eSports[z].beg.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) + "</span><br><p class='event-item-desc py-0'>" + eSports[z].description + "</p></li>"
+          textStudActs += "<span class='event-date'>" + eStudAct[z].beg.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) + "</span><br><p class='event-item-desc py-0'>" + eStudAct[z].description + "</p></li>"
         }
-        console.log(textSports)
+        console.log(textStudActs)
         document.getElementById("events-student-holiday").innerHTML = textHolidays
         document.getElementById("events-student-non-holiday").innerHTML = textEvents
-        document.getElementById("events-sports").innerHTML = textSports
+        document.getElementById("events-student-activities").innerHTML = textStudActs
       }
       // Calendar show/hide onclick:
       let calendarIsVisible = null;
