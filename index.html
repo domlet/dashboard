@@ -62,13 +62,13 @@
         schoolyear: "SY2324",
         terms:
           [
-            { termCode: "sv_SY2324", termName: "Summer Vacation", beg: new Date('July 01, 2023'), end: new Date('Aug 06, 2023'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "t1_SY2324", termName: "T1", beg: new Date('Aug 07, 2023'), end: new Date('Oct 13, 2023'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "t2_SY2324", termName: "T2", beg: new Date('Oct 16, 2023'), end: new Date('Dec 22, 2023'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "t3_SY2324", termName: "T3", beg: new Date('Jan 09, 2024'), end: new Date('Mar 15, 2024'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "t4_SY2324", termName: "T4", beg: new Date('Mar 18, 2024'), end: new Date('May 10, 2024'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "ps_SY2324", termName: "Postsession", beg: new Date('May 13, 2024'), end: new Date('May 23, 2024'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "ss_SY2324", termName: "Summer School", beg: new Date('Jun 03, 2024'), end: new Date('Jun 28, 2024'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "sv_SY2324", termName: "Summer Vacation", beg: new Date('July 01, 2023'), end: new Date('Aug 06, 2023') },
+            { termCode: "t1_SY2324", termName: "T1", beg: new Date('Aug 07, 2023'), end: new Date('Oct 13, 2023') },
+            { termCode: "t2_SY2324", termName: "T2", beg: new Date('Oct 16, 2023'), end: new Date('Dec 22, 2023') },
+            { termCode: "t3_SY2324", termName: "T3", beg: new Date('Jan 09, 2024'), end: new Date('Mar 15, 2024') },
+            { termCode: "t4_SY2324", termName: "T4", beg: new Date('Mar 18, 2024'), end: new Date('May 10, 2024') },
+            { termCode: "ps_SY2324", termName: "Postsession", beg: new Date('May 13, 2024'), end: new Date('May 23, 2024') },
+            { termCode: "ss_SY2324", termName: "Summer School", beg: new Date('Jun 03, 2024'), end: new Date('Jun 28, 2024') },
           ],
         dates:
           [
@@ -198,7 +198,7 @@
           termsList[i].termPercentComplete = 0
           // Current term:
         } else {
-          termsList[i].termDaysElapsed = Math.floor((dateToday - termsList[i].beg) / (1000 * 3600 * 24))
+          termsList[i].termDaysElapsed = Math.floor((dateToday - termsList[i].beg) / (1000 * 3600 * 24) + 1)
           termsList[i].termDaysRemain = (Math.floor(termDaysTotal - termsList[i].termDaysElapsed))
           termsList[i].termPercentComplete = (Math.floor((termsList[i].termDaysElapsed / termDaysTotal) * 100))
           currentTerm = termsList[i]
@@ -215,21 +215,24 @@
     let dotsFilledHtml = []
     function drawDots(schoolYear) {
       let dotsHtml = ""
+      // Do this for each term...
       for (let i = 0; i < schoolYear.terms.length; i++) { // 6
+        // Draw filled dots (for elapsed days)
         dotsHtml = ""
         for (let x = 0; x < schoolYear.terms[i].termDaysElapsed; x++) {
           let date = schoolYear.terms[i].beg
-          let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' })
+          let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) // Tooltip date
           dotsHtml += `<div class='dot filled-dot' title='${dateCute}' ></div>`
-          date.setDate(date.getDate() + 1)
+          date.setDate(date.getDate() + 1) // Increment calendar day
         }
         dotsEmptyHtml.push(dotsHtml)
+        // Draw empty dots (for remaining days)
         dotsHtml = ""
-        for (let y = 0; y < schoolYear.terms[i].termDaysRemain; y++) {
-          let date = schoolYear.terms[i].beg
-          let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' })
+        for (let y = 0; y < (schoolYear.terms[i].termDaysRemain + 1); y++) {
+          let date = dateToday
+          let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) // Tooltip date
+          date.setDate(date.getDate() + 1) // Increment calendar day 
           dotsHtml += `<div class='dot empty-dot' title='${dateCute}' ></div>`
-          date.setDate(date.getDate() + 1)
         }
         dotsFilledHtml.push(dotsHtml)
       }
@@ -317,16 +320,16 @@
 
     <!-- Upcoming Events -->
     <a href='https://www.ousd.org/Page/9375' class="lowkey" target="_blank">
-      <div class="py-2 d-flex container-fluid" id="events">
-        <div class="flex-fill col-sm-4 pl-12 pt-2">
+      <div class="pt-2 pb-4 d-flex container-fluid flex-column" id="events">
+        <div class="col-lg-4 pl-12 pt-2">
           <h2>Student Holidays:</h2>
           <ul id="events-student-holiday"></ul>
         </div>
-        <div class="flex-fill col-sm-4 pt-2">
+        <div class="col-lg-4 pt-2">
           <h2>Student Activities:</h2>
           <ul id="events-student-activities"></ul>
         </div>
-        <div class="flex-fill col-sm-4 pt-2">
+        <div class="col-lg-4 pt-2">
           <h2>Dates to Note:</h2>
           <ul id="events-student-non-holiday"></ul>
         </div>
@@ -337,8 +340,9 @@
     <div class="py-1 d-flex" id="footer">
       <div class="row pl-3">
         <div class="col py-2 pl-12">
-          Coliseum College Prep Academy (<a href="https://www.ousd.org/CCPA" target="_blank">ousd.org/CCPA</a>) is a public school in East Oakland, California.<br>
-          <a href="https://github.com/domlet/dashboard" target="_blank">This dashboard</a> visualizes our progress through the academic terms in the school year.<br>
+          Coliseum College Prep Academy (<a href="https://www.ousd.org/CCPA" target="_blank">ousd.org/CCPA</a>) is a public school in East Oakland, California.
+          This dashboard visualizes our progress through the academic terms in the school year.
+          Learn more: <a href="https://github.com/domlet/dashboard" target="_blank">github.com/domlet/dashboard</a><br>
         </div>
       </div>
     </div>
@@ -360,7 +364,7 @@
         } else {
           document.getElementById("daysRemainYearContainer").innerHTML = "There are <strong>" + daysRemainYear + "</strong> days until the end of the school year.";
         }
-        // document.getElementById("dots_t0").innerHTML = dotsEmptyHtml[0] + dotsFilledHtml[0];
+        // document.getElementById("dots_t0").innerHTML = dotsEmptyHtml[0] + dotsFilledHtml[0]; // Summer Vacation
         document.getElementById("dots_t1").innerHTML = dotsEmptyHtml[1] + dotsFilledHtml[1];
         document.getElementById("dots_t2").innerHTML = dotsEmptyHtml[2] + dotsFilledHtml[2];
         document.getElementById("dots_t3").innerHTML = dotsEmptyHtml[3] + dotsFilledHtml[3];
@@ -414,10 +418,9 @@
           }
           textStudActs += "<span class='event-date'>" + eStudAct[z].beg.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) + "</span><br><p class='event-item-desc py-0'>" + eStudAct[z].description + "</p></li>"
         }
-        console.log(textStudActs)
         document.getElementById("events-student-holiday").innerHTML = textHolidays
-        document.getElementById("events-student-non-holiday").innerHTML = textEvents
         document.getElementById("events-student-activities").innerHTML = textStudActs
+        document.getElementById("events-student-non-holiday").innerHTML = textEvents
       }
       // Calendar show/hide onclick:
       let calendarIsVisible = null;
