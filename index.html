@@ -234,7 +234,7 @@
           termsList[i].termPercentComplete = (Math.floor((termsList[i].termDaysElapsed / termDaysTotal) * 100))
           currentTerm = termsList[i]
         }
-        // Update the object:
+        // Update the 'allterms' object:
         termsList[i].percentcomplete = termPercentComplete
         console.log("" + termsList[i].termName + ": " + termsList[i].termDaysElapsed + "/" + termsList[i].termDaysTotal + " days (" + termsList[i].termPercentComplete + "%); " + termsList[i].termDaysRemain + " remain.")
       }
@@ -247,25 +247,24 @@
     function drawDots(schoolYear) {
       let dotsHtml = ""
       // Do this for each term...
-      for (let i = 0; i < schoolYear.terms.length; i++) { // 6
+      for (let i = 0; i < schoolYear.terms.length; i++) { // 6 terms
         // Draw filled dots (for elapsed days)
         dotsHtml = ""
-        // Create filled dots (for elapsed days)
         for (let x = 0; x < schoolYear.terms[i].termDaysElapsed; x++) {
           let date = schoolYear.terms[i].beg
           let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) // Tooltip
           dotsHtml += `<div class='dot filled-dot' title='${dateCute}' ></div>`
-          date.setDate(date.getDate() + 1)
+          date.setDate(date.getDate() + 1) // Increment the date
         }
         dotsEmptyHtml.push(dotsHtml)
         // Draw empty dots (for remaining days)
         dotsHtml = ""
-        // Create empty dots (for remaining days)
         for (let y = 0; y < (schoolYear.terms[i].termDaysRemain + 1); y++) {
           let date = schoolYear.terms[i].beg
           let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) // Tooltip
+          console.log(dateCute)
           dotsHtml += `<div class='dot empty-dot' title='${dateCute}' ></div>`
-          date.setDate(date.getDate() + 1)
+          date.setDate(date.getDate() + 1) // Increment the date
         }
         dotsFilledHtml.push(dotsHtml)
       }
