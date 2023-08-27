@@ -62,13 +62,13 @@
         schoolyear: "SY2324",
         terms:
           [
-            { termCode: "sv_SY2324", termName: "Summer Vacation", beg: new Date('July 01, 2023'), end: new Date('Aug 06, 2023'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "t1_SY2324", termName: "T1", beg: new Date('Aug 07, 2023'), end: new Date('Oct 13, 2023'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "t2_SY2324", termName: "T2", beg: new Date('Oct 16, 2023'), end: new Date('Dec 22, 2023'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "t3_SY2324", termName: "T3", beg: new Date('Jan 09, 2024'), end: new Date('Mar 15, 2024'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "t4_SY2324", termName: "T4", beg: new Date('Mar 18, 2024'), end: new Date('May 10, 2024'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "ps_SY2324", termName: "Postsession", beg: new Date('May 13, 2024'), end: new Date('May 23, 2024'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
-            { termCode: "ss_SY2324", termName: "Summer School", beg: new Date('Jun 03, 2024'), end: new Date('Jun 28, 2024'), termDaysTotal: null, termDaysElapsed: null, termDaysRemain: null, termPercentComplete: null },
+            { termCode: "sv_SY2324", termName: "Summer Vacation", beg: new Date('July 01, 2023'), end: new Date('Aug 06, 2023') },
+            { termCode: "t1_SY2324", termName: "T1", beg: new Date('Aug 07, 2023'), end: new Date('Oct 13, 2023') },
+            { termCode: "t2_SY2324", termName: "T2", beg: new Date('Oct 16, 2023'), end: new Date('Dec 22, 2023') },
+            { termCode: "t3_SY2324", termName: "T3", beg: new Date('Jan 09, 2024'), end: new Date('Mar 15, 2024') },
+            { termCode: "t4_SY2324", termName: "T4", beg: new Date('Mar 18, 2024'), end: new Date('May 10, 2024') },
+            { termCode: "ps_SY2324", termName: "Postsession", beg: new Date('May 13, 2024'), end: new Date('May 23, 2024') },
+            { termCode: "ss_SY2324", termName: "Summer School", beg: new Date('Jun 03, 2024'), end: new Date('Jun 28, 2024') },
           ],
         dates:
           [
@@ -124,8 +124,39 @@
             { beg: new Date('SEP 06, 2023'), end: new Date('SEP 06, 2023'), eventType: 'studentActivity', name: "HS Girls Volleyball vs. KIPP King", description: "5-8pm at KIPP King Collegiate, 2005B Via Barrett, San Lorenzo, CA" },
             { beg: new Date('SEP 18, 2023'), end: new Date('SEP 18, 2023'), eventType: 'studentActivity', name: "HS Girls Volleyball vs. KIPP King", description: "5-8pm at CCPA, 1390 66th Ave, Oakland, CA" },
             { beg: new Date('NOV 15, 2023'), end: new Date('NOV 15, 2023'), eventType: 'studentActivity', name: "HS Boys Basketball vs. Patten", description: "5-6pm at Patten University, 2433 Coolidge Ave, Oakland, CA" },
-            { beg: new Date('AUG 31, 2023'), end: new Date('AUG 31, 2023'), eventType: 'studentActivity', name: "Join HS Cross-Country", description: " Interest Form Open: bit.ly/CCPA-HSXC-23" }
-
+            { beg: new Date('AUG 31, 2023'), end: new Date('AUG 31, 2023'), eventType: 'studentActivity', name: "Join HS Cross-Country", description: " Interest Form Open: bit.ly/CCPA-HSXC-23" },
+            // From ParentSquare .ics 8/27/2023
+            { beg: new Date('08 28, 2023'), end: new Date('08 28, 2023 '), eventType: 'studentActivity', name: 'HS Girls Volleyball vs Emery High', description: 'JV and Varsity 20:00' },
+            { beg: new Date('08 29, 2023'), end: new Date('08 29, 2023 '), eventType: 'studentActivity', name: 'HS Boys Soccer vs. John Henry', description: '17:30' },
+            { beg: new Date('08 29, 2023'), end: new Date('08 29, 2023 '), eventType: 'studentActivity', name: 'Back to School Night 2023', description: '19:00' },
+            { beg: new Date('08 30, 2023'), end: new Date('08 30, 2023 '), eventType: 'studentActivity', name: 'HS Girls Volleyball vs. OMI', description: 'Varsity Only 19:00' },
+            { beg: new Date('09 06, 2023'), end: new Date('09 06, 2023 '), eventType: 'studentActivity', name: 'HS Girls Volleyball vs. KIPP King', description: 'JV and Varsity 20:00' },
+            { beg: new Date('09 07, 2023'), end: new Date('09 07, 2023 '), eventType: 'studentActivity', name: 'HS Boys Soccer vs. Arise', description: '17:30' },
+            { beg: new Date('09 11, 2023'), end: new Date('09 11, 2023 '), eventType: 'studentActivity', name: 'HS Girls Volleyball vs Emery High', description: 'JV and Varsity 20:00' },
+            { beg: new Date('09 13, 2023'), end: new Date('09 13, 2023 '), eventType: 'studentActivity', name: 'HS Girls Volleyball vs. Piedmont HS', description: '19:30' },
+            { beg: new Date('09 14, 2023'), end: new Date('09 14, 2023 '), eventType: 'studentActivity', name: 'HS Boys Soccer vs. GSP', description: '17:30' },
+            { beg: new Date('09 18, 2023'), end: new Date('09 18, 2023 '), eventType: 'studentActivity', name: 'HS Girls Volleyball vs KIPP King', description: '20:00' },
+            { beg: new Date('09 19, 2023'), end: new Date('09 19, 2023 '), eventType: 'studentActivity', name: 'HS Boys Soccer vs. Unity', description: '17:30' },
+            { beg: new Date('09 26, 2023'), end: new Date('09 26, 2023 '), eventType: 'studentActivity', name: 'HS Boys Soccer vs. AIMS', description: '17:30' },
+            { beg: new Date('10 03, 2023'), end: new Date('10 03, 2023 '), eventType: 'studentActivity', name: 'HS Boys Soccer vs. Oakland Charter', description: '17:30' },
+            { beg: new Date('10 12, 2023'), end: new Date('10 12, 2023 '), eventType: 'studentActivity', name: 'HS Boys Soccer vs. KIPP King', description: '17:30' },
+            { beg: new Date('10 19, 2023'), end: new Date('10 19, 2023 '), eventType: 'studentActivity', name: 'HS Boys Soccer vs. Twin Oaks', description: '17:00' },
+            { beg: new Date('10 20, 2023'), end: new Date('10 20, 2023 '), eventType: 'studentActivity', name: 'Homecoming Dance', description: '21:30' },
+            { beg: new Date('10 24, 2023'), end: new Date('10 24, 2023 '), eventType: 'studentActivity', name: 'HS Boys Soccer vs. Lighthouse', description: '17:30' },
+            { beg: new Date('11 15, 2023'), end: new Date('11 15, 2023 '), eventType: 'studentActivity', name: 'HS Boys Basketball vs Patten', description: '18:00' },
+            { beg: new Date('05 24, 2024'), end: new Date('05 24, 2024 '), eventType: 'studentActivity', name: 'Graduation Ceremony - Class of 2024', description: '20:00' },
+            { beg: new Date('09 13, 2023'), end: new Date('09 13, 2023 '), eventType: 'event', name: 'Board of Education - Regular Meeting', description: 'Hybrid meeting. Regular meeting of the BOE.' },
+            { beg: new Date('10 11, 2023'), end: new Date('10 11, 2023 '), eventType: 'event', name: 'Board of Education - Regular Meeting', description: 'Hybrid meeting. Regular meeting of the BOE.' },
+            { beg: new Date('11 08, 2023'), end: new Date('11 08, 2023 '), eventType: 'event', name: 'Board of Education - Regular Meeting', description: 'Hybrid meeting. Regular meeting of the BOE.' },
+            { beg: new Date('12 13, 2023'), end: new Date('12 13, 2023 '), eventType: 'event', name: 'Board of Education - Regular Meeting', description: 'Hybrid meeting. Regular meeting of the BOE.' },
+            { beg: new Date('01 10, 2024'), end: new Date('01 10, 2024 '), eventType: 'event', name: 'Board of Education - Regular Meeting', description: 'Hybrid meeting. Regular meeting of the BOE.' },
+            { beg: new Date('02 14, 2024'), end: new Date('02 14, 2024 '), eventType: 'event', name: 'Board of Education - Regular Meeting', description: 'Hybrid meeting. Regular meeting of the BOE.' },
+            { beg: new Date('03 13, 2024'), end: new Date('03 13, 2024 '), eventType: 'event', name: 'Board of Education - Regular Meeting', description: 'Hybrid meeting. Regular meeting of the BOE.' },
+            { beg: new Date('04 10, 2024'), end: new Date('04 10, 2024 '), eventType: 'event', name: 'Board of Education - Regular Meeting', description: 'Hybrid meeting. Regular meeting of the BOE.' },
+            { beg: new Date('05 08, 2024'), end: new Date('05 08, 2024 '), eventType: 'event', name: 'Board of Education - Regular Meeting', description: 'Hybrid meeting. Regular meeting of the BOE.' },
+            { beg: new Date('06 12, 2024'), end: new Date('06 12, 2024 '), eventType: 'event', name: 'Board of Education - Regular Meeting', description: 'Hybrid meeting. Regular meeting of the BOE.' },
+            { beg: new Date('07 10, 2024'), end: new Date('07 10, 2024 '), eventType: 'event', name: 'Board of Education - Regular Meeting', description: 'Hybrid meeting. Regular meeting of the BOE.' },
+            { beg: new Date('08 14, 2024'), end: new Date('08 14, 2024 '), eventType: 'event', name: 'Board of Education - Regular Meeting', description: 'Hybrid meeting. Regular meeting of the BOE.' },
           ]
       }
     ]
@@ -198,7 +229,7 @@
           termsList[i].termPercentComplete = 0
           // Current term:
         } else {
-          termsList[i].termDaysElapsed = Math.floor((dateToday - termsList[i].beg) / (1000 * 3600 * 24))
+          termsList[i].termDaysElapsed = Math.floor((dateToday - termsList[i].beg) / (1000 * 3600 * 24) + 1)
           termsList[i].termDaysRemain = (Math.floor(termDaysTotal - termsList[i].termDaysElapsed))
           termsList[i].termPercentComplete = (Math.floor((termsList[i].termDaysElapsed / termDaysTotal) * 100))
           currentTerm = termsList[i]
@@ -215,21 +246,24 @@
     let dotsFilledHtml = []
     function drawDots(schoolYear) {
       let dotsHtml = ""
+      // Do this for each term...
       for (let i = 0; i < schoolYear.terms.length; i++) { // 6
         dotsHtml = ""
+        // Create filled dots (for elapsed days)
         for (let x = 0; x < schoolYear.terms[i].termDaysElapsed; x++) {
           let date = schoolYear.terms[i].beg
-          let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' })
+          let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) // Tooltip
           dotsHtml += `<div class='dot filled-dot' title='${dateCute}' ></div>`
-          date.setDate(date.getDate() + 1)
+          date.setDate(date.getDate() + 1) // Increment date
         }
         dotsEmptyHtml.push(dotsHtml)
         dotsHtml = ""
-        for (let y = 0; y < schoolYear.terms[i].termDaysRemain; y++) {
+        // Create empty dots (for remaining days)
+        for (let y = 0; y < (schoolYear.terms[i].termDaysRemain + 1); y++) {
           let date = schoolYear.terms[i].beg
-          let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' })
+          let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) // Tooltip
           dotsHtml += `<div class='dot empty-dot' title='${dateCute}' ></div>`
-          date.setDate(date.getDate() + 1)
+          date.setDate(date.getDate() + 1) // Increment date
         }
         dotsFilledHtml.push(dotsHtml)
       }
