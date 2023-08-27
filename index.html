@@ -262,7 +262,6 @@
         for (let y = 0; y < (schoolYear.terms[i].termDaysRemain + 1); y++) {
           let date = schoolYear.terms[i].beg
           let dateCute = date.toLocaleString('en-US', { weekday: 'short', month: 'numeric', day: 'numeric' }) // Tooltip
-          console.log(dateCute)
           dotsHtml += `<div class='dot empty-dot' title='${dateCute}' ></div>`
           date.setDate(date.getDate() + 1) // Increment the date
         }
@@ -424,7 +423,6 @@
             }
           }
         }
-        console.log(textStudActs)
         // Display upcoming events (of both types):
         for (x in eHoliday) {
           if (eHoliday[x].name.length > 18) {
