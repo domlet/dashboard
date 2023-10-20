@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="style.css" />
   <script>
     // Define School Years and Terms:
+    // { beg: new Date(''), end: new Date(''), eventType: 'event', name: '', description: '' },
     var allterms = [
       {
         schoolyear: "SY2223",
@@ -130,6 +131,39 @@
             { beg: new Date('SEP 18, 2023'), end: new Date('SEP 18, 2023'), eventType: 'studentActivity', name: "HS Girls Volleyball vs. KIPP King", description: "5-8pm at CCPA, 1390 66th Ave, Oakland, CA" },
             { beg: new Date('NOV 15, 2023'), end: new Date('NOV 15, 2023'), eventType: 'studentActivity', name: "HS Boys Basketball vs. Patten", description: "5-6pm at Patten University, 2433 Coolidge Ave, Oakland, CA" },
             { beg: new Date('AUG 31, 2023'), end: new Date('AUG 31, 2023'), eventType: 'studentActivity', name: "Join HS Cross-Country", description: " Interest Form Open: bit.ly/CCPA-HSXC-23" },
+            // From Google Calendar Oct 19, 2023
+            { beg: new Date('Oct 20, 2023'), end: new Date('Oct 20, 2023'), eventType: 'studentActivity', description: '4 – 7pm, Coliseum College Prep Academy', name: 'HS Girls Volleyball vs Castlemont ***Senior Night***' },
+            // { beg: new Date('Oct 21, 2023'), end: new Date('Oct 21, 2023'), eventType: 'studentActivity', description: '8:30 – 10:30am, Temescal Regional Recreation Area', name: 'MS Cross Country' },
+            // { beg: new Date('Oct 21, 2023'), end: new Date('Oct 21, 2023'), eventType: 'studentActivity', description: 'Oakland Technical High School, 9 – 10am', name: 'MS Girls Futsol' },
+            // { beg: new Date('Oct 21, 2023'), end: new Date('Oct 21, 2023'), eventType: 'studentActivity', description: '10 – 11am, Madison Park Academy', name: 'MS Girls Volleyball (Green)' },
+            // { beg: new Date('Oct 21, 2023'), end: new Date('Oct 21, 2023'), eventType: 'studentActivity', description: '11am – 12pm, Madison Park Academy', name: 'MS Girls Volleyball (Gold)' },
+            // { beg: new Date('Oct 21, 2023'), end: new Date('Oct 21, 2023'), eventType: 'studentActivity', description: '12 – 1pm, Madison Park Academy', name: 'MS Boys Flag Football' },
+            { beg: new Date('Oct 21, 2023'), end: new Date('Oct 21, 2023'), eventType: 'studentActivity', description: '1 – 9pm', name: 'HS Girls Volleyball Playoffs Location TBD' },
+            // { beg: new Date('Oct 21, 2023'), end: new Date('Oct 21, 2023'), eventType: 'studentActivity', description: 'Oakland Technical High School, 2 – 3pm', name: 'MS Boys Futsol' },
+            { beg: new Date('Oct 24, 2023'), end: new Date('Oct 24, 2023'), eventType: 'studentActivity', description: '5 – 8pm', name: 'HS Girls Volleyball Playoffs Location TBD' },
+            { beg: new Date('Oct 24, 2023'), end: new Date('Oct 24, 2023'), eventType: 'event', description: 'CCPA Library, 5:30 – 6:30pm', name: 'CCPA: FACILITIES PROJECT ADVISORY COMMITTEE MEETING' },
+            { beg: new Date('Oct 25, 2023'), end: new Date('Oct 25, 2023'), eventType: 'studentActivity', description: 'Garretson Point Staging (EBRPD), 3 – 4pm', name: 'HS Cross Country Regional Meet ***SENIOR NIGHT***' },
+            { beg: new Date('Oct 25, 2023'), end: new Date('Oct 25, 2023'), eventType: 'studentActivity', description: 'Oakland High School, 4:30 – 6pm', name: 'HS Girls Flag Football vs Oakland High' },
+            { beg: new Date('Oct 26, 2023'), end: new Date('Oct 26, 2023'), eventType: 'studentActivity', description: '5 – 8pm', name: 'HS Girls Volleyball Playoffs Location TBD' },
+            { beg: new Date('Oct 26, 2023'), end: new Date('Oct 26, 2023'), eventType: 'event', description: '5:30 – 7pm', name: 'A-G Family Workshop: Auditorium' },
+            // { beg: new Date('Oct 28, 2023'), end: new Date('Oct 28, 2023'), eventType: 'studentActivity', description: '9 – 10am, Madison Park Academy', name: 'MS Boys Flag Football' },
+            // { beg: new Date('Oct 28, 2023'), end: new Date('Oct 28, 2023'), eventType: 'studentActivity', description: 'Oakland Technical High School, 9 – 10am', name: 'MS Girls Futsol' },
+            // { beg: new Date('Oct 28, 2023'), end: new Date('Oct 28, 2023'), eventType: 'studentActivity', description: 'Oakland Technical High School, 10 – 11am', name: 'MS Boys Futsol' },
+            // { beg: new Date('Oct 28, 2023'), end: new Date('Oct 28, 2023'), eventType: 'studentActivity', description: '12 – 1pm, Madison Park Academy', name: 'MS Girls Volleyball (Green)' },
+            // { beg: new Date('Oct 28, 2023'), end: new Date('Oct 28, 2023'), eventType: 'studentActivity', description: '1 – 2pm, Madison Park Academy', name: 'MS Girls Volleyball (Gold)' },
+            { beg: new Date('Nov 01, 2023'), end: new Date('Nov 01, 2023'), eventType: 'studentActivity', description: 'Skyline High School, 4:30 – 6pm', name: 'HS Girls Flag Football vs Skyline' },
+            { beg: new Date('Nov 02, 2023'), end: new Date('Nov 02, 2023'), eventType: 'studentActivity', description: '1:30 – 3:30pm, Auditorium', name: 'Summer Search Presentations (10th)' },
+            // { beg: new Date('Nov 04, 2023'), end: new Date('Nov 04, 2023'), eventType: 'studentActivity', description: 'Martin Luther King Jr. Regional Shoreline, 8:30 – 10:30am', name: 'MS Cross Country' },
+            // { beg: new Date('Nov 04, 2023'), end: new Date('Nov 04, 2023'), eventType: 'studentActivity', description: '9 – 10am, Madison Park Academy', name: 'MS Boys Flag Football' },
+            // { beg: new Date('Nov 04, 2023'), end: new Date('Nov 04, 2023'), eventType: 'studentActivity', description: '10 – 11am, Madison Park Academy', name: 'MS Girls Volleyball (Green)' },
+            // { beg: new Date('Nov 04, 2023'), end: new Date('Nov 04, 2023'), eventType: 'studentActivity', description: '11am – 12pm, Madison Park Academy', name: 'MS Girls Volleyball (Gold)' },
+            { beg: new Date('Nov 08, 2023'), end: new Date('Nov 08, 2023'), eventType: 'studentActivity', description: 'Skyline High School, 3 – 4pm', name: 'HS Cross Country City Finals' },
+            { beg: new Date('Nov 08, 2023'), end: new Date('Nov 08, 2023'), eventType: 'studentActivity', description: 'Castlemont High School, 4:30 – 6pm', name: 'HS Girls Flag Football vs Castlemont ***Senior Night***' },
+            { beg: new Date('Nov 13, 2023'), end: new Date('Nov 13, 2023'), eventType: 'studentActivity', description: '5 – 6pm, Patten University 2433 Coolidge Ave, Oakland, CA', name: 'HS Boys Basketball vs Patten' },
+            { beg: new Date('Nov 14, 2023'), end: new Date('Nov 14, 2023'), eventType: 'event', description: '5:30 – 6:30pm, College Center', name: 'FACILITIES PROJECT ADVISORY COMMITTEE MEETING' },
+            { beg: new Date('Nov 15, 2023'), end: new Date('Nov 15, 2023'), eventType: 'studentActivity', description: '3 – 4pm, Lake Chabot Golf Course', name: 'HS Cross Country Section Finals' },
+            { beg: new Date('Nov 15, 2023'), end: new Date('Nov 15, 2023'), eventType: 'studentActivity', description: 'Aspire Golden State College Preparatory Academy, 4:30 – 5:30pm', name: 'HS Girls Basketball vs. GSP' },
+            { beg: new Date('Nov 15, 2023'), end: new Date('Nov 15, 2023'), eventType: 'studentActivity', description: 'Aspire Golden State College Preparatory Academy, 6 – 7pm', name: 'HS Boys Basketball vs. GSP' },
             // From ParentSquare .ics 8/27/2023
             { beg: new Date('08 28, 2023'), end: new Date('08 28, 2023 '), eventType: 'studentActivity', name: 'HS Girls Volleyball vs Emery High', description: 'JV and Varsity' },
             { beg: new Date('08 29, 2023'), end: new Date('08 29, 2023 '), eventType: 'studentActivity', name: 'HS Boys Soccer vs. John Henry', description: '' },
