@@ -1,16 +1,73 @@
 // Define School Years and Terms:
+const lastSY = SY2223; // Set the current school year.
 const currentSY = SY2324; // Set the current school year.
 const nextSY = SY2324; // Set the current school year.
 // Define today and date options
 const dateToday = new Date();
-const dateOptions = {
+const datePretty = dateToday.toLocaleString("en-US", {
   weekday: "long",
   year: "numeric",
   month: "long",
   day: "numeric",
-};
-const datePretty = dateToday.toLocaleString("en-US", dateOptions);
-// Array of currentSY dates sorted chronologically:
+});
+// Function to fetch events from Google Calendar
+$(document).ready(function () {
+  async function fetchGoogleCalendarEvents() {
+    const calendarId =
+      "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com";
+    const timeMin = "2023-08-01T00:00:00Z";
+    const gCalkey = "AIzaSyDdvMUXW8jaNxCfVZQv3vKbaL4nTzhygMI";
+    const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?timeMin=${timeMin}&key=${gCalkey}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    const events = data.items;
+    const activeEvents = events.filter((event) => event.status !== "cancelled"); // remove events with no start date
+    for (let item of activeEvents) {
+      if (
+        item.summary.search("No School") != -1 ||
+        item.summary.search("Holiday") != -1
+      ) {
+        item.eventType = "studentHoliday";
+      } else if (
+        item.summary.search("vs") != -1 ||
+        item.summary.search("ball") != -1 ||
+        item.summary.search("track") != -1 ||
+        item.summary.search("soccer") != -1 ||
+        item.summary.search("Futsol") != -1 ||
+        item.summary.search("Robotics") != -1 ||
+        item.summary.search("playoffs") != -1
+      ) {
+        item.eventType = "studentActivity";
+      } else {
+        item.eventType = "event";
+      }
+    }
+    return activeEvents.map((item) => {
+      const startDate = new Date(item.start.dateTime || item.start.date);
+      const endDate = new Date(item.end.dateTime || item.end.date);
+      return {
+        beg: startDate,
+        end: endDate,
+        name: item.summary,
+        description: item.location || item.description || "",
+        eventType: item.eventType || "",
+      };
+    });
+  }
+  // Call the function to fetch events from Google Calendar
+  fetchGoogleCalendarEvents()
+    .then((activeEvents) => {
+      console.log(activeEvents); // Array of transformed events
+    })
+    .catch((error) => {
+      console.error("Error fetching events:", error);
+    });
+});
+// Array of currentSY dates
+// [ ] combined from multiple sources
+// and sorted chronologically:
+console.log(currentSY.length);
+// console.log(activeEvents.length);
 const datesOrdered = (function () {
   let dates = [];
   for (i in currentSY.dates) {
@@ -19,7 +76,7 @@ const datesOrdered = (function () {
   dates.sort((a, b) => a.beg - b.beg);
   return dates;
 })();
-console.log(datesOrdered);
+console.log(datesOrdered.length);
 function dateDiffInDays(a, b) {
   const _MS_PER_DAY = 1000 * 60 * 60 * 24;
   // Discard the time and time-zone information.
@@ -45,12 +102,11 @@ function calculateSY(schoolYear) {
 calculateSY(currentSY);
 
 // Calculate the terms:
-
 let currentTerm = {};
-let termDaysTotal = "";
-let termDaysElapsed = "";
-let termDaysRemain = "";
-let termPercentComplete = "";
+let termDaysTotal;
+let termDaysElapsed;
+let termDaysRemain;
+let termPercentComplete;
 // This function looks at all terms for the current SY
 function calculateTerms(termsList) {
   for (let i = 0; i < termsList.length; i++) {
@@ -309,17 +365,3 @@ function playAudio() {
   });
 }
 playAudio();
-
-// Keep screen awake:
-// https://developer.mozilla.org/en-US/docs/Web/API/WakeLock/request
-const requestWakeLock = async () => {
-  try {
-    const wakeLock = await navigator.wakeLock.request("screen");
-  } catch (err) {
-    // The wake lock request fails - usually system-related, such as low battery.
-
-    console.log(`${err.name}, ${err.message}`);
-  }
-};
-
-requestWakeLock();

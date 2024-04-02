@@ -193,8 +193,8 @@ const SY2324 = {
       description: "",
     },
     {
-      beg: new Date("Feb 04, 2023"),
-      end: new Date("Feb 04, 2023"),
+      beg: new Date("Feb 04, 2024"),
+      end: new Date("Feb 04, 2024"),
       eventType: "event",
       name: "CCPA Robotics Team FTC Regional Tournament",
       description: "McClymonds High School",
@@ -214,8 +214,8 @@ const SY2324 = {
       description: "",
     },
     {
-      beg: new Date("Mar 14, 2023"),
-      end: new Date("Mar 14, 2023"),
+      beg: new Date("Mar 14, 2024"),
+      end: new Date("Mar 14, 2024"),
       eventType: "event",
       name: "CCPA Robotics Team OUSD Invitational FTC Scrimmage",
       description: "Oakland High School (OHS)",
@@ -278,8 +278,8 @@ const SY2324 = {
         "Testing from 8:30am-12:30pm for some students: D1 and 8th/11th grades only.",
     },
     {
-      beg: new Date("May 01, 2023"),
-      end: new Date("May 01, 2023"),
+      beg: new Date("May 01, 2024"),
+      end: new Date("May 01, 2024"),
       eventType: "studentActivity",
       name: "CCPA Robotics Team OUSD Robotics Showcase",
       description: "OUSD STEM Fair at Oakland High School (OHS)",
