@@ -180,7 +180,7 @@ function drawDots(schoolYear) {
     dotsEmptyHtml.push(dotsHtml);
     // Draw empty dots (for remaining days)
     dotsHtml = "";
-    for (let y = 0; y < schoolYear.terms[i].termDaysRemain + 1; y++) {
+    for (let y = 0; y < schoolYear.terms[i].termDaysRemain; y++) {
       let date = schoolYear.terms[i].beg;
       let dateCute = date.toLocaleString("en-US", {
         weekday: "short",
