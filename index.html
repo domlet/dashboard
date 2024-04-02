@@ -327,7 +327,10 @@
   </script>
   <script>
     $(document).ready(function () {
-      // Function to fetch events from Google Calendar API
+      // [x] fetch events from Google Calendar API
+      // [x] remove canceled events
+      // [ ] sort by date desc
+      // [ ] modify eventTypes
       async function fetchGoogleCalendarEvents() {
         const calendarId = 'ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com';
         const timeMin = '2023-08-01T00:00:00Z';
@@ -336,22 +339,25 @@
         const data = await response.json();
         const events = data.items;
         const activeEvents = events.filter(event => event.status !== 'cancelled'); // remove events with no start date
-        return activeEvents.map(item => {
-          const startDate = new Date(item.start.dateTime || item.start.date);
-          const endDate = new Date(item.end.dateTime || item.end.date);
-          if (item.summary.search('No School') || item.summary.search('Holiday')) {
+        for (let item of activeEvents) {
+          console.log(item.summary)
+          if (item.summary.search('No School') != -1 || item.summary.search('Holiday') != -1) {
             item.eventType = 'studentHoliday';
-          } else if (item.summary.search('vs') || item.summary.search('ball') || item.summary.search('Futsol')) {
+          } else if (item.summary.search('vs') != -1 || item.summary.search('ball') != -1 || item.summary.search('track') != -1 || item.summary.search('Futsol') != -1 || item.summary.search('playoffs') != -1) {
             item.eventType = 'studentActivity';
           } else {
             item.eventType = 'event';
           }
+        }
+        return activeEvents.map(item => {
+          const startDate = new Date(item.start.dateTime || item.start.date);
+          const endDate = new Date(item.end.dateTime || item.end.date);
           return {
             beg: startDate,
             end: endDate,
             name: item.summary,
-            description: item.description || '',
-            eventType: item.eventType,
+            description: item.location || item.description || '',
+            eventType: item.eventType || '',
           };
         });
       }
