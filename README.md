@@ -7,7 +7,7 @@ A visual dashboard to help teachers and students track time remaining in each ac
 ![dashboard screenshot](images/screenshot.JPG)
 
 ## Tech stack
-- HTML, CSS, JavaScript
+- HTML, CSS, JavaScript, [Google Calendar API](https://developers.google.com/calendar/api/guides/overview)
 
 ## Legal 
 - [Privacy Policy](https://github.com/domlet/dashboard/blob/main/privacy-policy.html)
