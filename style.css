@@ -1,44 +1,44 @@
 /* navy = #021F59 ; teal = #049DBF ; gold = #D9B504 ; 
 green = #7A9A15 ; orange = #D97904 ; red = #D93D04 */
 
-
 /* div {
   border: 1px solid yellow;
 } */
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 body {
-  background-image: url('images/bg-theinfinite8enigma-East-Oakland-510-Graffiti-Art.jpeg');
+  background-image: url("images/bg-theinfinite8enigma-East-Oakland-510-Graffiti-Art.jpeg");
   background-size: cover;
 }
 .main-wrapper {
-    height: 100vh;  
-  }
+  height: 100vh;
+}
 h2 {
   font-size: 1.3em;
   font-weight: bolder;
   color: #fff;
-  padding: .3em 0 0 0 ;
+  padding: 0.3em 0 0 0;
 }
 ul {
   margin: 0;
   padding: 1em;
 }
 .navbar-toggler {
-  border: 2px solid
+  border: 2px solid;
 }
 #date {
   font-size: x-large;
-  background-color: rgba(2, 31, 89, .75);
+  background-color: rgba(2, 31, 89, 0.75);
   color: #fff;
 }
 #footer {
   font-size: small;
   color: #fff;
-  background-color: rgba(2, 31, 89, .75);
+  background-color: rgba(2, 31, 89, 0.75);
   height: 100%;
 }
 #footer a {
@@ -49,37 +49,38 @@ ul {
   padding: 0.3em;
   border-radius: 0.4em;
 }
-.goog-te-gadget, .VIpgJd-ZVi9od-l4eHX-hSRGPd {
-        color: #fff !important;
-    }    
+.goog-te-gadget,
+.VIpgJd-ZVi9od-l4eHX-hSRGPd {
+  color: #fff !important;
+}
 
 #calButton {
   /* float: right; */
   height: 1.2em;
   /* width: auto;  */
-} 
+}
 #showHideCal {
   position: absolute;
   top: 2em;
   right: 2em;
   z-index: 5;
-  border: 3px solid #021F59;
+  border: 3px solid #021f59;
   border-radius: 1em;
-  padding: .5em;
+  padding: 0.5em;
   background-color: #fff;
 }
 #stats {
-  background-color: rgba(122,154,21,.9);
+  background-color: rgba(122, 154, 21, 0.9);
   color: #fff;
 }
 iframe {
   border: 0;
 }
 .d-flex div {
-  padding-right: 1em
+  padding-right: 1em;
 }
 #dots {
-  background-color:rgba(255, 255, 255, 0.85);
+  background-color: rgba(255, 255, 255, 0.85);
 }
 #dots .col h3 {
   font-size: 1.3em;
@@ -93,15 +94,15 @@ iframe {
   height: 1em;
   display: block;
   float: left;
-  margin: .08em;
+  margin: 0.08em;
 }
 .empty-dot {
   border: 1px solid gray;
-  background-color: white
+  background-color: white;
 }
 .filled-dot {
   border: 1px solid white;
-  background-color: #021F59;
+  background-color: #021f59;
 }
 /* .striped-dot {
   border: 1px solid black;
@@ -109,46 +110,47 @@ iframe {
 	background-repeat: repeat;
   background-size: 75%;
 } */
-.lowkey, .lowkey:hover {
+.lowkey,
+.lowkey:hover {
   text-decoration: none;
 }
 #events {
-  background-color:rgba(217,121,4, 0.9);
+  background-color: rgba(217, 121, 4, 0.9);
   color: #000;
 }
 #events ul {
-  padding: 0
+  padding: 0;
 }
 .event-date {
   font-size: small;
-  background-color: rgba(255,255,255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
   padding: 0.1em 0.3em;
   white-space: nowrap;
   border-radius: 0.3em;
   /* border: 1px solid rgba(255, 255, 255, 0.1); */
 }
-  .event-item {
+.event-item {
   display: none;
   padding: 0 0 0 1.5em;
-	list-style: none;
-	background-image: url("images/black-star-icon.svg");
-	background-repeat: no-repeat;
-	background-position: left .25em;
-	background-size: .9em;
+  list-style: none;
+  background-image: url("images/black-star-icon.svg");
+  background-repeat: no-repeat;
+  background-position: left 0.25em;
+  background-size: 0.9em;
 }
-#events-student-holiday .event-item:nth-child(-n+4) {
+#events-student-holiday .event-item:nth-child(-n + 4) {
   display: list-item;
 }
-#events-student-non-holiday .event-item:nth-child(-n+3) {
+#events-student-non-holiday .event-item:nth-child(-n + 3) {
   display: list-item;
 }
-#events-student-activities .event-item:nth-child(-n+4) {
+#events-student-activities .event-item:nth-child(-n + 5) {
   display: list-item;
 }
 .event-item-desc {
-  font-size: .85em;
+  font-size: 0.85em;
   line-height: 1.4em;
-  margin: 0 0 .3em 0;
+  margin: 0 0 0.3em 0;
 }
 /* tooltips */
 div[title]:hover::after {
@@ -161,6 +163,6 @@ div[title]:hover::after {
   border: 1px dotted gray;
   padding: 0.1em 0.2em;
   font-size: medium;
-  white-space:nowrap;
+  white-space: nowrap;
   z-index: 10;
 }
