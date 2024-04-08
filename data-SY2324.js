@@ -306,13 +306,6 @@ const SY2324 = {
       description: "",
     },
     {
-      beg: new Date("Jun 19, 2024"),
-      end: new Date("Jun 19, 2024"),
-      eventType: "studentHoliday",
-      name: "Juneteenth Holiday",
-      description: "",
-    },
-    {
       beg: new Date("Jun 29, 2023"),
       end: new Date("Jun 29, 2023"),
       eventType: "event",

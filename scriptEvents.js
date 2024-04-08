@@ -1,3 +1,11 @@
+const calendarIds = [
+  "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com", // CCPA
+  "en.usa#holiday@group.v.calendar.google.com", // US observances
+  "hhm0o0t2uqmmm0dsjg9t5n7uk0nnspe4@import.calendar.google.com", // UN observances
+  "398cuok6nh0gpq8ild25ros54qmlrabf@import.calendar.google.com", // culture_awareness
+  "1g09kltmldcsn4bmpkdvg97k5v5apl6u@import.calendar.google.com", // holidays_funny
+  "", // Zodiac
+];
 let combinedEvents = [];
 // Function to fetch events from Google Calendar
 $(document).ready(function () {
