@@ -1,7 +1,7 @@
 // Define school years and terms:
 const lastSY = SY2223;
 const currentSY = SY2324;
-const nextSY = SY2324;
+const nextSY = SY2425;
 const dateToday = new Date();
 // Function to count number of days between two dates
 function dateDiffInDays(a, b) {
@@ -154,10 +154,10 @@ function showDotsAndCalc() {
     document.getElementById("daysRemainYearContainer").innerHTML =
       "We have <strong>" +
       daysUntilNextSY +
-      "</strong> summer days until <strong>" +
+      "</strong> daysRemainYearContainer <strong>" +
       nextSY.schoolyear +
       "</strong> begins.";
-    // document.getElementById("daysRemainYearContainer").innerHTML = "Enjoy <strong>" + daysUntilNextSY + "</strong> summer days until <strong>" + nextSY.schoolyear + "</strong> begins on " + nextSY.terms[0].beg.toLocaleString('en-US', { month: 'long', day: 'numeric' }) + ".";
+    // document.getElementById("daysRemainYearContainer").innerHTML = "Enjoy <strong>" + daysUntilNextSY + "</strong> daysRemainYearContainer <strong>" + nextSY.schoolyear + "</strong> begins on " + nextSY.terms[0].beg.toLocaleString('en-US', { month: 'long', day: 'numeric' }) + ".";
   } else {
     document.getElementById("daysRemainYearContainer").innerHTML =
       "There are <strong>" +
