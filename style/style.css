@@ -11,7 +11,7 @@ html {
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 body {
-  background-image: url("../images/bg-theinfinite8enigma-East-Oakland-510-Graffiti-Art.jpeg");
+  background-image: url("../../images/bg-theinfinite8enigma-East-Oakland-510-Graffiti-Art.jpeg");
   background-size: cover;
 }
 .main-wrapper {
@@ -106,7 +106,7 @@ iframe {
 }
 /* .striped-dot {
   border: 1px solid black;
-	background-image: url("images/tinystripes.png");
+	background-image: url("../images/tinystripes.png");
 	background-repeat: repeat;
   background-size: 75%;
 } */
@@ -133,7 +133,7 @@ iframe {
   display: none;
   padding: 0 0 0 1.5em;
   list-style: none;
-  background-image: url("images/black-star-icon.svg");
+  background-image: url("../images/black-star-icon.svg");
   background-repeat: no-repeat;
   background-position: left 0.25em;
   background-size: 0.9em;

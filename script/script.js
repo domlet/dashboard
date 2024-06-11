@@ -154,7 +154,7 @@ function showDotsAndCalc() {
     document.getElementById("daysRemainYearContainer").innerHTML =
       "We have <strong>" +
       daysUntilNextSY +
-      "</strong> daysRemainYearContainer <strong>" +
+      "</strong> days until <strong>" +
       nextSY.schoolyear +
       "</strong> begins.";
     // document.getElementById("daysRemainYearContainer").innerHTML = "Enjoy <strong>" + daysUntilNextSY + "</strong> daysRemainYearContainer <strong>" + nextSY.schoolyear + "</strong> begins on " + nextSY.terms[0].beg.toLocaleString('en-US', { month: 'long', day: 'numeric' }) + ".";
