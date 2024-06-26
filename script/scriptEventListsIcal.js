@@ -1,28 +1,44 @@
-const calendarIds = [
-  "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com", // CCPA
-  "en.usa#holiday@group.v.calendar.google.com", // US observances
-  "hhm0o0t2uqmmm0dsjg9t5n7uk0nnspe4@import.calendar.google.com", // UN observances
-  "398cuok6nh0gpq8ild25ros54qmlrabf@import.calendar.google.com", // culture_awareness
-  "1g09kltmldcsn4bmpkdvg97k5v5apl6u@import.calendar.google.com", // holidays_funny
-  "", // Zodiac
+const iCals = [
+  "https://calendar.google.com/calendar/ical/ccpaedu.com_ftu0la54kio0crhh83m267lri8%40group.calendar.google.com/public/basic.ics", // CCPA Public Events
+  // OUSD Calendars from https://bit.ly/3RnrkZu
+  "https://www.ousd.org/calendar/calendar_371_gmt.ics", // Board of Education Meetings ICAL
+  "https://www.ousd.org/calendar/calendar_438_gmt.ics", // District Advisory Committees ICAL
+  "https://www.ousd.org/calendar/calendar_435_gmt.ics", // Office of Equity ICAL
+  "https://www.ousd.org/calendar/calendar_351_gmt.ics", // OUSD District Calendar ICAL
+  "https://www.ousd.org/calendar/calendar_442_gmt.ics", // OUSD High Schools ICAL
+  "https://www.ousd.org/calendar/calendar_441_gmt.ics", // OUSD Middle Schools ICAL
+  "https://www.ousd.org/calendar/calendar_436_gmt.ics", // OUSD VAPA Program ICALClose
 ];
 let combinedEvents = [];
-// Function to fetch events from Google Calendar
+
+// Function to fetch events from iCals based on https://bit.ly/3RkVOeI
 $(document).ready(function () {
-  async function fetchGoogleCalendarEvents() {
-    const iCals = [
-      "https://calendar.google.com/calendar/ical/ccpaedu.com_ftu0la54kio0crhh83m267lri8%40group.calendar.google.com/public/basic.ics", // CCPA Public Events
-      // OUSD Calendars from https://www.ousd.org/cf_calendar/cms_calendar_feeds.cfm?element_id=125377&calendar_ids=436,435,441,442,440,351,438,371&team_ids=undefined
-      "https://www.ousd.org/calendar/calendar_371_gmt.ics", // Board of Education Meetings ICAL
-      "https://www.ousd.org/calendar/calendar_438_gmt.ics", // District Advisory Committees ICAL
-      "https://www.ousd.org/calendar/calendar_435_gmt.ics", // Office of Equity ICAL
-      "https://www.ousd.org/calendar/calendar_351_gmt.ics", // OUSD District Calendar ICAL
-      "https://www.ousd.org/calendar/calendar_442_gmt.ics", // OUSD High Schools ICAL
-      "https://www.ousd.org/calendar/calendar_441_gmt.ics", // OUSD Middle Schools ICAL
-      "https://www.ousd.org/calendar/calendar_436_gmt.ics", // OUSD VAPA Program ICALClose
-    ];
-    const calendarId =
-      "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com";
+  function parseICS(icsString) {
+    const lines = icsString.split("\n");
+    const events = [];
+    let event;
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (line === "BEGIN:VEVENT") {
+        event = {};
+      } else if (line === "END:VEVENT") {
+        events.push(event);
+      } else if (event) {
+        const match = /^([A-Z]+):(.*)$/.exec(line);
+        if (match) {
+          const [, key, value] = match;
+          event[key] = value;
+        }
+      }
+    }
+    console.log(events);
+    return events;
+  }
+});
+
+$(document).ready(function () {
+  async function fetchEvents() {
+    let cal = "";
     const timeMin = "2023-08-01T00:00:00Z";
     const gCalkey = "AIzaSyDdvMUXW8jaNxCfVZQv3vKbaL4nTzhygMI";
     const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?timeMin=${timeMin}&key=${gCalkey}`;
@@ -65,7 +81,7 @@ $(document).ready(function () {
     });
   }
   // Call the function to fetch events from Google Calendar
-  fetchGoogleCalendarEvents()
+  fetchEvents()
     .then((gCalActiveEvents) => {
       const datesOrdered = (function () {
         for (let event of currentSY.dates) {
