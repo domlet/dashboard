@@ -39,7 +39,7 @@ function calculateTerms(termsList) {
   for (let i = 0; i < termsList.length; i++) {
     // Always calculate total days:
     termDaysTotal = Math.floor(
-      (termsList[i].end - termsList[i].beg) / (1000 * 3600 * 24)
+      (termsList[i].end - termsList[i].beg) / (1000 * 3600 * 24) + 1
     );
     termsList[i].termDaysTotal = termDaysTotal;
     // Terms that have ended:
@@ -100,6 +100,7 @@ function drawDots(schoolYear) {
     // 6 terms
     // Draw filled dots (for elapsed days)
     dotsHtml = "";
+    console.log(schoolYear.terms[0].termDaysElapsed);
     for (let x = 0; x < schoolYear.terms[i].termDaysElapsed; x++) {
       let date = schoolYear.terms[i].beg;
       let dateCute = date.toLocaleString("en-US", dotsDateOptions); // Tooltip
