@@ -11,7 +11,7 @@ html {
   overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 body {
-  background-image: url("../../images/bg-theinfinite8enigma-East-Oakland-510-Graffiti-Art.jpeg");
+  background-image: url("../images/bg-theinfinite8enigma-East-Oakland-510-Graffiti-Art.jpeg");
   background-size: cover;
 }
 .main-wrapper {
