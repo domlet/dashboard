@@ -1,4 +1,4 @@
-const SY2324 = {
+const zodiac = {
   dates: [
     {
       beg: new Date("3 / 21 / 24"),

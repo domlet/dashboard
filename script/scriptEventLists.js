@@ -12,7 +12,7 @@ $(document).ready(function () {
   async function fetchGoogleCalendarEvents() {
     const calendarId =
       "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com";
-    // Set timeMin to control the school year to pull events from
+    // Set 'timeMin' to control the school year to pull events from
     const timeMin = "2024-08-01T00:00:00Z";
     const gCalkey = "AIzaSyDdvMUXW8jaNxCfVZQv3vKbaL4nTzhygMI";
     const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?timeMin=${timeMin}&key=${gCalkey}`;
