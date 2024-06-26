@@ -12,7 +12,7 @@ $(document).ready(function () {
   async function fetchGoogleCalendarEvents() {
     const calendarId =
       "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com";
-    const timeMin = "2023-08-01T00:00:00Z";
+    const timeMin = "2024-08-01T00:00:00Z";
     const gCalkey = "AIzaSyDdvMUXW8jaNxCfVZQv3vKbaL4nTzhygMI";
     const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?timeMin=${timeMin}&key=${gCalkey}`;
     const response = await fetch(url);
@@ -41,6 +41,7 @@ $(document).ready(function () {
         item.eventType = "event";
       }
     }
+    // Format the object the same way as the SY objects
     return gCalActiveEvents.map((item) => {
       const startDate = new Date(item.start.dateTime || item.start.date);
       const endDate = new Date(item.end.dateTime || item.end.date);
