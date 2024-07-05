@@ -4,26 +4,26 @@ const SY2425 = {
     {
       termCode: "sv_SY2425",
       termName: "Summer Vacation",
-      beg: new Date("July 01, 2024"),
-      end: new Date("Aug 06, 2024"),
+      beg: new Date("June 29, 2024"),
+      end: new Date("Aug 11, 2024"),
     },
     {
       termCode: "t1_SY2425",
       termName: "T1",
-      beg: new Date("Aug 07, 2024"),
-      end: new Date("Oct 13, 2024"),
+      beg: new Date("Aug 12, 2024"), // https://bit.ly/OUSD_CAL_SY2425
+      end: new Date("Oct 11, 2024"), // https://bit.ly/CCPA_GCAL
     },
     {
       termCode: "t2_SY2425",
       termName: "T2",
-      beg: new Date("Oct 16, 2024"),
-      end: new Date("Dec 22, 2024"),
+      beg: new Date("Oct 15, 2024"),
+      end: new Date("Dec 20, 2024"), // https://bit.ly/CCPA_GCAL
     },
     {
       termCode: "t3_SY2425",
       termName: "T3",
-      beg: new Date("Jan 09, 2025"),
-      end: new Date("Mar 8, 2025"),
+      beg: new Date("Jan 07, 2025"), // https://bit.ly/OUSD_CAL_SY2425
+      end: new Date("Mar 7, 2025"), // https://bit.ly/CCPA_GCAL
     },
     {
       termCode: "t4_SY2425",
@@ -44,5 +44,13 @@ const SY2425 = {
       end: new Date("Jun 28, 2025"),
     },
   ],
-  dates: [{}],
+  dates: [
+    {
+      beg: new Date("Sep 07, 2024"),
+      end: new Date("Sep 07, 2024"),
+      eventType: "studentActivity",
+      name: "CCPA Robotics FTC Kickoff",
+      description: "Season game reveal (online).",
+    },
+  ],
 };
