@@ -1,9 +1,9 @@
 const calendarIds = [
   "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com", // CCPA
   "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com", // Opportunities HS - https://github.com/ccpa-ousd/opps-cal-hs
-  "en.usa#holiday@group.v.calendar.google.com", // US observances
-  "hhm0o0t2uqmmm0dsjg9t5n7uk0nnspe4@import.calendar.google.com", // UN observances
-  "398cuok6nh0gpq8ild25ros54qmlrabf@import.calendar.google.com", // culture_awareness
+  // "en.usa#holiday@group.v.calendar.google.com", // US observances
+  // "hhm0o0t2uqmmm0dsjg9t5n7uk0nnspe4@import.calendar.google.com", // UN observances
+  // "398cuok6nh0gpq8ild25ros54qmlrabf@import.calendar.google.com", // culture_awareness
 ];
 let combinedGCalEvents = [];
 let combinedAllEvents = [];
@@ -29,56 +29,66 @@ $(document).ready(function () {
       console.log(
         "Cal " + i + " has " + gCalActiveEvents.length + " active events."
       );
+      // push each event (from each calendar) into the combinedGCalEvents array
+      for (let i = 0; i < gCalActiveEvents.length; i++) {
+        combinedGCalEvents.push(gCalActiveEvents[i]);
+      }
+      console.log(
+        "combinedGCalEvents has " +
+          combinedGCalEvents.length +
+          " active events."
+      );
+    }
+    // Format the object the same way as the SY objects
+    return combinedGCalEvents.map((item) => {
+      const startDate = new Date(item.start.dateTime || item.start.date);
+      const endDate = new Date(item.end.dateTime || item.end.date);
+      return {
+        beg: startDate,
+        end: endDate,
+        name: item.summary,
+        description: item.location || item.description || "",
+        eventType: item.eventType || "",
+      };
+    });
+  }
+
+  /*
+  if the promise is good...
+  */
+  fetchGoogleCalendarEvents(calendarIds)
+    .then((combinedGCalEvents) => {
       // Assign event types
-      for (let item of gCalActiveEvents) {
+      for (item of combinedGCalEvents) {
         if (
-          item.summary.search("No School") != -1 ||
-          item.summary.search("Holiday") != -1
+          item.name.search("No School") != -1 ||
+          item.name.search("Holiday") != -1
         ) {
           item.eventType = "studentHoliday";
         } else if (
-          item.summary.search("vs") != -1 ||
-          item.summary.search("ball") != -1 ||
-          item.summary.search("Track") != -1 ||
-          item.summary.search("Soccer") != -1 ||
-          item.summary.search("Futsol") != -1 ||
-          item.summary.search("Robotics") != -1 ||
-          item.summary.search("Esports") != -1 ||
-          item.summary.search("playoffs") != -1
+          item.name.search("vs") != -1 ||
+          item.name.search("ball") != -1 ||
+          item.name.search("Track") != -1 ||
+          item.name.search("Soccer") != -1 ||
+          item.name.search("Futsol") != -1 ||
+          item.name.search("Robotics") != -1 ||
+          item.name.search("Esports") != -1 ||
+          item.name.search("playoffs") != -1
         ) {
           item.eventType = "studentActivity";
         } else {
           item.eventType = "event";
         }
-        console.log(gCalActiveEvents.length + " gCalActiveEvents");
       }
-      // Format the object the same way as the SY objects
-      return gCalActiveEvents.map((item) => {
-        const startDate = new Date(item.start.dateTime || item.start.date);
-        const endDate = new Date(item.end.dateTime || item.end.date);
-        return {
-          beg: startDate,
-          end: endDate,
-          name: item.summary,
-          description: item.location || item.description || "",
-          eventType: item.eventType || "",
-        };
-      });
-    }
-  }
-
-  /*
-  Call the function to fetch events from all calendarIds
-  and also the hard-coded currentSY object
-  and combine them into one array of events
-  */
-  fetchGoogleCalendarEvents(calendarIds)
-    .then((gCalActiveEvents) => {
+      console.log("hi");
+      // get items from both gCals and hard-coded cals
+      // and combine them into one array
+      // then sort them by date
       const datesOrdered = (function () {
         for (let event of currentSY.dates) {
           combinedAllEvents.push(event);
         }
-        for (let event of gCalActiveEvents) {
+        for (let event of combinedGCalEvents) {
           combinedAllEvents.push(event);
         }
         // Sort by start date
