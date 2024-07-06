@@ -80,7 +80,6 @@ $(document).ready(function () {
           item.eventType = "event";
         }
       }
-      console.log("hi");
       // get items from both gCals and hard-coded cals
       // and combine them into one array
       // then sort them by date
@@ -93,9 +92,6 @@ $(document).ready(function () {
         }
         // Sort by start date
         combinedAllEvents.sort((a, b) => a.beg - b.beg);
-        console.log(
-          "there are now " + combinedAllEvents.length + " combinedAllEvents"
-        );
         showEvents(combinedAllEvents);
         return combinedAllEvents;
       })();
@@ -105,16 +101,36 @@ $(document).ready(function () {
     });
 });
 
+// Show upcoming events on the page
 function showEvents(eventsArray) {
-  // Show upcoming events:
+  // modify formatting of the events
+  for (let i = 0; i < eventsArray.length; i++) {
+    if (eventsArray[i].description != "") {
+      // remove html in descriptions
+      eventsArray[i].description = eventsArray[i].description.replace(
+        /<[^>]*>/g,
+        ""
+      );
+      // add spaces after periods
+      eventsArray[i].description = eventsArray[i].description.replace(
+        /\.(\S)/g,
+        ". $1"
+      );
+    }
+    // truncate any long titles or desc
+    if (eventsArray[i].name.length > 18) {
+      eventsArray[i].name = eventsArray[i].name.substring(0, 18);
+    }
+    if (eventsArray[i].description.length > 100) {
+      eventsArray[i].description = eventsArray[i].description.substring(0, 100);
+    }
+  }
+  // separate the events into arrays by type
   let eHoliday = [];
-  let eEvent = [];
   let eStudAct = [];
-  let textHolidays = "";
-  let textEvents = "";
-  let textStudActs = "";
-  // Collect only future events:
+  let eEvent = [];
   for (i in eventsArray) {
+    // Collect only future events
     if (eventsArray[i].beg > dateToday) {
       // Collect future holidays:
       if (eventsArray[i].eventType == "studentHoliday") {
@@ -127,17 +143,14 @@ function showEvents(eventsArray) {
       }
     }
   }
-  // Display upcoming events (of both types):
+  // Display upcoming events (of all types):
+  let textHolidays = "";
+  let textEvents = "";
+  let textStudActs = "";
+
   for (x in eHoliday) {
-    if (eHoliday[x].name.length > 18) {
-      textHolidays +=
-        "<li class='event-item'><strong>" +
-        eHoliday[x].name.substring(0, 18) +
-        ".. </strong>";
-    } else {
-      textHolidays +=
-        "<li class='event-item'><strong>" + eHoliday[x].name + " </strong>";
-    }
+    textHolidays +=
+      "<li class='event-item'><strong>" + eHoliday[x].name + " </strong>";
     textHolidays +=
       "<span class='event-date'>" +
       eHoliday[x].beg.toLocaleString("en-US", {
@@ -148,15 +161,9 @@ function showEvents(eventsArray) {
       "</span></li>";
   }
   for (y in eEvent) {
-    if (eEvent[y].name.length > 18) {
-      textEvents +=
-        "<li class='event-item'><strong>" +
-        eEvent[y].name.substring(0, 18) +
-        ".. </strong>";
-    } else {
-      textEvents +=
-        "<li class='event-item'><strong>" + eEvent[y].name + " </strong>";
-    }
+    textEvents +=
+      "<li class='event-item'><strong>" + eEvent[y].name + " </strong>";
+
     textEvents +=
       "<span class='event-date'>" +
       eEvent[y].beg.toLocaleString("en-US", {
@@ -169,15 +176,8 @@ function showEvents(eventsArray) {
       "</p></li>";
   }
   for (z in eStudAct) {
-    if (eStudAct[z].name.length > 18) {
-      textStudActs +=
-        "<li class='event-item'><strong>" +
-        eStudAct[z].name.substring(0, 18) +
-        ".. </strong>";
-    } else {
-      textStudActs +=
-        "<li class='event-item'><strong>" + eStudAct[z].name + " </strong>";
-    }
+    textStudActs +=
+      "<li class='event-item'><strong>" + eStudAct[z].name + " </strong>";
     textStudActs +=
       "<span class='event-date'>" +
       eStudAct[z].beg.toLocaleString("en-US", {
