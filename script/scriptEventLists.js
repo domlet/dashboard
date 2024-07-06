@@ -5,8 +5,8 @@ const calendarIds = [
   "hhm0o0t2uqmmm0dsjg9t5n7uk0nnspe4@import.calendar.google.com", // UN observances
   "398cuok6nh0gpq8ild25ros54qmlrabf@import.calendar.google.com", // culture_awareness
 ];
-// let gCalActiveEvents = [];
-let combinedEvents = [];
+let combinedGCalEvents = [];
+let combinedAllEvents = [];
 // Function to fetch events from Google Calendar
 $(document).ready(function () {
   async function fetchGoogleCalendarEvents(calendarIdsList) {
@@ -15,11 +15,13 @@ $(document).ready(function () {
     const gCalkey = "AIzaSyDdvMUXW8jaNxCfVZQv3vKbaL4nTzhygMI"; // https://console.cloud.google.com/apis/credentials/
     // for each of the calendars, get valid events and reformat them.
     for (let i = 0; i < calendarIdsList.length; i++) {
+      console.log(calendarIdsList.length + " calendars here");
       let calendarId = calendarIdsList[i];
       let url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?timeMin=${timeMin}&key=${gCalkey}`;
-      const response = await fetch(url);
-      const gCaldata = await response.json();
-      const gCalevents = gCaldata.items;
+      let response = await fetch(url);
+      let gCaldata = await response.json();
+      let gCalevents = gCaldata.items;
+      let gCalActiveEvents = [];
       // Remove events with no start date
       gCalActiveEvents = gCalevents.filter(
         (item) => item.status !== "cancelled"
@@ -64,23 +66,28 @@ $(document).ready(function () {
       });
     }
   }
-  // Call the function to fetch events from Google Calendar
+
+  /*
+  Call the function to fetch events from all calendarIds
+  and also the hard-coded currentSY object
+  and combine them into one array of events
+  */
   fetchGoogleCalendarEvents(calendarIds)
     .then((gCalActiveEvents) => {
       const datesOrdered = (function () {
         for (let event of currentSY.dates) {
-          combinedEvents.push(event);
+          combinedAllEvents.push(event);
         }
         for (let event of gCalActiveEvents) {
-          combinedEvents.push(event);
+          combinedAllEvents.push(event);
         }
         // Sort by start date
-        combinedEvents.sort((a, b) => a.beg - b.beg);
+        combinedAllEvents.sort((a, b) => a.beg - b.beg);
         console.log(
-          "there are now " + combinedEvents.length + " combinedEvents"
+          "there are now " + combinedAllEvents.length + " combinedAllEvents"
         );
-        showEvents(combinedEvents);
-        return combinedEvents;
+        showEvents(combinedAllEvents);
+        return combinedAllEvents;
       })();
     })
     .catch((error) => {
