@@ -76,6 +76,8 @@ $(document).ready(function () {
           item.name.search("playoffs") != -1
         ) {
           item.eventType = "studentActivity";
+        } else if (item.name.search("\\(Free") != -1) {
+          item.eventType = "opportunity";
         } else {
           item.eventType = "event";
         }
@@ -129,6 +131,7 @@ function showEvents(eventsArray) {
   let eHoliday = [];
   let eStudAct = [];
   let eEvent = [];
+  let eOpps = [];
   for (i in eventsArray) {
     // Collect only future events
     if (eventsArray[i].beg > dateToday) {
@@ -138,6 +141,9 @@ function showEvents(eventsArray) {
       } else if (eventsArray[i].eventType == "event") {
         // Collect future non-holidays:
         eEvent.push(eventsArray[i]);
+      } else if (eventsArray[i].eventType == "opportunity") {
+        // Collect future opps:
+        eOpps.push(eventsArray[i]);
       } else {
         eStudAct.push(eventsArray[i]);
       }
@@ -147,6 +153,7 @@ function showEvents(eventsArray) {
   let textHolidays = "";
   let textEvents = "";
   let textStudActs = "";
+  let textOpps = "";
 
   for (x in eHoliday) {
     textHolidays +=
@@ -189,9 +196,24 @@ function showEvents(eventsArray) {
       eStudAct[z].description +
       "</p></li>";
   }
+  for (aa in eOpps) {
+    textOpps +=
+      "<li class='event-item'><strong>" + eOpps[aa].name + " </strong>";
+    textOpps +=
+      "<span class='event-date'>" +
+      eOpps[aa].beg.toLocaleString("en-US", {
+        weekday: "short",
+        month: "numeric",
+        day: "numeric",
+      }) +
+      "</span><br><p class='event-item-desc py-0'>" +
+      eOpps[aa].description +
+      "</p></li>";
+  }
   document.getElementById("events-student-holiday").innerHTML = textHolidays;
   document.getElementById("events-student-activities").innerHTML = textStudActs;
   document.getElementById("events-student-non-holiday").innerHTML = textEvents;
+  document.getElementById("events-student-opps").innerHTML = textOpps;
 }
 // Calendar show/hide onclick:
 let calendarIsVisible = null;

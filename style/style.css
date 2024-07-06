@@ -138,16 +138,16 @@ iframe {
   background-position: left 0.25em;
   background-size: 0.9em;
 }
-/* #events-student-holiday .event-item:nth-child(-n + 4) { */
-#events-student-holiday .event-item:nth-child(-n + 24) {
+#events-student-holiday .event-item:nth-child(-n + 4) {
   display: list-item;
 }
-/* #events-student-activities .event-item:nth-child(-n + 5) { */
-#events-student-activities .event-item:nth-child(-n + 25) {
+#events-student-activities .event-item:nth-child(-n + 5) {
   display: list-item;
 }
-/* #events-student-non-holiday .event-item:nth-child(-n + 5) { */
-#events-student-non-holiday .event-item:nth-child(-n + 25) {
+#events-student-non-holiday .event-item:nth-child(-n + 5) {
+  display: list-item;
+}
+#events-student-opps .event-item:nth-child(-n + 3) {
   display: list-item;
 }
 .event-item-desc {
