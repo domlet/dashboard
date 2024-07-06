@@ -1,62 +1,71 @@
 const calendarIds = [
   "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com", // CCPA
+  "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com", // Opportunities HS - https://github.com/ccpa-ousd/opps-cal-hs
   "en.usa#holiday@group.v.calendar.google.com", // US observances
   "hhm0o0t2uqmmm0dsjg9t5n7uk0nnspe4@import.calendar.google.com", // UN observances
   "398cuok6nh0gpq8ild25ros54qmlrabf@import.calendar.google.com", // culture_awareness
-  "1g09kltmldcsn4bmpkdvg97k5v5apl6u@import.calendar.google.com", // holidays_funny
-  "", // Zodiac
 ];
+// let gCalActiveEvents = [];
 let combinedEvents = [];
 // Function to fetch events from Google Calendar
 $(document).ready(function () {
-  async function fetchGoogleCalendarEvents() {
-    const calendarId =
-      "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com";
+  async function fetchGoogleCalendarEvents(calendarIdsList) {
     // Set 'timeMin' to control the school year to pull events from
-    const timeMin = "2024-08-01T00:00:00Z";
-    const gCalkey = "AIzaSyDdvMUXW8jaNxCfVZQv3vKbaL4nTzhygMI";
-    const url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?timeMin=${timeMin}&key=${gCalkey}`;
-    const response = await fetch(url);
-    const gCaldata = await response.json();
-    const gCalevents = gCaldata.items;
-    // Remove events with no start date
-    gCalActiveEvents = gCalevents.filter((item) => item.status !== "cancelled");
-    // Assign event types
-    for (let item of gCalActiveEvents) {
-      if (
-        item.summary.search("No School") != -1 ||
-        item.summary.search("Holiday") != -1
-      ) {
-        item.eventType = "studentHoliday";
-      } else if (
-        item.summary.search("vs") != -1 ||
-        item.summary.search("ball") != -1 ||
-        item.summary.search("Track") != -1 ||
-        item.summary.search("Soccer") != -1 ||
-        item.summary.search("Futsol") != -1 ||
-        item.summary.search("Robotics") != -1 ||
-        item.summary.search("playoffs") != -1
-      ) {
-        item.eventType = "studentActivity";
-      } else {
-        item.eventType = "event";
+    const timeMin = "2024-08-01T00:00:00Z"; // set for SY2425
+    const gCalkey = "AIzaSyDdvMUXW8jaNxCfVZQv3vKbaL4nTzhygMI"; // https://console.cloud.google.com/apis/credentials/
+    // for each of the calendars, get valid events and reformat them.
+    for (let i = 0; i < calendarIdsList.length; i++) {
+      let calendarId = calendarIdsList[i];
+      let url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?timeMin=${timeMin}&key=${gCalkey}`;
+      const response = await fetch(url);
+      const gCaldata = await response.json();
+      const gCalevents = gCaldata.items;
+      // Remove events with no start date
+      gCalActiveEvents = gCalevents.filter(
+        (item) => item.status !== "cancelled"
+      );
+      console.log(
+        "Cal " + i + " has " + gCalActiveEvents.length + " active events."
+      );
+      // Assign event types
+      for (let item of gCalActiveEvents) {
+        if (
+          item.summary.search("No School") != -1 ||
+          item.summary.search("Holiday") != -1
+        ) {
+          item.eventType = "studentHoliday";
+        } else if (
+          item.summary.search("vs") != -1 ||
+          item.summary.search("ball") != -1 ||
+          item.summary.search("Track") != -1 ||
+          item.summary.search("Soccer") != -1 ||
+          item.summary.search("Futsol") != -1 ||
+          item.summary.search("Robotics") != -1 ||
+          item.summary.search("Esports") != -1 ||
+          item.summary.search("playoffs") != -1
+        ) {
+          item.eventType = "studentActivity";
+        } else {
+          item.eventType = "event";
+        }
+        console.log(gCalActiveEvents.length + " gCalActiveEvents");
       }
+      // Format the object the same way as the SY objects
+      return gCalActiveEvents.map((item) => {
+        const startDate = new Date(item.start.dateTime || item.start.date);
+        const endDate = new Date(item.end.dateTime || item.end.date);
+        return {
+          beg: startDate,
+          end: endDate,
+          name: item.summary,
+          description: item.location || item.description || "",
+          eventType: item.eventType || "",
+        };
+      });
     }
-    // Format the object the same way as the SY objects
-    return gCalActiveEvents.map((item) => {
-      const startDate = new Date(item.start.dateTime || item.start.date);
-      const endDate = new Date(item.end.dateTime || item.end.date);
-      return {
-        beg: startDate,
-        end: endDate,
-        name: item.summary,
-        description: item.location || item.description || "",
-        eventType: item.eventType || "",
-      };
-    });
   }
   // Call the function to fetch events from Google Calendar
-  fetchGoogleCalendarEvents()
+  fetchGoogleCalendarEvents(calendarIds)
     .then((gCalActiveEvents) => {
       const datesOrdered = (function () {
         for (let event of currentSY.dates) {
@@ -67,7 +76,9 @@ $(document).ready(function () {
         }
         // Sort by start date
         combinedEvents.sort((a, b) => a.beg - b.beg);
-        console.log(combinedEvents.length);
+        console.log(
+          "there are now " + combinedEvents.length + " combinedEvents"
+        );
         showEvents(combinedEvents);
         return combinedEvents;
       })();
