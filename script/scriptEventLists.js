@@ -15,7 +15,6 @@ $(document).ready(function () {
     const gCalkey = "AIzaSyDdvMUXW8jaNxCfVZQv3vKbaL4nTzhygMI"; // https://console.cloud.google.com/apis/credentials/
     // for each of the calendars, get valid events and reformat them.
     for (let i = 0; i < calendarIdsList.length; i++) {
-      console.log(calendarIdsList.length + " calendars here");
       let calendarId = calendarIdsList[i];
       let url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?timeMin=${timeMin}&key=${gCalkey}`;
       let response = await fetch(url);
@@ -26,18 +25,17 @@ $(document).ready(function () {
       gCalActiveEvents = gCalevents.filter(
         (item) => item.status !== "cancelled"
       );
-      console.log(
-        "Cal " + i + " has " + gCalActiveEvents.length + " active events."
-      );
+
       // push each event (from each calendar) into the combinedGCalEvents array
       for (let i = 0; i < gCalActiveEvents.length; i++) {
+        if (
+          calendarId ==
+          "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com"
+        ) {
+          gCalActiveEvents[i].eventType = "opportunity";
+        }
         combinedGCalEvents.push(gCalActiveEvents[i]);
       }
-      console.log(
-        "combinedGCalEvents has " +
-          combinedGCalEvents.length +
-          " active events."
-      );
     }
     // Format the object the same way as the SY objects
     return combinedGCalEvents.map((item) => {
@@ -65,6 +63,9 @@ $(document).ready(function () {
           item.name.search("Holiday") != -1
         ) {
           item.eventType = "studentHoliday";
+        } else if (item.eventType == "opportunity") {
+          // if it's an opportunity calendar it was already set
+          item.eventType = "opportunity";
         } else if (
           item.name.search("vs") != -1 ||
           item.name.search("ball") != -1 ||
@@ -76,8 +77,6 @@ $(document).ready(function () {
           item.name.search("playoffs") != -1
         ) {
           item.eventType = "studentActivity";
-        } else if (item.name.search("\\(Free") != -1) {
-          item.eventType = "opportunity";
         } else {
           item.eventType = "event";
         }
@@ -120,8 +119,8 @@ function showEvents(eventsArray) {
       );
     }
     // truncate any long titles or desc
-    if (eventsArray[i].name.length > 18) {
-      eventsArray[i].name = eventsArray[i].name.substring(0, 18);
+    if (eventsArray[i].name.length > 20) {
+      eventsArray[i].name = eventsArray[i].name.substring(0, 20);
     }
     if (eventsArray[i].description.length > 100) {
       eventsArray[i].description = eventsArray[i].description.substring(0, 100);
@@ -134,7 +133,7 @@ function showEvents(eventsArray) {
   let eOpps = [];
   for (i in eventsArray) {
     // Collect only future events
-    if (eventsArray[i].beg > dateToday) {
+    if (eventsArray[i].end > dateToday) {
       // Collect future holidays:
       if (eventsArray[i].eventType == "studentHoliday") {
         eHoliday.push(eventsArray[i]);
