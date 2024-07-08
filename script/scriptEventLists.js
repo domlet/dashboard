@@ -111,7 +111,7 @@ function showEvents(eventsArray) {
       );
       // add spaces after '.' (except .com...)
       eventsArray[i].description = eventsArray[i].description.replace(
-        /\.(?!\s|co\b|org\b|net\b)/g,
+        /\.(?!\s|co\b|org\b|net\b|discoverandgo\b)/g,
         ". "
       );
       // add spaces after ':' (except '://')
@@ -124,8 +124,8 @@ function showEvents(eventsArray) {
     if (eventsArray[i].name.length > 17) {
       eventsArray[i].name = eventsArray[i].name.substring(0, 17) + "..";
     }
-    if (eventsArray[i].description.length > 100) {
-      eventsArray[i].description = eventsArray[i].description.substring(0, 100);
+    if (eventsArray[i].description.length > 101) {
+      eventsArray[i].description = eventsArray[i].description.substring(0, 101);
     }
   }
   // separate the events into arrays by type
