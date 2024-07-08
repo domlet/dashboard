@@ -1,9 +1,6 @@
 const calendarIds = [
   "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com", // CCPA
   "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com", // Opportunities HS - https://github.com/ccpa-ousd/opps-cal-hs
-  // "en.usa#holiday@group.v.calendar.google.com", // US observances
-  // "hhm0o0t2uqmmm0dsjg9t5n7uk0nnspe4@import.calendar.google.com", // UN observances
-  // "398cuok6nh0gpq8ild25ros54qmlrabf@import.calendar.google.com", // culture_awareness
 ];
 let combinedGCalEvents = [];
 let combinedAllEvents = [];
@@ -124,8 +121,8 @@ function showEvents(eventsArray) {
       );
     }
     // truncate any long titles or desc
-    if (eventsArray[i].name.length > 20) {
-      eventsArray[i].name = eventsArray[i].name.substring(0, 20);
+    if (eventsArray[i].name.length > 17) {
+      eventsArray[i].name = eventsArray[i].name.substring(0, 17) + "..";
     }
     if (eventsArray[i].description.length > 100) {
       eventsArray[i].description = eventsArray[i].description.substring(0, 100);
