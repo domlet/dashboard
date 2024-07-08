@@ -112,10 +112,15 @@ function showEvents(eventsArray) {
         /<[^>]*>/g,
         ""
       );
-      // add spaces after periods
+      // add spaces after '.' (except .com...)
       eventsArray[i].description = eventsArray[i].description.replace(
-        /\.(\S)/g,
-        ". $1"
+        /\.(?!\s|co\b|org\b|net\b)/g,
+        ". "
+      );
+      // add spaces after ':' (except '://')
+      eventsArray[i].description = eventsArray[i].description.replace(
+        /\:(?!\s|\/\/\b)/g,
+        ": "
       );
     }
     // truncate any long titles or desc

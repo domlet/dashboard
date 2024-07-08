@@ -100,7 +100,6 @@ function drawDots(schoolYear) {
     // 6 terms
     // Draw filled dots (for elapsed days)
     dotsHtml = "";
-    console.log(schoolYear.terms[0].termDaysElapsed);
     for (let x = 0; x < schoolYear.terms[i].termDaysElapsed; x++) {
       let date = schoolYear.terms[i].beg;
       let dateCute = date.toLocaleString("en-US", dotsDateOptions); // Tooltip
