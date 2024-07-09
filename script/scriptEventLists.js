@@ -104,15 +104,10 @@ function showEvents(eventsArray) {
   // modify formatting of the events
   for (let i = 0; i < eventsArray.length; i++) {
     if (eventsArray[i].description != "") {
-      // remove html in descriptions
+      // remove html in descriptions; use ' ' for padding
       eventsArray[i].description = eventsArray[i].description.replace(
         /<[^>]*>/g,
-        ""
-      );
-      // add spaces after '.' (except .com...)
-      eventsArray[i].description = eventsArray[i].description.replace(
-        /\.(?!\s|co\b|org\b|net\b|discoverandgo\b)/g,
-        ". "
+        " "
       );
       // add spaces after ':' (except '://')
       eventsArray[i].description = eventsArray[i].description.replace(
@@ -125,7 +120,8 @@ function showEvents(eventsArray) {
       eventsArray[i].name = eventsArray[i].name.substring(0, 17) + "..";
     }
     if (eventsArray[i].description.length > 101) {
-      eventsArray[i].description = eventsArray[i].description.substring(0, 101);
+      eventsArray[i].description =
+        eventsArray[i].description.substring(0, 101) + " ...";
     }
   }
   // separate the events into arrays by type
