@@ -99,6 +99,20 @@ $(document).ready(function () {
     });
 });
 
+// Function to convert URLs to linked HTML text
+function convertUrlsToLinks(text) {
+  // Regular expression to find URLs
+  var urlPattern = /(https?:\/\/[^\s]+)/g;
+
+  // Replace URLs with HTML links
+  var newText = text.replace(
+    urlPattern,
+    '<a href="$1" target="_blank" class="event-link">Learn more</a>.'
+  );
+
+  return newText;
+}
+
 // Show upcoming events on the page
 function showEvents(eventsArray) {
   // modify formatting of the events
@@ -108,6 +122,10 @@ function showEvents(eventsArray) {
       eventsArray[i].description = eventsArray[i].description.replace(
         /<[^>]*>/g,
         " "
+      );
+      // convert urls to links
+      eventsArray[i].description = convertUrlsToLinks(
+        eventsArray[i].description
       );
       // add spaces after ':' (except '://')
       eventsArray[i].description = eventsArray[i].description.replace(
@@ -119,9 +137,9 @@ function showEvents(eventsArray) {
     if (eventsArray[i].name.length > 17) {
       eventsArray[i].name = eventsArray[i].name.substring(0, 17) + "..";
     }
-    if (eventsArray[i].description.length > 101) {
+    if (eventsArray[i].description.length > 170) {
       eventsArray[i].description =
-        eventsArray[i].description.substring(0, 101) + " ...";
+        eventsArray[i].description.substring(0, 170) + "...";
     }
   }
   // separate the events into arrays by type

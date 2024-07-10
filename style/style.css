@@ -122,6 +122,11 @@ iframe {
 #events ul {
   padding: 0;
 }
+
+.event-link {
+  color: inherit;
+  text-decoration: underline;
+}
 .event-date {
   font-size: small;
   background-color: rgba(255, 255, 255, 0.2);
@@ -148,7 +153,7 @@ iframe {
 #events-student-non-holiday .event-item:nth-child(-n + 5) {
   display: list-item;
 }
-#events-student-opps .event-item:nth-child(-n + 3) {
+#events-student-opps .event-item:nth-child(-n + 13) {
   display: list-item;
 }
 .event-item-desc {
