@@ -6,14 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CCPA School Dashboard</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
   <link rel="stylesheet" href="style/style.css" />
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <script type="text/javascript" src="data/SY2324.js"></script>
   <script type="text/javascript" src="data/SY2425.js"></script>
   <script type="text/javascript" src="data/SY2526.js"></script>
   <script src="script/jquery-3.7.1.min.js"></script>
-
 </head>
 
 <body>
@@ -99,25 +98,25 @@
       <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-12 pt-2">
           <a href='https://calendar.google.com/calendar/u/0/embed?src=ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com&ctz=America/Los_Angeles&mode=AGENDA' class="lowkey" target="_blank">
-            <h2>Student Holidays:</h2>
+            <h2>Student Holidays</h2>
             <ul id="events-student-holiday"></ul>
           </a>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12 pt-2">
           <a href='https://calendar.google.com/calendar/u/0/embed?src=ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com&ctz=America/Los_Angeles&mode=AGENDA' class="lowkey" target="_blank">
-            <h2>Student Activities:</h2>
+            <h2>Student Activities</h2>
             <ul id="events-student-activities"></ul>
           </a>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12 pt-2">
           <a href='https://calendar.google.com/calendar/u/0/embed?src=ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com&ctz=America/Los_Angeles&mode=AGENDA' class="lowkey" target="_blank">
-            <h2>Dates to Note:</h2>
+            <h2>Dates to Note</h2>
             <ul id="events-student-non-holiday"></ul>
           </a>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12 pt-2">
           <a href='https://calendar.google.com/calendar/u/0/embed?src=a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com&ctz=America/Los_Angeles&mode=WEEK' class="lowkey" target="_blank">
-            <h2>Opportunities:</h2>
+            <h2>Opportunities</h2>
           </a>
           <ul id="events-student-opps"></ul>
         </div>
@@ -128,53 +127,87 @@
     <div class="container-fluid py-2" id="info">
       <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-12 pt-2">
-          <h2>Student Resources:</h2>
+          <h2>Student Resources</h2>
           <ul>
-            <li class="list-item">
-              <a href="https://docs.google.com/presentation/d/1jQ6qlNSJM9i2jlJJRc05hry9tZMJAFGvAmr6fWsw_uk/present?#slide=id.g25e677a6508_0_63" target="_blank"><strong>Get Free Transit Passes</strong></a>
-            </li>
-
-            <li class="list-item">
-              <a href="https://docs.google.com/presentation/d/1jQ6qlNSJM9i2jlJJRc05hry9tZMJAFGvAmr6fWsw_uk/present?#slide=id.g25e677a6508_0_63" target="_blank"><strong>Get a Public Library Card</strong></a>
-            </li>
-
-            <li class="list-item">
-              <a href="https://ousd.hometownticketing.com/embed/all" target="_blank"><strong>Get Sports Game Tickets</strong></a>
-            </li>
-            <li class="list-item">
-              <a href="https://docs.google.com/presentation/d/1jQ6qlNSJM9i2jlJJRc05hry9tZMJAFGvAmr6fWsw_uk/present?#slide=id.g276f26a1cdb_0_5" target="_blank"><strong>Driver Education</strong></a>
-            </li>
+            <p class="list-item-desc">
+              <a href="https://docs.google.com/presentation/d/1jQ6qlNSJM9i2jlJJRc05hry9tZMJAFGvAmr6fWsw_uk/present?#slide=id.g25e677a6508_0_63" target="_blank" class="item-link">
+                Free AC Transit Pass</a>
+            </p>
+            <p class="list-item-desc">
+              <a href="https://oaklandlibrary.org/get-a-library-card" target="_blank" class="item-link">
+                Free Public Library Card</a>
+            </p>
+            <p class="list-item-desc">
+              <a href="https://oaklandlibrary.org/resources-types/audiobooks/" target="_blank" class="item-link">
+                Free eBooks, Audiobooks</a>
+            </p>
+            <p class="list-item-desc">
+              <a href="https://ousd.hometownticketing.com/embed/all" target="_blank" class="item-link">
+                Sports Game Tickets</a>
+            </p>
           </ul>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12 pt-2">
-          <h2>Career & College:</h2>
+          <h2>Career & College</h2>
           <ul>
-            <li class="list-item">
-              <a href="https://www.opencccapply.net/gateway/apply?cccMisCode=345&__hstc=228223362.9dc2bb36d2b88e85d1b0876b4e49961a.1576604154238.1689178418965.1689181615099.1784&__hssc=228223362.5.1689181615099&__hsfp=2123489275&hsCtaTracking=c6331421-8d45-426d-8cd4-3e2ba1b5fc38%7C314532d2-a763-4a9b-98df-c4ec431254c0" target="_blank"><strong>Apply for Dual Enrollment (BCC)</strong></a>
-            </li>
-            <li class="list-item">
-              <a href="https://app.informedk12.com/link_campaigns/ousd-work-permit-application-current?token=He3Bpiaf3pYMQA8NthwixgN8" target="_blank"><strong>Apply for Student Work Permit</strong></a>
-            </li>
-
-            <li class="list-item">
-              <a href="https://sites.google.com/ousd.org/ccpacollegeandcareer/home" target="_blank"><strong>Career & College Center</strong></a>
-            </li>
+            <p class="list-item-desc">
+              <a href="https://www.opencccapply.net/gateway/apply?cccMisCode=345&__hstc=228223362.9dc2bb36d2b88e85d1b0876b4e49961a.1576604154238.1689178418965.1689181615099.1784&__hssc=228223362.5.1689181615099&__hsfp=2123489275&hsCtaTracking=c6331421-8d45-426d-8cd4-3e2ba1b5fc38%7C314532d2-a763-4a9b-98df-c4ec431254c0" target="_blank" class="item-link">
+                Dual Enrollment (BCC)</a>
+            </p>
+            <p class="list-item-desc">
+              <a href="https://sites.google.com/ousd.org/ccpacollegeandcareer/home" target="_blank" class="item-link">
+                Career & College Center</a>
+            </p>
+            <p class="list-item-desc">
+              <a href="https://app.informedk12.com/link_campaigns/ousd-work-permit-application-current?token=He3Bpiaf3pYMQA8NthwixgN8" target="_blank" class="item-link">
+                Student Work Permit</a>
+            </p>
+            <p class="list-item-desc">
+              <a href="https://docs.google.com/presentation/d/1jQ6qlNSJM9i2jlJJRc05hry9tZMJAFGvAmr6fWsw_uk/present?#slide=id.g276f26a1cdb_0_5" target="_blank" class="item-link">
+                Driver Education</a>
+            </p>
           </ul>
         </div>
         <div class="col-lg-3 col-md-6 col-sm-12 pt-2">
-          <h2>Health Center:</h2>
+          <h2>Health Center</h2>
           <ul>
-            <li class="list-item">
-              <a href="https://laclinica.org/services/" target="_blank"><strong>Parent/Guardian Consent Form</strong></a>
-            </li>
-            <li class="list-item">
-              <a href="https://docs.google.com/presentation/d/1jQ6qlNSJM9i2jlJJRc05hry9tZMJAFGvAmr6fWsw_uk/present?#slide=id.g25e677a6508_0_63" target="_blank"><strong>Get a Sports Physical</strong></a>
-            </li>
-            <li class="list-item">
-              <a href="https://laclinica.org/services/" target="_blank"><strong>La Clinica Services</strong></a>
-            </li>
+            <p class="list-item-desc">
+              New Patient Registration</a>
+              <a href="https://form.jotform.com/231876846379172" target="_blank" class="item-link"><span class="item-bubble">En</span></a>
+              <a href="https://form.jotform.com/231877223857163" target="_blank" class="item-link"><span class="item-bubble">Es</span></a>
+            </p>
+            <p class="list-item-desc">
+              <a href="https://docs.google.com/presentation/d/1jQ6qlNSJM9i2jlJJRc05hry9tZMJAFGvAmr6fWsw_uk/present?#slide=id.g25e677a6508_0_242" target="_blank" class="item-link">
+                Sports Physicals</a>
+            </p>
+            <p class="list-item-desc">
+              <a href="https://laclinica.org/services/" target="_blank" class="item-link">
+                La Clínica Services</a>
+            </p>
+          </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 pt-2">
+          <h2>Schedules</h2>
+          <ul>
 
-
+            <p class="list-item-desc">
+              <a href="https://drive.google.com/file/d/1BziR8-ua1F25rukuXCm7IrEpt1bNT1AP/view?usp=drive_link" target="_blank" class="item-link">
+                CCPA Bell Schedule</a>
+              <a href="https://docs.google.com/presentation/d/1jQ6qlNSJM9i2jlJJRc05hry9tZMJAFGvAmr6fWsw_uk/present?#slide=id.g25e677a6508_0_192" target="_blank" class="item-link"><span class="item-bubble">A/B Days</span></a>
+            </p>
+            <p class="list-item-desc">
+              <a href="https://calendar.google.com/calendar/u/0/embed?src=ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com&ctz=America/Los_Angeles&mode=WEEK" target="_blank" class="item-link">
+                CCPA Public Calendar</a>
+            </p>
+            <p class="list-item-desc">
+              <a href="https://www.ousd.org/about-us/districtcalendar" target="_blank" class="item-link">
+                OUSD District Calendar</a>
+            </p>
+            <p class="list-item-desc">
+              <a href="https://student.ousd.org/LoginParent.aspx" target="_blank" class="item-link">Aeries</a> /
+              <a href="https://login.jupitered.com/login/" target="_blank" class="item-link">Jupiter</a>
+              </a>
+            </p>
           </ul>
         </div>
       </div>

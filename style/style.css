@@ -104,12 +104,6 @@ iframe {
   border: 1px solid white;
   background-color: #021f59;
 }
-/* .striped-dot {
-  border: 1px solid black;
-	background-image: url("../images/tinystripes.png");
-	background-repeat: repeat;
-  background-size: 75%;
-} */
 .lowkey,
 .lowkey:hover {
   text-decoration: none;
@@ -119,15 +113,24 @@ iframe {
   background-color: rgba(217, 121, 4, 0.9);
   color: #000;
 }
-#events ul {
-  padding: 0;
+#events ul,
+#info ul {
+  padding: 0 0 1em 0;
 }
 
-.event-link {
+.item-link {
   color: inherit;
   text-decoration: underline;
 }
-.event-date {
+#info .item-link {
+  color: inherit;
+  text-decoration: none;
+}
+#info .item-link:hover {
+  color: inherit;
+  text-decoration: underline;
+}
+.item-bubble {
   font-size: small;
   background-color: rgba(255, 255, 255, 0.2);
   padding: 0.1em 0.3em;

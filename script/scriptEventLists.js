@@ -107,7 +107,7 @@ function convertUrlsToLinks(text) {
   // Replace URLs with HTML links
   var newText = text.replace(
     urlPattern,
-    '<a href="$1" target="_blank" class="event-link">Learn more</a>.'
+    '<a href="$1" target="_blank" class="item-link">Learn more</a>.'
   );
 
   return newText;
@@ -174,7 +174,7 @@ function showEvents(eventsArray) {
     textHolidays +=
       "<li class='list-item'><strong>" + eHoliday[x].name + " </strong>";
     textHolidays +=
-      "<span class='event-date'>" +
+      "<span class='item-bubble'>" +
       eHoliday[x].beg.toLocaleString("en-US", {
         weekday: "short",
         month: "numeric",
@@ -187,7 +187,7 @@ function showEvents(eventsArray) {
       "<li class='list-item'><strong>" + eEvent[y].name + " </strong>";
 
     textEvents +=
-      "<span class='event-date'>" +
+      "<span class='item-bubble'>" +
       eEvent[y].beg.toLocaleString("en-US", {
         weekday: "short",
         month: "numeric",
@@ -201,7 +201,7 @@ function showEvents(eventsArray) {
     textStudActs +=
       "<li class='list-item'><strong>" + eStudAct[z].name + " </strong>";
     textStudActs +=
-      "<span class='event-date'>" +
+      "<span class='item-bubble'>" +
       eStudAct[z].beg.toLocaleString("en-US", {
         weekday: "short",
         month: "numeric",
@@ -215,7 +215,7 @@ function showEvents(eventsArray) {
     textOpps +=
       "<li class='list-item'><strong>" + eOpps[aa].name + " </strong>";
     textOpps +=
-      "<span class='event-date'>" +
+      "<span class='item-bubble'>" +
       eOpps[aa].beg.toLocaleString("en-US", {
         weekday: "short",
         month: "numeric",
