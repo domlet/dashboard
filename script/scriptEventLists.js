@@ -132,14 +132,19 @@ function showEvents(eventsArray) {
         /\:(?!\s|\/\/\b)/g,
         ": "
       );
+      // remove double spaces
+      eventsArray[i].description = eventsArray[i].description.replace(
+        /\s\s/g,
+        " "
+      );
     }
     // truncate any long titles or desc
     if (eventsArray[i].name.length > 17) {
       eventsArray[i].name = eventsArray[i].name.substring(0, 17) + "..";
     }
-    if (eventsArray[i].description.length > 170) {
+    if (eventsArray[i].description.length > 160) {
       eventsArray[i].description =
-        eventsArray[i].description.substring(0, 170) + "...";
+        eventsArray[i].description.substring(0, 160) + "...";
     }
   }
   // separate the events into arrays by type
