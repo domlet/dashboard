@@ -172,7 +172,7 @@ function showEvents(eventsArray) {
 
   for (x in eHoliday) {
     textHolidays +=
-      "<li class='event-item'><strong>" + eHoliday[x].name + " </strong>";
+      "<li class='list-item'><strong>" + eHoliday[x].name + " </strong>";
     textHolidays +=
       "<span class='event-date'>" +
       eHoliday[x].beg.toLocaleString("en-US", {
@@ -184,7 +184,7 @@ function showEvents(eventsArray) {
   }
   for (y in eEvent) {
     textEvents +=
-      "<li class='event-item'><strong>" + eEvent[y].name + " </strong>";
+      "<li class='list-item'><strong>" + eEvent[y].name + " </strong>";
 
     textEvents +=
       "<span class='event-date'>" +
@@ -193,13 +193,13 @@ function showEvents(eventsArray) {
         month: "numeric",
         day: "numeric",
       }) +
-      "</span><br><p class='event-item-desc py-0'>" +
+      "</span><br><p class='list-item-desc py-0'>" +
       eEvent[y].description +
       "</p></li>";
   }
   for (z in eStudAct) {
     textStudActs +=
-      "<li class='event-item'><strong>" + eStudAct[z].name + " </strong>";
+      "<li class='list-item'><strong>" + eStudAct[z].name + " </strong>";
     textStudActs +=
       "<span class='event-date'>" +
       eStudAct[z].beg.toLocaleString("en-US", {
@@ -207,13 +207,13 @@ function showEvents(eventsArray) {
         month: "numeric",
         day: "numeric",
       }) +
-      "</span><br><p class='event-item-desc py-0'>" +
+      "</span><br><p class='list-item-desc py-0'>" +
       eStudAct[z].description +
       "</p></li>";
   }
   for (aa in eOpps) {
     textOpps +=
-      "<li class='event-item'><strong>" + eOpps[aa].name + " </strong>";
+      "<li class='list-item'><strong>" + eOpps[aa].name + " </strong>";
     textOpps +=
       "<span class='event-date'>" +
       eOpps[aa].beg.toLocaleString("en-US", {
@@ -221,7 +221,7 @@ function showEvents(eventsArray) {
         month: "numeric",
         day: "numeric",
       }) +
-      "</span><br><p class='event-item-desc py-0'>" +
+      "</span><br><p class='list-item-desc py-0'>" +
       eOpps[aa].description +
       "</p></li>";
   }
