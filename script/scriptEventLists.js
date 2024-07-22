@@ -8,12 +8,13 @@ let combinedAllEvents = [];
 $(document).ready(function () {
   async function fetchGoogleCalendarEvents(calendarIdsList) {
     // Set 'timeMin' to control the school year to pull events from
-    const timeMin = "2024-08-01T00:00:00Z"; // set for SY2425
+    const timeMin = "2024-08-01T00:00:00-0700"; // set for SY2425; -0700 is Pacific Daylight Time
+    const timezone = "America/Los_Angeles";
     const gCalkey = "AIzaSyDdvMUXW8jaNxCfVZQv3vKbaL4nTzhygMI"; // https://console.cloud.google.com/apis/credentials/
     // for each of the calendars, get valid events and reformat them.
     for (let i = 0; i < calendarIdsList.length; i++) {
       let calendarId = calendarIdsList[i];
-      let url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?timeMin=${timeMin}&key=${gCalkey}`;
+      let url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?timeMin=${timeMin}&key=${gCalkey}&timeZone=${timezone}`;
       let response = await fetch(url);
       let gCaldata = await response.json();
       let gCalevents = gCaldata.items;
