@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CCPA School Dashboard</title>
+  <link rel="stylesheet" href="style/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+  <link rel="stylesheet" href="style/style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <script type="text/javascript" src="data/SY2324.js"></script>
+  <script type="text/javascript" src="data/SY2425.js"></script>
+  <script type="text/javascript" src="data/SY2526.js"></script>
+  <script src="script/jquery-3.7.1.min.js"></script>
+</head>
+
+<body id="iframe-container">
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({ pageLanguage: 'en' }, 'google_translate_element');
+    }
+  </script>
+
+  <div class="main-wrapper">
+    <div class="navbar navbar-dark " id="date">
+      <div class="container-fluid p-0">
+        <div class="col-6 navbar-brand p-0 ">
+          <a href='../'><img src="images/ccpa-logo-lion-color.png" width="30" height="30" class="d-inline-block align-top mr-1" alt="Lion logo for Coliseum College Prep Academy"></a>
+          <span id="dateSpan"></span>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="col" id="google_translate_element"></div>
+          <div class="col"><img id="calButton" onclick="showGoogleCalendar()" src="icons/calendar.png" /></div>
+        </div>
+      </div>
+    </div>
+
+    <iframe id="fullscreen-iframe" src="https://calendar.google.com/calendar/embed?wkst=2&ctz=America%2FLos_Angeles&bgcolor=%23ffffff&src=ZTVjNTAyOTc4ZDQ1ODJlMmU3YjMwNGU4MTk3MTIwNjcyNzM5ZWQyNDVmNzMwZmM5MzhlNjRjMjQ5NDllMDAwZUBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=YTcxZmY2YjYzZTE3MDlhZTJiZmJjYWRhMmIzYjY0ZWJlYjFmN2Y1ZTMwNzg3YjJiYjA1OTcyNWZhMTdiN2IyYkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&src=Y2NwYWVkdS5jb21fZnR1MGxhNTRraW8wY3JoaDgzbTI2N2xyaThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23039BE5&color=%23C0CA33&color=%23F4511E&mode=WEEK" frameborder="0" scrolling="no"></iframe>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script src="script/script.js"></script>
+
+    <script>
+      // Keep screen awake:
+      // https://developer.mozilla.org/en-US/docs/Web/API/WakeLock/request
+      const requestWakeLock = async () => {
+        try {
+          const wakeLock = await navigator.wakeLock.request("screen");
+        } catch (err) {
+          // The wake lock request fails - usually system-related, such as low battery.
+          console.log(`${err.name}, ${err.message}`);
+        }
+      };
+      requestWakeLock();
+    </script>
+
+</body>
+
+</html>

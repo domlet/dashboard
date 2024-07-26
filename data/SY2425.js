@@ -44,41 +44,5 @@ const SY2425 = {
       end: new Date("Jun 28, 2025"),
     },
   ],
-  dates: [
-    {
-      beg: new Date("Aug 20, 2024"),
-      end: new Date("Aug 20, 2024"),
-      eventType: "studentActivity",
-      name: "Robotics Team Leadership Applications",
-      description: "3:45 PM in M1.",
-    },
-    {
-      beg: new Date("Sep 05, 2024"),
-      end: new Date("Sep 05, 2024"),
-      eventType: "studentActivity",
-      name: "First Robotics Practice of SY2425",
-      description: "3:45 PM in M1. First practice of the school year.",
-    },
-    {
-      beg: new Date("Sep 07, 2024"),
-      end: new Date("Sep 07, 2024"),
-      eventType: "studentActivity",
-      name: "CCPA Robotics FTC Kickoff",
-      description: "Season game reveal (online).",
-    },
-    {
-      beg: new Date("Apr 22, 2025"),
-      end: new Date("Apr 22, 2025"),
-      eventType: "studentActivity",
-      name: "Last Robotics Practice of SY2425",
-      description: "3:45 PM in M1.",
-    },
-    {
-      beg: new Date("Apr 24, 2025"),
-      end: new Date("Apr 24, 2025"),
-      eventType: "studentActivity",
-      name: "Last Robotics Practice of SY2425",
-      description: "Season End Party! 3:45 PM in M1.",
-    },
-  ],
+  dates: [],
 };

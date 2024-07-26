@@ -7,6 +7,7 @@
 const calendarIds = [
   "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com", // CCPA
   "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com", // Opportunities HS - https://github.com/ccpa-ousd/opps-cal-hs
+  "e5c502978d4582e2e7b304e8197120672739ed245f730fc938e64c24949e000e@group.calendar.google.com", // CCPA Robotics
 ];
 let combinedGCalEvents = [];
 let combinedAllEvents = [];
@@ -29,13 +30,29 @@ $(document).ready(function () {
       let gCaldata = await response.json(); // converts to JSON
       let gCalevents = gCaldata.items; // gets just the items array
 
-      // in the same loop, fetch recurring instances specifically
+      // in the same loop, fetch recurring instances
+      // and set eventType for calendars like 'opportunity'
       for (let event of gCalevents) {
+        if (
+          calendarId ==
+          "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com"
+        ) {
+          gCalevents[i].eventType = "opportunity";
+        }
+        if (
+          calendarId ==
+          "e5c502978d4582e2e7b304e8197120672739ed245f730fc938e64c24949e000e@group.calendar.google.com"
+        ) {
+          gCalevents[i].eventType = "studentActivity";
+        }
         if (event.recurrence) {
           let instancesUrl = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events/${event.id}/instances?timeMin=${timeMin}&timeMax=${timeMax}&key=${gCalkey}&timeZone=${timezone}`;
           let instancesResponse = await fetch(instancesUrl);
           let instancesData = await instancesResponse.json();
           let instances = instancesData.items;
+          for (let event of instances) {
+            event.eventType = "opportunity";
+          }
           combinedGCalEvents.push(...instances);
         } else {
           combinedGCalEvents.push(event);
@@ -48,7 +65,6 @@ $(document).ready(function () {
       gCalActiveEvents = gCalevents.filter(
         (item) => item.status !== "cancelled"
       );
-      console.log(gCalActiveEvents.length + " events (w/start dates)");
 
       // push each event (from each calendar) into the combinedGCalEvents array
       for (let i = 0; i < gCalActiveEvents.length; i++) {
@@ -196,13 +212,16 @@ function showEvents(eventsArray) {
       } else if (eventsArray[i].eventType == "opportunity") {
         // Collect future opps:
         eOpps.push(eventsArray[i]);
-        console.log(eventsArray[i].name); // todo: fix missing events
-        console.log(eOpps.length); // todo: fix missing events
       } else {
         eStudAct.push(eventsArray[i]);
       }
     }
   }
+  console.log("- eHoliday (" + eHoliday.length + " events)");
+  console.log("- eStudAct (" + eStudAct.length + " events)");
+  console.log("- eEvent (" + eEvent.length + " events)");
+  console.log("- eOpps (" + eOpps.length + " events)");
+
   // Display upcoming events (of all types):
   let textHolidays = "";
   let textEvents = "";

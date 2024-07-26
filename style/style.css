@@ -189,3 +189,10 @@ div[title]:hover::after {
   white-space: nowrap;
   z-index: 10;
 }
+
+#fullscreen-iframe {
+  border: none; /* Optional: Remove default border */
+  width: 100vw; /* 90% of the viewport width */
+  height: 90vh; /* 90% of the viewport height */
+  margin: 0 auto; /* Center the iframe */
+}
