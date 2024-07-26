@@ -11,7 +11,8 @@ $(document).ready(function () {
     const timeMin = "2024-08-01T00:00:00-0700"; // set for SY2425; -0700 is Pacific Daylight Time
     const timezone = "America/Los_Angeles";
     const gCalkey = "AIzaSyDdvMUXW8jaNxCfVZQv3vKbaL4nTzhygMI"; // https://console.cloud.google.com/apis/credentials/
-    // for each of the calendars, get valid events and reformat them.
+
+    // for each calendar, get all valid events
     for (let i = 0; i < calendarIdsList.length; i++) {
       let calendarId = calendarIdsList[i];
       let url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?timeMin=${timeMin}&key=${gCalkey}&timeZone=${timezone}`;
@@ -19,10 +20,25 @@ $(document).ready(function () {
       let gCaldata = await response.json();
       let gCalevents = gCaldata.items;
       let gCalActiveEvents = [];
+      console.log(gCalevents.length + " events in GCal #" + i);
       // Remove events with no start date
       gCalActiveEvents = gCalevents.filter(
         (item) => item.status !== "cancelled"
       );
+      console.log(gCalevents.length + " events (w/start dates)");
+
+      // Fetch instances for recurring events
+      for (let event of gCalActiveEvents) {
+        if (event.recurrence) {
+          let instancesUrl = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events/${event.id}/instances?key=${gCalkey}&timeZone=${timezone}`;
+          let instancesResponse = await fetch(instancesUrl);
+          let instancesData = await instancesResponse.json();
+          let instances = instancesData.items;
+          combinedGCalEvents.push(...instances);
+        } else {
+          combinedGCalEvents.push(event);
+        }
+      }
 
       // push each event (from each calendar) into the combinedGCalEvents array
       for (let i = 0; i < gCalActiveEvents.length; i++) {
@@ -82,18 +98,17 @@ $(document).ready(function () {
       // get items from both gCals and hard-coded cals
       // and combine them into one array
       // then sort them by date
-      const datesOrdered = (function () {
-        for (let event of currentSY.dates) {
-          combinedAllEvents.push(event);
-        }
-        for (let event of combinedGCalEvents) {
-          combinedAllEvents.push(event);
-        }
-        // Sort by start date
-        combinedAllEvents.sort((a, b) => a.beg - b.beg);
-        showEvents(combinedAllEvents);
-        return combinedAllEvents;
-      })();
+      for (let event of currentSY.dates) {
+        combinedAllEvents.push(event);
+      }
+      for (let event of combinedGCalEvents) {
+        combinedAllEvents.push(event);
+      }
+      // Sort by start date
+      combinedAllEvents.sort((a, b) => a.beg - b.beg);
+      showEvents(combinedAllEvents);
+      console.log(combinedAllEvents[15]); //
+      return combinedAllEvents;
     })
     .catch((error) => {
       console.error("Error fetching events:", error);
@@ -165,6 +180,8 @@ function showEvents(eventsArray) {
       } else if (eventsArray[i].eventType == "opportunity") {
         // Collect future opps:
         eOpps.push(eventsArray[i]);
+        console.log(eventsArray[i].name); // todo: fix missing events
+        console.log(eOpps.length); // todo: fix missing events
       } else {
         eStudAct.push(eventsArray[i]);
       }
