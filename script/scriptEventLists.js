@@ -1,36 +1,38 @@
+/*
+- get all events from Google Calendars
+- get all events from hard-coded events
+- combine them into one array
+*/
+
 const calendarIds = [
   "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com", // CCPA
   "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com", // Opportunities HS - https://github.com/ccpa-ousd/opps-cal-hs
 ];
 let combinedGCalEvents = [];
 let combinedAllEvents = [];
-// Function to fetch events from Google Calendar
+
+// Fetch events from Google Calendar
 $(document).ready(function () {
   async function fetchGoogleCalendarEvents(calendarIdsList) {
-    // Set 'timeMin' to control the school year to pull events from
+    // Set parameters for Google Calendar API
     const timeMin = "2024-08-01T00:00:00-0700"; // set for SY2425; -0700 is Pacific Daylight Time
+    const timeMax = "2025-08-01T00:00:00-0700"; // set for SY2425; -0700 is Pacific Daylight Time
     const timezone = "America/Los_Angeles";
     const gCalkey = "AIzaSyDdvMUXW8jaNxCfVZQv3vKbaL4nTzhygMI"; // https://console.cloud.google.com/apis/credentials/
 
-    // for each calendar, get all valid events
+    // for each calendar, get all events
+    console.log("Grabbing " + calendarIds.length + " GCals...");
     for (let i = 0; i < calendarIdsList.length; i++) {
       let calendarId = calendarIdsList[i];
-      let url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?timeMin=${timeMin}&key=${gCalkey}&timeZone=${timezone}`;
-      let response = await fetch(url);
-      let gCaldata = await response.json();
-      let gCalevents = gCaldata.items;
-      let gCalActiveEvents = [];
-      console.log(gCalevents.length + " events in GCal #" + i);
-      // Remove events with no start date
-      gCalActiveEvents = gCalevents.filter(
-        (item) => item.status !== "cancelled"
-      );
-      console.log(gCalevents.length + " events (w/start dates)");
+      let url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?timeMin=${timeMin}&timeMax=${timeMax}&key=${gCalkey}&timeZone=${timezone}`;
+      let response = await fetch(url); // gets a response object
+      let gCaldata = await response.json(); // converts to JSON
+      let gCalevents = gCaldata.items; // gets just the items array
 
-      // Fetch instances for recurring events
-      for (let event of gCalActiveEvents) {
+      // in the same loop, fetch recurring instances specifically
+      for (let event of gCalevents) {
         if (event.recurrence) {
-          let instancesUrl = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events/${event.id}/instances?key=${gCalkey}&timeZone=${timezone}`;
+          let instancesUrl = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events/${event.id}/instances?timeMin=${timeMin}&timeMax=${timeMax}&key=${gCalkey}&timeZone=${timezone}`;
           let instancesResponse = await fetch(instancesUrl);
           let instancesData = await instancesResponse.json();
           let instances = instancesData.items;
@@ -39,6 +41,14 @@ $(document).ready(function () {
           combinedGCalEvents.push(event);
         }
       }
+      console.log(gCalevents.length + " events in GCal #" + i);
+
+      // Remove events with no start date
+      let gCalActiveEvents = [];
+      gCalActiveEvents = gCalevents.filter(
+        (item) => item.status !== "cancelled"
+      );
+      console.log(gCalActiveEvents.length + " events (w/start dates)");
 
       // push each event (from each calendar) into the combinedGCalEvents array
       for (let i = 0; i < gCalActiveEvents.length; i++) {
@@ -106,6 +116,12 @@ $(document).ready(function () {
       }
       // Sort by start date
       combinedAllEvents.sort((a, b) => a.beg - b.beg);
+      // remove duplicates
+      for (let i = 0; i < combinedAllEvents.length - 1; i++) {
+        if (combinedAllEvents[i].name == combinedAllEvents[i + 1].name) {
+          combinedAllEvents.splice(i, 1);
+        }
+      }
       showEvents(combinedAllEvents);
       console.log(combinedAllEvents[15]); //
       return combinedAllEvents;
