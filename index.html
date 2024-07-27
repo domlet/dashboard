@@ -12,8 +12,13 @@
   <script type="text/javascript" src="data/SY2324.js"></script>
   <script type="text/javascript" src="data/SY2425.js"></script>
   <script type="text/javascript" src="data/SY2526.js"></script>
-  <script type="text/javascript" src="script.js" defer></script>
+  <script type="module">
+    import { addDays } from '/script/date-fns-3.6.0.js';
+    // Expose date-fns to global scope
+    window.dateFns = { addDays };
+  </script>
   <script type="text/javascript" src="script/jquery-3.7.1.min.js"></script>
+
 </head>
 
 <body>
@@ -169,13 +174,13 @@
                 Dual Enrollment (BCC)</a>
             </p>
             <p class="list-item-desc">
-              <a href="https://app.informedk12.com/link_campaigns/ousd-work-permit-application-current?token=He3Bpiaf3pYMQA8NthwixgN8" target="_blank" class="item-link">
-                Student Work Permit</a>
-            </p>
-            <p class="list-item-desc">
               Summer Programs
               <a href="https://bit.ly/CCPASUMMER" target="_blank" class="item-link"><span class="item-bubble">Sheet</span></a>
               <a href="https://bit.ly/CCPASUMMERSLIDES" target="_blank" class="item-link"><span class="item-bubble">Slides</span></a>
+            </p>
+            <p class="list-item-desc">
+              <a href="https://app.informedk12.com/link_campaigns/ousd-work-permit-application-current?token=He3Bpiaf3pYMQA8NthwixgN8" target="_blank" class="item-link">
+                Student Work Permit</a>
             </p>
             <p class="list-item-desc">
               <a href="https://ccpa-ousd.github.io/alumni-map/" target="_blank" class="item-link">

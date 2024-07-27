@@ -1,23 +1,31 @@
 /*
-- get all events from Google Calendars
-- get all events from hard-coded events
-- combine them into one array
+Scripts specific to events, ie not dots
 */
 
 const calendarIds = [
   "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com", // CCPA
-  "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com", // Opportunities HS - https://github.com/ccpa-ousd/opps-cal-hs
-  "e5c502978d4582e2e7b304e8197120672739ed245f730fc938e64c24949e000e@group.calendar.google.com", // CCPA Robotics
+  "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com", // Free museums - https://github.com/ccpa-ousd/opps-cal-hs
+  "e5c502978d4582e2e7b304e8197120672739ed245f730fc938e64c24949e000e@group.calendar.google.com", // CCPA STEM Interested
 ];
 let combinedGCalEvents = [];
 let combinedAllEvents = [];
 
 // Fetch events from Google Calendar
-$(document).ready(function () {
+document.addEventListener("DOMContentLoaded", () => {
   async function fetchGoogleCalendarEvents(calendarIdsList) {
     // Set parameters for Google Calendar API
-    const timeMin = "2024-08-01T00:00:00-0700"; // set for SY2425; -0700 is Pacific Daylight Time
-    const timeMax = "2025-08-01T00:00:00-0700"; // set for SY2425; -0700 is Pacific Daylight Time
+    const now = new Date();
+    const timeMin = now.toISOString();
+    let timeMax = "";
+    // date-fns stuff
+    if (window.dateFns && window.dateFns.addDays) {
+      const { addDays } = window.dateFns;
+      timeMax = addDays(now, 90);
+      timeMax = timeMax.toISOString();
+    } else {
+      console.error("dateFns or addDays is not available.");
+    }
+
     const timezone = "America/Los_Angeles";
     const gCalkey = "AIzaSyDdvMUXW8jaNxCfVZQv3vKbaL4nTzhygMI"; // https://console.cloud.google.com/apis/credentials/
 
@@ -139,7 +147,6 @@ $(document).ready(function () {
         }
       }
       showEvents(combinedAllEvents);
-      console.log(combinedAllEvents[15]); //
       return combinedAllEvents;
     })
     .catch((error) => {
