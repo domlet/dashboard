@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
         combinedGCalEvents.push(gCalActiveEvents[i]);
       }
     }
-    // Format the object the same way as the SY objects
+    // Format the event the same way as the SY events
     return combinedGCalEvents.map((item) => {
       const startDate = new Date(item.start.dateTime || item.start.date);
       const endDate = new Date(item.end.dateTime || item.end.date);
@@ -117,11 +117,13 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (
           item.name.search("vs") != -1 ||
           item.name.search("ball") != -1 ||
-          item.name.search("Track") != -1 ||
+          item.name.search("Cross Country") != -1 ||
+          item.name.search("XC") != -1 ||
           item.name.search("Soccer") != -1 ||
           item.name.search("Futsol") != -1 ||
           item.name.search("Robotics") != -1 ||
           item.name.search("Esports") != -1 ||
+          item.name.search("Track") != -1 ||
           item.name.search("playoffs") != -1
         ) {
           item.eventType = "studentActivity";
