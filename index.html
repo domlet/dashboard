@@ -12,8 +12,13 @@
   <script type="text/javascript" src="data/SY2324.js"></script>
   <script type="text/javascript" src="data/SY2425.js"></script>
   <script type="text/javascript" src="data/SY2526.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/date-fns@3.6.0/cdn.min.js"></script>
+  <script>
+    dateFns.addDays(new Date(2014, 1, 11), 10);
+    //=> Tue Feb 21 2014 00:00:00
+  </script>
   <script type="module">
-    import { addDays } from '/script/date-fns-3.6.0.js';
+    import { addDays } from "/date-fns/addDays";
     // Expose date-fns to global scope
     window.dateFns = { addDays };
   </script>
@@ -238,7 +243,7 @@
         <div class="col py-2 pl-12">
           Coliseum College Prep Academy (<a href="https://ccpa.ousd.org/" target="_blank">ccpa.ousd.org</a>) is a public school in East Oakland, California.
           This dashboard visualizes our progress through the academic terms in the school year.
-          Learn more: <a href="https://domlet.github.io/dashboard" target="_blank">github.com/domlet/dashboard</a>
+          <a href="https://domlet.github.io/student-dashboard" target="_blank"></a>Learn more</a>.
           <a href="https://raw.githubusercontent.com/domlet/dashboard/main/images/qr.svg" target="_blank"><img src="https://raw.githubusercontent.com/domlet/dashboard/main/images/qr.svg" style="width:5em; clear:both;display:block; margin:1em 0"></a>
         </div>
       </div>
