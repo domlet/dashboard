@@ -5,7 +5,7 @@ Scripts specific to events, ie not dots
 const calendarIds = [
   "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com", // CCPA
   "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com", // Free museums - https://github.com/ccpa-ousd/opps-cal-hs
-  "e5c502978d4582e2e7b304e8197120672739ed245f730fc938e64c24949e000e@group.calendar.google.com", // CCPA STEM Interested
+  "e5c502978d4582e2e7b304e8197120672739ed245f730fc938e64c24949e000e@group.calendar.google.com", // CCPA Dashboard Cal
 ];
 let combinedGCalEvents = [];
 let combinedAllEvents = [];
@@ -14,7 +14,8 @@ let combinedAllEvents = [];
 document.addEventListener("DOMContentLoaded", () => {
   async function fetchGoogleCalendarEvents(calendarIdsList) {
     // Set parameters for Google Calendar API
-    const now = new Date();
+    const now = new Date(); // today's date
+    // const now = new Date("January 01, 2025"); // fake date (for testing purposes)
     const timeMin = now.toISOString();
     let timeMax = "";
     // date-fns stuff
@@ -136,6 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // then sort them by date
       for (let event of currentSY.dates) {
         combinedAllEvents.push(event);
+        console.log(event);
       }
       for (let event of combinedGCalEvents) {
         combinedAllEvents.push(event);

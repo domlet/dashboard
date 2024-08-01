@@ -153,7 +153,7 @@ iframe {
 #events-student-activities .list-item:nth-child(-n + 4) {
   display: list-item;
 }
-#events-student-non-holiday .list-item:nth-child(-n + 5) {
+#events-student-non-holiday .list-item:nth-child(-n + 4) {
   display: list-item;
 }
 #events-student-opps .list-item:nth-child(-n + 4) {
