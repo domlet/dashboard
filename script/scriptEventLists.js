@@ -2,6 +2,8 @@
 Scripts specific to events, ie not dots
 */
 
+// const { addDays } = require("date-fns");
+
 const calendarIds = [
   "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com", // CCPA
   "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com", // Free museums - https://github.com/ccpa-ousd/opps-cal-hs
@@ -42,18 +44,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // in the same loop, fetch recurring instances
       // and set eventType for calendars like 'opportunity'
       for (let event of gCalevents) {
-        if (
-          calendarId ==
-          "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com"
-        ) {
-          gCalevents[i].eventType = "opportunity";
-        }
-        if (
-          calendarId ==
-          "e5c502978d4582e2e7b304e8197120672739ed245f730fc938e64c24949e000e@group.calendar.google.com"
-        ) {
-          gCalevents[i].eventType = "studentActivity";
-        }
         if (event.recurrence) {
           let instancesUrl = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events/${event.id}/instances?timeMin=${timeMin}&timeMax=${timeMax}&key=${gCalkey}&timeZone=${timezone}`;
           let instancesResponse = await fetch(instancesUrl);
@@ -74,7 +64,19 @@ document.addEventListener("DOMContentLoaded", () => {
       gCalActiveEvents = gCalevents.filter(
         (item) => item.status !== "cancelled"
       );
-
+      // Adjust for CCPA Public Calendar events which are missing timezones and dateTimes
+      // That missing data causes its events to show up 1 day early
+      for (item of combinedGCalEvents) {
+        if (
+          calendarId ==
+            "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com" &&
+          item.start.timeZone != "America/Los_Angeles" &&
+          item.start.dateTime == undefined
+        ) {
+          item.start.timeZone = "America/Los_Angeles";
+          item.start.dateTime = item.start.date + " 0:00:00";
+        }
+      }
       // push each event (from each calendar) into the combinedGCalEvents array
       for (let i = 0; i < gCalActiveEvents.length; i++) {
         if (
@@ -82,7 +84,13 @@ document.addEventListener("DOMContentLoaded", () => {
           "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com"
         ) {
           gCalActiveEvents[i].eventType = "opportunity";
+        } else if (
+          calendarId ==
+          "e5c502978d4582e2e7b304e8197120672739ed245f730fc938e64c24949e000e@group.calendar.google.com"
+        ) {
+          gCalevents[i].eventType = "studentActivity";
         }
+
         combinedGCalEvents.push(gCalActiveEvents[i]);
       }
     }
@@ -137,7 +145,6 @@ document.addEventListener("DOMContentLoaded", () => {
       // then sort them by date
       for (let event of currentSY.dates) {
         combinedAllEvents.push(event);
-        console.log(event);
       }
       for (let event of combinedGCalEvents) {
         combinedAllEvents.push(event);
