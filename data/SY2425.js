@@ -28,7 +28,7 @@ const SY2425 = {
     {
       termCode: "t4_SY2425",
       termName: "T4",
-      beg: new Date("Mar 11, 2025"),
+      beg: new Date("Mar 10, 2025"),
       end: new Date("May 10, 2025"),
     },
     {

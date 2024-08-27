@@ -74,13 +74,6 @@ const SY2324 = {
       description: "",
     },
     {
-      beg: new Date("Aug 29, 2023"),
-      end: new Date("Aug 29, 2023"),
-      eventType: "event",
-      name: "Back to School Night",
-      description: "5-7pm at CCPA",
-    },
-    {
       beg: new Date("Sep 04, 2023"),
       end: new Date("Sep 04, 2023"),
       eventType: "studentHoliday",
