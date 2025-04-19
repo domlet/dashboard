@@ -29,13 +29,13 @@ const SY2425 = {
       termCode: "t4_SY2425",
       termName: "T4",
       beg: new Date("Mar 10, 2025"),
-      end: new Date("May 10, 2025"),
+      end: new Date("May 16, 2025"),
     },
     {
       termCode: "ps_SY2425",
       termName: "Postsession",
-      beg: new Date("May 13, 2025"),
-      end: new Date("May 23, 2025"),
+      beg: new Date("May 19, 2025"),
+      end: new Date("May 29, 2025"),
     },
     {
       termCode: "ss_SY2425",
