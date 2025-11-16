@@ -1,7 +1,7 @@
 // Define school years and terms:
 const lastSY = SY2324;
-const currentSY = SY2425;
-const nextSY = SY2526;
+const currentSY = SY2526;
+const nextSY = SY2526; // breaks event list when updated #todo
 const dateToday = new Date();
 // Function to count number of days between two dates
 function dateDiffInDays(a, b) {
@@ -38,9 +38,7 @@ let termPercentComplete;
 function calculateTerms(termsList) {
   for (let i = 0; i < termsList.length; i++) {
     // Always calculate total days:
-    termDaysTotal = Math.floor(
-      (termsList[i].end - termsList[i].beg) / (1000 * 3600 * 24) + 1
-    );
+    termDaysTotal = Math.floor((termsList[i].end - termsList[i].beg) / (1000 * 3600 * 24) + 1);
     termsList[i].termDaysTotal = termDaysTotal;
     // Terms that have ended:
     if (dateToday > termsList[i].end) {
@@ -54,32 +52,14 @@ function calculateTerms(termsList) {
       termsList[i].termPercentComplete = 0;
       // Current term:
     } else {
-      termsList[i].termDaysElapsed = Math.floor(
-        (dateToday - termsList[i].beg) / (1000 * 3600 * 24) + 1
-      );
-      termsList[i].termDaysRemain = Math.floor(
-        termDaysTotal - termsList[i].termDaysElapsed
-      );
-      termsList[i].termPercentComplete = Math.floor(
-        (termsList[i].termDaysElapsed / termDaysTotal) * 100
-      );
+      termsList[i].termDaysElapsed = Math.floor((dateToday - termsList[i].beg) / (1000 * 3600 * 24) + 1);
+      termsList[i].termDaysRemain = Math.floor(termDaysTotal - termsList[i].termDaysElapsed);
+      termsList[i].termPercentComplete = Math.floor((termsList[i].termDaysElapsed / termDaysTotal) * 100);
       currentTerm = termsList[i];
     }
     // Update the 'allterms' object:
     termsList[i].percentcomplete = termPercentComplete;
-    console.log(
-      "" +
-        termsList[i].termName +
-        ": " +
-        termsList[i].termDaysElapsed +
-        "/" +
-        termsList[i].termDaysTotal +
-        " days (" +
-        termsList[i].termPercentComplete +
-        "%); " +
-        termsList[i].termDaysRemain +
-        " remain."
-    );
+    console.log("" + termsList[i].termName + ": " + termsList[i].termDaysElapsed + "/" + termsList[i].termDaysTotal + " days (" + termsList[i].termPercentComplete + "%); " + termsList[i].termDaysRemain + " remain.");
   }
   return;
 }
@@ -132,51 +112,24 @@ function showDotsAndCalc() {
     }) +
     "</strong>";
   if (daysElapsedPercent <= 100) {
-    document.getElementById("daysElapsedPercent").innerHTML =
-      "We have completed " +
-      daysElapsedPercent +
-      "% of the <strong>" +
-      currentSY.schoolyear +
-      "</strong> school year.";
+    document.getElementById("daysElapsedPercent").innerHTML = "We have completed " + daysElapsedPercent + "% of the <strong>" + currentSY.schoolyear + "</strong> school year.";
   } else {
-    document.getElementById("daysElapsedPercent").innerHTML =
-      "The <strong>" +
-      currentSY.schoolyear +
-      "</strong> school year is almost finished.";
+    document.getElementById("daysElapsedPercent").innerHTML = "The <strong>" + currentSY.schoolyear + "</strong> school year is almost finished.";
   }
-  document.getElementById("currentTerm").innerHTML =
-    "We are in <strong>" +
-    currentTerm.termName +
-    "</strong> with " +
-    currentTerm.termDaysRemain +
-    " calendar days left."; // Error
+  document.getElementById("currentTerm").innerHTML = "We are in <strong>" + currentTerm.termName + "</strong> with " + currentTerm.termDaysRemain + " calendar days left."; // Error
   if (daysRemainYear < 0) {
-    document.getElementById("daysRemainYearContainer").innerHTML =
-      "We have <strong>" +
-      daysUntilNextSY +
-      "</strong> days until <strong>" +
-      nextSY.schoolyear +
-      "</strong> begins.";
+    document.getElementById("daysRemainYearContainer").innerHTML = "We have <strong>" + daysUntilNextSY + "</strong> days until <strong>" + nextSY.schoolyear + "</strong> begins.";
     // document.getElementById("daysRemainYearContainer").innerHTML = "Enjoy <strong>" + daysUntilNextSY + "</strong> daysRemainYearContainer <strong>" + nextSY.schoolyear + "</strong> begins on " + nextSY.terms[0].beg.toLocaleString('en-US', { month: 'long', day: 'numeric' }) + ".";
   } else {
-    document.getElementById("daysRemainYearContainer").innerHTML =
-      "There are <strong>" +
-      daysRemainYear +
-      "</strong> days until the end of the school year.";
+    document.getElementById("daysRemainYearContainer").innerHTML = "There are <strong>" + daysRemainYear + "</strong> days until the end of the school year.";
   }
   // document.getElementById("dots_t0").innerHTML = dotsEmptyHtml[0] + dotsFilledHtml[0]; // Summer Vacation
-  document.getElementById("dots_t1").innerHTML =
-    dotsEmptyHtml[1] + dotsFilledHtml[1];
-  document.getElementById("dots_t2").innerHTML =
-    dotsEmptyHtml[2] + dotsFilledHtml[2];
-  document.getElementById("dots_t3").innerHTML =
-    dotsEmptyHtml[3] + dotsFilledHtml[3];
-  document.getElementById("dots_t4").innerHTML =
-    dotsEmptyHtml[4] + dotsFilledHtml[4];
-  document.getElementById("dots_ps").innerHTML =
-    dotsEmptyHtml[5] + dotsFilledHtml[5];
-  document.getElementById("dots_ss").innerHTML =
-    dotsEmptyHtml[6] + dotsFilledHtml[6];
+  document.getElementById("dots_t1").innerHTML = dotsEmptyHtml[1] + dotsFilledHtml[1];
+  document.getElementById("dots_t2").innerHTML = dotsEmptyHtml[2] + dotsFilledHtml[2];
+  document.getElementById("dots_t3").innerHTML = dotsEmptyHtml[3] + dotsFilledHtml[3];
+  document.getElementById("dots_t4").innerHTML = dotsEmptyHtml[4] + dotsFilledHtml[4];
+  document.getElementById("dots_ps").innerHTML = dotsEmptyHtml[5] + dotsFilledHtml[5];
+  document.getElementById("dots_ss").innerHTML = dotsEmptyHtml[6] + dotsFilledHtml[6];
 }
 // Call functions
 showDotsAndCalc();

@@ -61,33 +61,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Remove events with no start date
       let gCalActiveEvents = [];
-      gCalActiveEvents = gCalevents.filter(
-        (item) => item.status !== "cancelled"
-      );
+      gCalActiveEvents = gCalevents.filter((item) => item.status !== "cancelled");
       // Adjust for CCPA Public Calendar events which are missing timezones and dateTimes
       // That missing data causes its events to show up 1 day early
       for (item of combinedGCalEvents) {
-        if (
-          calendarId ==
-            "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com" &&
-          item.start.timeZone != "America/Los_Angeles" &&
-          item.start.dateTime == undefined
-        ) {
+        if (calendarId == "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com" && item.start.timeZone != "America/Los_Angeles" && item.start.dateTime == undefined) {
           item.start.timeZone = "America/Los_Angeles";
           item.start.dateTime = item.start.date + " 0:00:00";
         }
       }
       // push each event (from each calendar) into the combinedGCalEvents array
       for (let i = 0; i < gCalActiveEvents.length; i++) {
-        if (
-          calendarId ==
-          "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com"
-        ) {
+        if (calendarId == "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com") {
           gCalActiveEvents[i].eventType = "opportunity";
-        } else if (
-          calendarId ==
-          "e5c502978d4582e2e7b304e8197120672739ed245f730fc938e64c24949e000e@group.calendar.google.com"
-        ) {
+        } else if (calendarId == "e5c502978d4582e2e7b304e8197120672739ed245f730fc938e64c24949e000e@group.calendar.google.com") {
           gCalevents[i].eventType = "studentActivity";
         }
 
@@ -115,26 +102,12 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((combinedGCalEvents) => {
       // Assign event types
       for (item of combinedGCalEvents) {
-        if (
-          item.name.search("No School") != -1 ||
-          item.name.search("Holiday") != -1
-        ) {
+        if (item.name.search("No School") != -1 || item.name.search("NO SCHOOL") != -1 || item.name.search("Holiday") != -1) {
           item.eventType = "studentHoliday";
         } else if (item.eventType == "opportunity") {
           // if it's an opportunity calendar it was already set
           item.eventType = "opportunity";
-        } else if (
-          item.name.search("vs") != -1 ||
-          item.name.search("ball") != -1 ||
-          item.name.search("Cross Country") != -1 ||
-          item.name.search("XC") != -1 ||
-          item.name.search("Soccer") != -1 ||
-          item.name.search("Futsol") != -1 ||
-          item.name.search("Robotics") != -1 ||
-          item.name.search("Esports") != -1 ||
-          item.name.search("Track") != -1 ||
-          item.name.search("playoffs") != -1
-        ) {
+        } else if (item.name.search("vs") != -1 || item.name.search("ball") != -1 || item.name.search("Cross Country") != -1 || item.name.search("XC") != -1 || item.name.search("Soccer") != -1 || item.name.search("Futsol") != -1 || item.name.search("Robotics") != -1 || item.name.search("Esports") != -1 || item.name.search("Track") != -1 || item.name.search("playoffs") != -1) {
           item.eventType = "studentActivity";
         } else {
           item.eventType = "event";
@@ -171,10 +144,7 @@ function convertUrlsToLinks(text) {
   var urlPattern = /(https?:\/\/[^\s]+)/g;
 
   // Replace URLs with HTML links
-  var newText = text.replace(
-    urlPattern,
-    '<a href="$1" target="_blank" class="item-link">Learn more</a>.'
-  );
+  var newText = text.replace(urlPattern, '<a href="$1" target="_blank" class="item-link">Learn more</a>.');
 
   return newText;
 }
@@ -185,32 +155,20 @@ function showEvents(eventsArray) {
   for (let i = 0; i < eventsArray.length; i++) {
     if (eventsArray[i].description != "") {
       // remove html in descriptions; use ' ' for padding
-      eventsArray[i].description = eventsArray[i].description.replace(
-        /<[^>]*>/g,
-        " "
-      );
+      eventsArray[i].description = eventsArray[i].description.replace(/<[^>]*>/g, " ");
       // convert urls to links
-      eventsArray[i].description = convertUrlsToLinks(
-        eventsArray[i].description
-      );
+      eventsArray[i].description = convertUrlsToLinks(eventsArray[i].description);
       // add spaces after ':' (except '://')
-      eventsArray[i].description = eventsArray[i].description.replace(
-        /\:(?!\s|\/\/\b)/g,
-        ": "
-      );
+      eventsArray[i].description = eventsArray[i].description.replace(/\:(?!\s|\/\/\b)/g, ": ");
       // remove double spaces
-      eventsArray[i].description = eventsArray[i].description.replace(
-        /\s\s/g,
-        " "
-      );
+      eventsArray[i].description = eventsArray[i].description.replace(/\s\s/g, " ");
     }
     // truncate any long titles or desc
     if (eventsArray[i].name.length > 17) {
       eventsArray[i].name = eventsArray[i].name.substring(0, 17) + "..";
     }
     if (eventsArray[i].description.length > 160) {
-      eventsArray[i].description =
-        eventsArray[i].description.substring(0, 160) + "...";
+      eventsArray[i].description = eventsArray[i].description.substring(0, 160) + "...";
     }
   }
   // separate the events into arrays by type
@@ -247,8 +205,7 @@ function showEvents(eventsArray) {
   let textOpps = "";
 
   for (x in eHoliday) {
-    textHolidays +=
-      "<li class='list-item'><strong>" + eHoliday[x].name + " </strong>";
+    textHolidays += "<li class='list-item'><strong>" + eHoliday[x].name + " </strong>";
     textHolidays +=
       "<span class='item-bubble'>" +
       eHoliday[x].beg.toLocaleString("en-US", {
@@ -259,8 +216,7 @@ function showEvents(eventsArray) {
       "</span></li>";
   }
   for (y in eEvent) {
-    textEvents +=
-      "<li class='list-item'><strong>" + eEvent[y].name + " </strong>";
+    textEvents += "<li class='list-item'><strong>" + eEvent[y].name + " </strong>";
 
     textEvents +=
       "<span class='item-bubble'>" +
@@ -274,8 +230,7 @@ function showEvents(eventsArray) {
       "</p></li>";
   }
   for (z in eStudAct) {
-    textStudActs +=
-      "<li class='list-item'><strong>" + eStudAct[z].name + " </strong>";
+    textStudActs += "<li class='list-item'><strong>" + eStudAct[z].name + " </strong>";
     textStudActs +=
       "<span class='item-bubble'>" +
       eStudAct[z].beg.toLocaleString("en-US", {
@@ -288,8 +243,7 @@ function showEvents(eventsArray) {
       "</p></li>";
   }
   for (aa in eOpps) {
-    textOpps +=
-      "<li class='list-item'><strong>" + eOpps[aa].name + " </strong>";
+    textOpps += "<li class='list-item'><strong>" + eOpps[aa].name + " </strong>";
     textOpps +=
       "<span class='item-bubble'>" +
       eOpps[aa].beg.toLocaleString("en-US", {
@@ -308,8 +262,7 @@ function showEvents(eventsArray) {
 }
 // Calendar show/hide onclick:
 let calendarIsVisible = null;
-let iframeHtml =
-  "<div id='showHideCal'><iframe src='https://calendar.google.com/calendar/embed?&wkst=2&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y2NwYWVkdS5jb21fZnR1MGxhNTRraW8wY3JoaDgzbTI2N2xyaThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23EF6C00&amp;mode=AGENDA' style='border:0' width='300' height='400' frameborder='0' scrolling='yes'></iframe></div>";
+let iframeHtml = "<div id='showHideCal'><iframe src='https://calendar.google.com/calendar/embed?&wkst=2&bgcolor=%23ffffff&ctz=America%2FLos_Angeles&src=Y2NwYWVkdS5jb21fZnR1MGxhNTRraW8wY3JoaDgzbTI2N2xyaThAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ&color=%23EF6C00&amp;mode=AGENDA' style='border:0' width='300' height='400' frameborder='0' scrolling='yes'></iframe></div>";
 let gCalContainer = document.createElement("div");
 gCalContainer.style.display = "none";
 gCalContainer.setAttribute("id", "gCalContainer");
