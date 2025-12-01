@@ -29,7 +29,7 @@ function calculateSY(schoolYear) {
 calculateSY(currentSY);
 
 // Calculate the terms:
-let currentTerm = {};
+let currentTerm;
 let termDaysTotal;
 let termDaysElapsed;
 let termDaysRemain;
