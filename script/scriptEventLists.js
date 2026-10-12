@@ -2,8 +2,6 @@
 Scripts specific to events, ie not dots
 */
 
-// const { addDays } = require("date-fns");
-
 const calendarIds = [
   "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com", // CCPA
   "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com", // Free museums - https://github.com/ccpa-ousd/opps-cal-hs
@@ -19,15 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const now = new Date(); // today's date
     // const now = new Date("January 01, 2025"); // fake date (for testing purposes)
     const timeMin = now.toISOString();
-    let timeMax = "";
-    // date-fns stuff
-    if (window.dateFns && window.dateFns.addDays) {
-      const { addDays } = window.dateFns;
-      timeMax = addDays(now, 90);
-      timeMax = timeMax.toISOString();
-    } else {
-      console.error("dateFns or addDays is not available.");
-    }
+    const timeMaxDate = new Date(now);
+    timeMaxDate.setDate(timeMaxDate.getDate() + 90);
+    const timeMax = timeMaxDate.toISOString();
 
     const timezone = "America/Los_Angeles";
     const gCalkey = "AIzaSyDdvMUXW8jaNxCfVZQv3vKbaL4nTzhygMI"; // https://console.cloud.google.com/apis/credentials/
@@ -38,8 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
       let calendarId = calendarIdsList[i];
       let url = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events?timeMin=${timeMin}&timeMax=${timeMax}&key=${gCalkey}&timeZone=${timezone}`;
       let response = await fetch(url); // gets a response object
+      if (!response.ok) {
+        throw new Error(`Google Calendar request failed for ${calendarId}: ${response.status} ${response.statusText}`);
+      }
       let gCaldata = await response.json(); // converts to JSON
-      let gCalevents = gCaldata.items; // gets just the items array
+      let gCalevents = Array.isArray(gCaldata.items) ? gCaldata.items : []; // gets just the items array
 
       // in the same loop, fetch recurring instances
       // and set eventType for calendars like 'opportunity'
@@ -47,25 +42,26 @@ document.addEventListener("DOMContentLoaded", () => {
         if (event.recurrence) {
           let instancesUrl = `https://www.googleapis.com/calendar/v3/calendars/${calendarId}/events/${event.id}/instances?timeMin=${timeMin}&timeMax=${timeMax}&key=${gCalkey}&timeZone=${timezone}`;
           let instancesResponse = await fetch(instancesUrl);
+          if (!instancesResponse.ok) {
+            throw new Error(`Recurring Google Calendar request failed for ${calendarId}: ${instancesResponse.status} ${instancesResponse.statusText}`);
+          }
           let instancesData = await instancesResponse.json();
-          let instances = instancesData.items;
-          for (let event of instances) {
-            event.eventType = "opportunity";
+          let instances = Array.isArray(instancesData.items) ? instancesData.items : [];
+          for (let instance of instances) {
+            instance.eventType = "opportunity";
           }
           combinedGCalEvents.push(...instances);
-        } else {
-          combinedGCalEvents.push(event);
         }
       }
       console.log(gCalevents.length + " events in GCal #" + i);
 
       // Remove events with no start date
       let gCalActiveEvents = [];
-      gCalActiveEvents = gCalevents.filter((item) => item.status !== "cancelled");
+      gCalActiveEvents = gCalevents.filter((item) => item.status !== "cancelled" && !item.recurrence);
       // Adjust for CCPA Public Calendar events which are missing timezones and dateTimes
       // That missing data causes its events to show up 1 day early
-      for (item of combinedGCalEvents) {
-        if (calendarId == "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com" && item.start.timeZone != "America/Los_Angeles" && item.start.dateTime == undefined) {
+      for (const item of combinedGCalEvents) {
+        if (calendarId == "ccpaedu.com_ftu0la54kio0crhh83m267lri8@group.calendar.google.com" && item.start && item.start.timeZone != "America/Los_Angeles" && item.start.dateTime == undefined && item.start.date) {
           item.start.timeZone = "America/Los_Angeles";
           item.start.dateTime = item.start.date + " 0:00:00";
         }
@@ -75,14 +71,18 @@ document.addEventListener("DOMContentLoaded", () => {
         if (calendarId == "a71ff6b63e1709ae2bfbcada2b3b64ebeb1f7f5e30787b2bb059725fa17b7b2b@group.calendar.google.com") {
           gCalActiveEvents[i].eventType = "opportunity";
         } else if (calendarId == "e5c502978d4582e2e7b304e8197120672739ed245f730fc938e64c24949e000e@group.calendar.google.com") {
-          gCalevents[i].eventType = "studentActivity";
+          gCalActiveEvents[i].eventType = "studentActivity";
         }
 
         combinedGCalEvents.push(gCalActiveEvents[i]);
       }
     }
     // Format the event the same way as the SY events
-    return combinedGCalEvents.map((item) => {
+    const validGCalEvents = combinedGCalEvents.filter((item) => item?.start && item?.end && (item.start.dateTime || item.start.date) && (item.end.dateTime || item.end.date));
+    if (validGCalEvents.length !== combinedGCalEvents.length) {
+      console.warn(`Skipped ${combinedGCalEvents.length - validGCalEvents.length} Google Calendar events with missing dates.`);
+    }
+    return validGCalEvents.map((item) => {
       const startDate = new Date(item.start.dateTime || item.start.date);
       const endDate = new Date(item.end.dateTime || item.end.date);
       return {

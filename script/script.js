@@ -1,7 +1,7 @@
 // Define school years and terms:
-const lastSY = SY2324;
-const currentSY = SY2526;
-const nextSY = SY2526; // breaks event list when updated #todo
+const lastSY = SY2526;
+const currentSY = SY2627;
+const nextSY = SY2728;
 const dateToday = new Date();
 // Function to count number of days between two dates
 function dateDiffInDays(a, b) {
