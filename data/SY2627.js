@@ -11,12 +11,12 @@ const SY2627 = {
       termCode: "t1_SY2627",
       termName: "T1",
       beg: new Date("Aug 07, 2026"),
-      end: new Date("Oct 13, 2026"),
+      end: new Date("Oct 12, 2026"),
     },
     {
       termCode: "t2_SY2627",
       termName: "T2",
-      beg: new Date("Oct 16, 2026"),
+      beg: new Date("Oct 13, 2026"),
       end: new Date("Dec 19, 2026"),
     },
     {
