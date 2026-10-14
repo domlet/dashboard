@@ -38,21 +38,21 @@ let termPercentComplete;
 function calculateTerms(termsList) {
   for (let i = 0; i < termsList.length; i++) {
     // Always calculate total days:
-    termDaysTotal = Math.floor((termsList[i].end - termsList[i].beg) / (1000 * 3600 * 24) + 1);
+    termDaysTotal = dateDiffInDays(termsList[i].beg, termsList[i].end) + 1;
     termsList[i].termDaysTotal = termDaysTotal;
     // Terms that have ended:
-    if (dateToday > termsList[i].end) {
+    if (dateDiffInDays(termsList[i].end, dateToday) > 0) {
       termsList[i].termDaysElapsed = termDaysTotal;
       termsList[i].termDaysRemain = 0;
       termsList[i].termPercentComplete = 100;
       // Terms that haven't started:
-    } else if (dateToday < termsList[i].beg) {
+    } else if (dateDiffInDays(dateToday, termsList[i].beg) > 0) {
       termsList[i].termDaysElapsed = 0;
       termsList[i].termDaysRemain = termDaysTotal;
       termsList[i].termPercentComplete = 0;
       // Current term:
     } else {
-      termsList[i].termDaysElapsed = Math.floor((dateToday - termsList[i].beg) / (1000 * 3600 * 24) + 1);
+      termsList[i].termDaysElapsed = dateDiffInDays(termsList[i].beg, dateToday) + 1;
       termsList[i].termDaysRemain = Math.floor(termDaysTotal - termsList[i].termDaysElapsed);
       termsList[i].termPercentComplete = Math.floor((termsList[i].termDaysElapsed / termDaysTotal) * 100);
       currentTerm = termsList[i];
@@ -81,7 +81,7 @@ function drawDots(schoolYear) {
     // Draw filled dots (for elapsed days)
     dotsHtml = "";
     for (let x = 0; x < schoolYear.terms[i].termDaysElapsed; x++) {
-      let date = schoolYear.terms[i].beg;
+      let date = new Date(schoolYear.terms[i].beg);
       let dateCute = date.toLocaleString("en-US", dotsDateOptions); // Tooltip
       dotsHtml += `<div class='dot filled-dot' title='${dateCute}' ></div>`;
       date.setDate(date.getDate() + 1); // Increment the date
@@ -90,7 +90,7 @@ function drawDots(schoolYear) {
     // Draw empty dots (for remaining days)
     dotsHtml = "";
     for (let y = 0; y < schoolYear.terms[i].termDaysRemain; y++) {
-      let date = schoolYear.terms[i].beg;
+      let date = new Date(schoolYear.terms[i].beg);
       let dateCute = date.toLocaleString("en-US", dotsDateOptions); // Tooltip
       dotsHtml += `<div class='dot empty-dot' title='${dateCute}' ></div>`;
       date.setDate(date.getDate() + 1); // Increment the date
@@ -116,7 +116,9 @@ function showDotsAndCalc() {
   } else {
     document.getElementById("daysElapsedPercent").innerHTML = "The <strong>" + currentSY.schoolyear + "</strong> school year is almost finished.";
   }
-  document.getElementById("currentTerm").innerHTML = "We are in <strong>" + currentTerm.termName + "</strong> with " + currentTerm.termDaysRemain + " calendar days left."; // Error
+  document.getElementById("currentTerm").innerHTML = currentTerm
+    ? "We are in <strong>" + currentTerm.termName + "</strong> with " + currentTerm.termDaysRemain + " calendar days left."
+    : "We are between terms.";
   if (daysRemainYear < 0) {
     document.getElementById("daysRemainYearContainer").innerHTML = "We have <strong>" + daysUntilNextSY + "</strong> days until <strong>" + nextSY.schoolyear + "</strong> begins.";
     // document.getElementById("daysRemainYearContainer").innerHTML = "Enjoy <strong>" + daysUntilNextSY + "</strong> daysRemainYearContainer <strong>" + nextSY.schoolyear + "</strong> begins on " + nextSY.terms[0].beg.toLocaleString('en-US', { month: 'long', day: 'numeric' }) + ".";
